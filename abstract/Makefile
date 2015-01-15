@@ -2,9 +2,9 @@ TARGET=abstract
 
 all:
 	pdflatex $(TARGET)
-#	bibtex $(TARGET)
-#	pdflatex $(TARGET)
-#	pdflatex $(TARGET)
+	bibtex $(TARGET)
+	pdflatex $(TARGET)
+	pdflatex $(TARGET)
 
 pdf:
 	pdflatex $(TARGET)
