@@ -60,8 +60,33 @@ mechanical turk pricing
 
 \subsection{Data Submission via Mobile App}
 
+From the mobile app, users will be presented with a list of datapoints
+to go collect in their area, and a time limit in which each must be
+completed. As each task is completed, they will gain points, prompting
+them to continue.
+
+Data collection will only occur within the mobile app so that we may
+take advantage of built in sensors (time, gps, heading, etc.).
+
 \subsection{Web Interface for Voting on Submissions}
 
+For numerous reasons, users may unknowingly (or knowingly) submit
+incorrect data. For example, a dataset that is seeking pictures of
+fire hydrants may accidentally receive images of dogs, or trees. In
+this case we will employ users to filter submissions. When an image is
+submitted, it will be posted for confirmation by other users. The
+interface for this will display the image in question, the
+requirements, and a simple ``thumbs-up'' and ``thumbs-down'' option.
+Each image will be presented for confirmation to numerous users until
+we can be reasonably certain that the datapoint should be trusted.
+
 \subsection{Web Interface for Requesting Datasets}
+
+Research groups may be created on request. 
+
+Research groups will have an interface where they may request
+datasets. From this interface groups may define GPS bounding boxes,
+time frames, and other metadata they are interested in for a given
+dataset.
 
 \end{document}
