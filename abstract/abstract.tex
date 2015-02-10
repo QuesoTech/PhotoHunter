@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage{hyperref}
+\usepackage{hyperref, tablefootnote}
 
 \title{PhotoHunter: A Citizen-Scientist Game with User-in-the-loop 
   Data Confirmation for Collecting Computer Vision Datasets of
@@ -13,7 +13,8 @@
 }
 
 \author{Connor Greenwell \and Ryan Baltenberger 
-  \and J.\ David Smith \and Aaron Bradshaw}
+  \and J.\ David Smith \and Aaron Bradshaw
+  \and Scott Workman\footnote{Advisor}}
 
 \begin{document}
 
@@ -109,6 +110,26 @@ Research groups will have an interface where they may request
 datasets. From this interface groups may define GPS bounding boxes,
 time frames, and other metadata they are interested in for a given
 dataset.
+
+\appendix
+\section{Budget}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{| l | r |}
+    \hline
+    Item & Cost \\ \hline \hline
+    Domain Name(s) \tablefootnote{Based on prices from \url{namecheap.com}} & \$40 \\ \hline
+    Virtual Machine Hosting \tablefootnote{Based on prices from \url{digitalocean.com}} & \$60 \\ \hline
+    Google Play Store Publishing Fee \tablefootnote{\url{http://developer.android.com/distribute/googleplay/start.html}} & \$25 \\ \hline
+    Apple App Store Publishing Fee \tablefootnote{\url{https://developer.apple.com/programs/ios/}} & \$99 \\ \hline
+    Multi-Platform Software Framework \tablefootnote{Based on prices from \url{https://store.xamarin.com/}} & \$75 \\
+    \hline    
+    \hline
+    Total & \$299 \\
+    \hline
+  \end{tabular}
+\end{table}
 
 \bibliographystyle{plain}
 \bibliography{biblio.bib}
