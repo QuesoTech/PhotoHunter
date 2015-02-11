@@ -16,6 +16,9 @@ Schedule
 Docs
 -----
 
+Activitiy
+---------
+
 Members
 -------
 
@@ -45,8 +48,6 @@ University's Engineering Annex.
 #### Role 
 Client Liaison
 
-#### Activity 
-
 ### Ryan BaltenBerger
 
 #### Contact
@@ -64,8 +65,6 @@ Vision Group.
 
 #### Role 
 Director of Moonbased Operations
-
-#### Activity 
 
 ### J. David Smith
 
@@ -86,11 +85,8 @@ I am David.
 #### Role 
 I am David.
 
-#### Activity 
-
 ### Aaron Bradshaw
 
 #### Contact
 #### Bio
 #### Role 
-#### Activity 
