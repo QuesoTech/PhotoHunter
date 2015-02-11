@@ -13,7 +13,7 @@ Description
 Schedule
 --------
 
-Links
+Docs
 -----
 
 Members
@@ -21,26 +21,33 @@ Members
 
 ### Connor Greenwell
 
-[<span class="glyphicon glyphicon-star" aria-hidden="true"></span>](mailto:cgree3@gmail.com)
+#### Contact
+[email](mailto:cgree3@gmail.com)
 
-Role: Client Liaison
+#### Bio
 
-Activity: 
+#### Role 
+Client Liaison
+
+#### Activity 
 
 ### Ryan BaltenBerger
 
-Role: 
-
-Activity: 
+#### Contact
+#### Bio
+#### Role 
+#### Activity 
 
 ### J. David Smith
 
-Role: 
-
-Activity: 
+#### Contact
+#### Bio
+#### Role 
+#### Activity 
 
 ### Aaron Bradshaw
 
-Role: 
-
-Activity: 
+#### Contact
+#### Bio
+#### Role 
+#### Activity 
