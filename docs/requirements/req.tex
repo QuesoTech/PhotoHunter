@@ -15,85 +15,147 @@
 
 \section{Introduction}
 \subsection{Project}
-The PhotoHunter system provides a simplified means of creating datasets for computer vision. The system consists of two mobile applications an a web interface. 
+The PhotoHunter system provides a simplified means of creating datasets for
+computer vision. The system consists of two mobile applications an a web
+interface. 
 
 \subsection{Purpose}
-The purpose of this document is to clearly define the expected functionality of the "PhotoHunter" system. This document is to serve as a reference and guideline for the client and the developers of the project. The document will: 1) provide a complete overview of the system and its subcomponents; 2) discuss constraints and the scope of the project; 3) discuss the purpose of the system. 
+The purpose of this document is to clearly define the expected functionality of
+the "PhotoHunter" system. This document is to serve as a reference and
+guideline for the client and the developers of the project. The document will:
+1) provide a complete overview of the system and its subcomponents; 2) discuss
+constraints and the scope of the project; 3) discuss the purpose of the system. 
 
 \subsection{Definitions, Acronyms, and Abbreviations}
 
 \begin{enumerate}
 
-\item\textbf{PhotoHunter Project}: The overall system, composed of PhotoHunter, Quick Pic, and a web interface.
-\item\textbf{PhotoHunter}: The mobile application which provides users descriptions of photos to capture in the style of a scavenger-hunt. 
-\item\textbf{Quick Pic}: The mobile application which quizzes users, asking them to label images that they are briefly shown.
-\item\textbf{Gamification}: Using game mechanics to solve problems.
+  \item \textbf{PhotoHunter Project}: The overall system, composed of PhotoHunter,
+        Quick Pic, and a web interface.
+  \item \textbf{PhotoHunter}: The mobile application which provides users
+        descriptions of photos to capture in the style of a scavenger-hunt. 
+  \item \textbf{Quick Pic}: The mobile application which quizzes users, asking
+        them to label images that they are briefly shown.
+  \item \textbf{Gamification}: Using game mechanics to solve problems.
+
 \end{enumerate}
 
 \section{Overview}
 \subsection{Overall Description}
-The PhotoHunter project is a system intended to simplify the creation of datasets for computer vision research by the process of "gamification". The system is composed of two mobile applications and a web interface. The web interface allows researchers to specify a set of images based on their needs. Based on these specifications, the first mobile application generates a list of descriptions for photos. Users then capture photos matching these descriptions and submit them in a scavenger-hunt style game. The second mobile application uses the submitted photos to quiz users. The players are briefly shown the images and then asked to label them. Based on the most-commonly provided answer, the correct label for the image can be determined. The labelled images are then provided to the researchers that requested the dataset. The system provides entertainment for users and useful datasets for researchers.
+The PhotoHunter project is a system intended to simplify the creation of
+datasets for computer vision research by the process of "gamification". The
+system is composed of two mobile applications and a web interface. The web
+interface allows researchers to specify a set of images based on their needs.
+Based on these specifications, the first mobile application generates a list of
+descriptions for photos. Users then capture photos matching these descriptions
+and submit them in a scavenger-hunt style game. The second mobile application
+uses the submitted photos to quiz users. The players are briefly shown the
+images and then asked to label them. Based on the most-commonly provided
+answer, the correct label for the image can be determined. The labelled images
+are then provided to the researchers that requested the dataset. The system
+provides entertainment for users and useful datasets for researchers.
 
 \subsection{Document Structure}
-The remaining sections of the document discuss the specific requirements, constraints, and risks of the project. These sections are:
+The remaining sections of the document discuss the specific requirements,
+constraints, and risks of the project. These sections are:
 \begin{enumerate}
-\item \textbf{Environment}: A description of the hardware and software environments in which the PhotoHunter project will be deployed.
-\item \textbf{Architecture}: A high level description of the overall architecture of the PhotoHunter project.
-\item \textbf{Features}: Describes all of the features of the PhotoHunter project.
-\item \textbf{Interfaces}: Describes the methods in which users interact with the PhotoHunter project.
-\item \textbf{Installation}: Description of the installation process required for PhotoHunter.
-\item \textbf{Constraints}: Discusses constraints on the PhotoHunter system.
-\item \textbf{Risks}: A discussion of the possible risks involved in designing and building the PhotoHunter project.
+
+  \item \textbf{Environment}: A description of the hardware and software
+        environments in which the PhotoHunter project will be deployed.
+  \item \textbf{Architecture}: A high level description of the overall
+        architecture of the PhotoHunter project.
+  \item \textbf{Features}: Describes all of the features of the PhotoHunter
+        project.
+  \item \textbf{Interfaces}: Describes the methods in which users interact with
+        the PhotoHunter project.
+  \item \textbf{Installation}: Description of the installation process required
+        for PhotoHunter.
+  \item \textbf{Constraints}: Discusses constraints on the PhotoHunter system.
+  
+  \item \textbf{Risks}: A discussion of the possible risks involved in designing
+        and building the PhotoHunter project.
+
 \end{enumerate}
 
 
 \section{Environment}
 \subsection{Web Browsers}
-The web interface for the PhotoHunter Project will be compatible with all major web browsers including Google Chrome, Mozilla Firefox, Internet Explorer, and Safari. This interface will also employ a responsive design to accommodate users visiting on a mobile device's browser.
+The web interface for the PhotoHunter Project will be compatible with the
+latest version of all major web browsers including Google Chrome, Mozilla
+Firefox, Internet Explorer, and Safari. This interface will also employ a
+responsive design to accommodate users visiting on a mobile device's browser.
 
 \subsection{Mobile Application}
-The two mobile applications for the PhotoHunter Project will be developed with cross-platform tool, allowing the applications to be deployed to both iOS and Android devices. 
+The two mobile applications for the PhotoHunter Project will be developed with
+cross-platform tool, allowing the applications to be deployed to both iOS and
+Android devices. 
 
 \section{Architecture}
 
 \subsection{Overview}
-The components of the PhotoHunter Project will each utilize the same database for different purposes.
+The components of the PhotoHunter Project will each utilize the same database
+for different purposes.
 
 \subsection{Web Interface}
-The web interface will allow researchers to specify an image dataset based on their needs. This specification is then used as a topic for the PhotoHunter mobile application. Researchers may also use the web interface retrieve their finalized dataset after the images have been labelled by the Quick Pick mobile application. 
+The web interface will allow researchers to specify an image dataset based on
+their needs. This specification is then used as a topic for the PhotoHunter
+mobile application. Researchers may also use the web interface retrieve their
+finalized dataset after the images have been labelled by the Quick Pick mobile
+application. 
 
 \subsection{PhotoHunter}
-This mobile application generates lists based on the topics provided by researchers through the web interface. Users playing the PhotoHunter game capture photos matching the topics in the list. These photos are uploaded to the overall system's database for use in dataset generation.
+This mobile application generates lists based on the topics provided by
+researchers through the web interface. Users playing the PhotoHunter game
+capture photos matching the topics in the list. These photos are uploaded to
+the overall system's database for use in dataset generation.
 
 \subsection{Quick Pic}
-This mobile application uses the photos and topics provided by the PhotoHunter application and web interface to quiz users. Users are briefly shown one of the photos. Afterwards, the users are asked to label the photo based on a set of choices. The answer provided by the user is sent to the central system. 
+This mobile application uses the photos and topics provided by the PhotoHunter
+application and web interface to quiz users. Users are briefly shown one of the
+photos. Afterwards, the users are asked to label the photo based on a set of
+choices. The answer provided by the user is sent to the central system. 
 
 \subsection{Backend}
-The backend of the system will generate lists for the PhotoHunter application. The backend will also analyze the data provided by Quick Pic to predict the correctness of user-provided labels. Finally, the backend will compile and generate datasets for researchers to download.
+The backend of the system will generate lists for the PhotoHunter application.
+The backend will also analyze the data provided by Quick Pic to predict the
+correctness of user-provided labels. Finally, the backend will compile and
+generate datasets for researchers to download.
 
 \section{Features}
 
 \subsection{Web Interface}
-The web interface will provide researchers with tools for dataset specification, tracking, and retrieval. 
+The web interface will provide researchers with tools for dataset
+specification, tracking, and retrieval. 
 
 	\subsubsection{Researcher Accounts}
-	The web interface will allow researchers to create accounts to login. An account will be necessary to use the other features of the web interface.
+  The web interface will allow researchers to create accounts to login. An
+  account will be necessary to use the other features of the web interface.
 	
 	\subsubsection{Dataset Requests}
-	When logged in to the system, users can create a new request for a dataset. This request will be a description of the data needed and the desired size of the dataset.
+  When logged in to the system, users can create a new request for a dataset.
+  This request will be a description of the data needed and the desired size of
+  the dataset.
 	
 	\subsubsection{Dataset Status}
-	The system will allow users to view the current status of their dataset based on the current size. This status will provide information regarding recent activity in the dataset and time since the dataset was initialized. 
+  The system will allow users to view the current status of their dataset based
+  on the current size. This status will provide information regarding recent
+  activity in the dataset and time since the dataset was initialized. 
 	
 	\subsubsection{Dataset Download}
-	The system will allow users to download their dataset after it is complete. Additionally, the system will allow users to download incomplete datasets. 
+  The system will allow users to download their dataset after it is complete.
+  Additionally, the system will allow users to download incomplete datasets. 
 	
 	
 \subsection{PhotoHunter Application}
-The PhotoHunter mobile application provides a scavenger-hunt experience where users are given lists of photo descriptions. Users then capture and submit photos matching these descriptions. Based on the number and quality of submissions, users are ranked against one another, introducing a competitive element to the process.
+The PhotoHunter mobile application provides a scavenger-hunt experience where
+users are given lists of photo descriptions. Users then capture and submit
+photos matching these descriptions. Based on the number and quality of
+submissions, users are ranked against one another, introducing a competitive
+element to the process.
 
 	\subsubsection{User Accounts}
-	The application will allow users to create profiles to login. An account will be necessary for the user to submit photos.
+  The application will allow users to create profiles to login. An account will
+  be necessary for the user to submit photos.
 	
 	\subsubsection{Statistics}
 	The application will allow users to track their statistics when logged in.
@@ -102,64 +164,103 @@ The PhotoHunter mobile application provides a scavenger-hunt experience where us
 	The application will provide lists of topics to the user.
 	
 	\subsubsection{Photo Submission}
-	The application will allow users to take photos with their on-device camera. These photos can then be submitted to one of the options on the user's current list of topics.
+  The application will allow users to take photos with their on-device camera.
+  These photos can then be submitted to one of the options on the user's current
+  list of topics.
 	
 	\subsubsection{Leaderboards}
-	The application will allow users to view their current ranking against all other users. This ranking will be determined by the number of submissions a user has made.
+  The application will allow users to view their current ranking against all
+  other users. This ranking will be determined by the number of submissions a
+  user has made.
 	
 \subsection{Quick Pic}
-The Quick Pic mobile application is quiz game where users quickly identify images based on a provided set of labels. Users are briefly shown an image. Then users must select the most correct label from a set of choices. Based on their correctness and speed, users are given points and ranked against one another.
+The Quick Pic mobile application is quiz game where users quickly identify
+images based on a provided set of labels. Users are briefly shown an image.
+Then users must select the most correct label from a set of choices. Based on
+their correctness and speed, users are given points and ranked against one
+another.
 
 	\subsubsection{User Accounts}
 	The application requires users to create profiles. 
 	
 	\subsubsection{Statistics}
-	The application will allow users to view quiz statistics, such as percentage correct, average response time, and total points.
+  The application will allow users to view quiz statistics, such as percentage
+  correct, average response time, and total points.
 	
 	\subsubsection{Image Flash}
-	The application will briefly show the user an image pulled from the PhotoHunter Project's database.
+  The application will briefly show the user an image pulled from the
+  PhotoHunter Project's database.
 	
 	\subsubsection{Labels}
-	After showing a user an image, the application will provide the user with a list of labels. These labels will have varying degrees of relevancy. One label will be determined by the topic in which the photo was submitted as in the PhotoHunter application. 
+  After showing a user an image, the application will provide the user with a
+  list of labels. These labels will have varying degrees of relevancy. One label
+  will be determined by the topic in which the photo was submitted as in the
+  PhotoHunter application. 
 	
 	\subsubsection{Leaderboards}
-	The application will allow users to view their ranking against all other users based on their cumulative points.
+  The application will allow users to view their ranking against all other
+  users based on their cumulative points.
 	
 \subsection{Backend}
 INSERT STUFF HERE
 
 \section{Interfaces}
-The PhotoHunter Project will have three central interfaces: two mobile applications and a web interface.
+The PhotoHunter Project will have three central interfaces: two mobile
+applications and a web interface.
 
 \subsection{Web Interface}
-The web interface component will have a login menu. Once logged in the, user will be presented with a control panel. This control panel will contain various options including:
+The web interface component will have a login menu. Once logged in the, user
+will be presented with a control panel. This control panel will contain various
+options including:
 
 \begin{enumerate}
-\item \textbf{Dataset Request:} A form for requesting a new dataset.
-\item \textbf{Dataset Status:} An information panel for viewing statistics about any datasets in development.
-\item \textbf{Dataset Download:} A tool allowing users the download any complete or partially complete datasets.
+
+  \item \textbf{Dataset Request:} A form for requesting a new dataset.
+  
+  \item \textbf{Dataset Status:} An information panel for viewing statistics
+        about any datasets in development.
+  
+  \item \textbf{Dataset Download:} A tool allowing users the download any
+        complete or partially complete datasets.
+
 \end{enumerate}
 	
 \subsection{PhotoHunter}
-The PhotoHunter mobile application will have a main login screen upon start. After logging in, three main menu options are available, including:
+The PhotoHunter mobile application will have a main login screen upon start.
+After logging in, three main menu options are available, including:
 
 \begin{enumerate}
-\item \textbf{Photo Hunt:} Provides the user with a list of topics. On this view, the user may also choose to take a photo. After taking a photo, the user may choose a relevant category under which to submit the photo.
-\item \textbf{Statistics:} Allows the user to view personal statistics.
-\item \textbf{Leaderboard:} Allows the user to view global leaderboards.
+
+  \item \textbf{Photo Hunt:} Provides the user with a list of topics. On this
+        view, the user may also choose to take a photo. After taking a photo, the user
+        may choose a relevant category under which to submit the photo.
+
+  \item \textbf{Statistics:} Allows the user to view personal statistics.
+
+  \item \textbf{Leaderboard:} Allows the user to view global leaderboards.
+
 \end{enumerate}
 	
 \subsection{Quick Pic}
-The Quick Pic mobile application will have a main login screen upon start. The following main menu will have the following options:
+The Quick Pic mobile application will have a main login screen upon start. The
+following main menu will have the following options:
 
 \begin{enumerate}
-\item \textbf {Photo Quiz:} Quizzes the user by showing them photos and asking for the correct label.
-\item \textbf{Statistics:} Allows the user to view personal statistics.
-\item \textbf{Leaderboard:} Allows the user to view global leaderboards.
+
+  \item \textbf {Photo Quiz:} Quizzes the user by showing them photos and
+        asking for the correct label.
+
+  \item \textbf{Statistics:} Allows the user to view personal statistics.
+
+  \item \textbf{Leaderboard:} Allows the user to view global leaderboards.
+
 \end{enumerate}
 	 
 \section{Installation}
-The web interface component of the PhotoHunter Project will require no installation. The user will login to the site using any standard internet browser. The mobile applications will need to be downloaded from the Google Play App Store or the iTunes App Store, depending on the user's device.
+The web interface component of the PhotoHunter Project will require no
+installation. The user will login to the site using any standard internet
+browser. The mobile applications will need to be downloaded from the Google
+Play App Store or the iTunes App Store, depending on the user's device.
 
 \section{Constraints}
 
