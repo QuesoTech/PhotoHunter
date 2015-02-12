@@ -7,6 +7,8 @@ Geo-tagged Imagery through Crowd-Sourcing Data Collection;
 Abstracting Research using an Interactive, Game-based Mobile Application for
 Large Dataset Creation
 
+[Github](http://github.com/connorgreenwell/Photohunter "Photohunter Github")
+
 Description
 -----------
 

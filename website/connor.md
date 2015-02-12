@@ -1,10 +1,13 @@
 Connor Greenwell
 ================
 
-#### Contact
+Contact
+-------
 [email](mailto:cgree3@gmail.com)
 
-#### Bio
+Bio
+---
+
 In 1992 I was born in Lexington, Kentucky. A little over 18 years
 later, I moved far, far away from home to study [Computer
 Science](http://cs.uky.edu "CS Dept.") at the [University of
@@ -22,7 +25,11 @@ been involved, we have grown to almost double the size I saw when I
 joined in 2011, and we now have a permanent ACM Meeting Space in the
 University's Engineering Annex.
 
-#### Role
+Role
+----
+
 Client Liaison
 
-#### Activity Log
+Activity Log
+------------
+

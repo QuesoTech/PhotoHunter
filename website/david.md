@@ -1,10 +1,14 @@
 J. David Smith
 ==============
 
-#### Contact
+Contact
+-------
+
 I am David.
 
-#### Bio
+Bio
+---
+
 I am David.
 I am David.
 I am David.
@@ -15,7 +19,11 @@ I am David.
 I am David.
 I am David.
 
-#### Role 
+Role 
+----
+
 I am David.
 
-#### Activity Log
+Activity Log
+------------
+

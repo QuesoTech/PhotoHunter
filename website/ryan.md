@@ -1,20 +1,31 @@
 Ryan Baltenberger
 =================
 
-#### Contact
+Contact
+-------
+
 [email](mailto:ryan.baltenberger@uky.edu)
 
-#### Bio
-In 1993 I was born in Lexington, Kentucky. A little over 18 years
-later, I moved far, far away from home to study [Computer
-Science](http://cs.uky.edu "CS Dept.") at the [University of
-Kentucky](http://uky.edu "UK"). 
+Bio
+---
 
-Currently, I do research under [Dr. Nathan
-Jacobs](http://cs.uky.edu/~jacobs "Dr. Jacobs") with UK's Computer
-Vision Group.
+I am a senior in the University of Kentucky's Computer 
+Science program.  I am currently working on computer vision
+research under the supervision of Dr. Nathan Jacobs.
 
-#### Role 
-Director of Moon-based Operations
+Role 
+----
 
-#### Activity Log
+Mobile Application Developer
+Web Frontend Developer
+
+Activity Log
+------------
+
+**February 8th 2015 - February 14th 2015**
+
+-   Drafted initial logo for Photohunter
+-   Finalized project description document and budget
+-   Worked on project requirements document
+-   Worked on initial project page
+-   Set up hosting and project page on server
