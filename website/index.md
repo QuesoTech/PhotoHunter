@@ -15,6 +15,8 @@ Description
 Schedule
 --------
 
+[Meeting Notes](meetings.html "Meeting Notes")
+
 Docs
 -----
 [Abstract](docs/abstract.pdf "Abstract")
