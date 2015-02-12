@@ -16,7 +16,7 @@ Schedule
 Docs
 -----
 
-Activitiy
+Activity
 ---------
 
 Members
@@ -64,7 +64,7 @@ Jacobs](http://cs.uky.edu/~jacobs "Dr. Jacobs") with UK's Computer
 Vision Group.
 
 #### Role 
-Director of Moonbased Operations
+Director of Moon-based Operations
 
 ### J. David Smith
 

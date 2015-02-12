@@ -5,3 +5,6 @@ generate:
 
 deploy:
 	rsync -avz * root@104.131.64.39:/var/www/
+
+spell:
+	aspell -c index.md
