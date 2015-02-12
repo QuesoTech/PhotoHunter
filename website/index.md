@@ -48,7 +48,7 @@ University's Engineering Annex.
 #### Role 
 Client Liaison
 
-### Ryan BaltenBerger
+### Ryan Baltenberger
 
 #### Contact
 [email](mailto:ryan.baltenberger@uky.edu)
