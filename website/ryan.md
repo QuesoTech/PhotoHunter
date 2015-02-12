@@ -6,6 +6,8 @@ Contact
 
 [email](mailto:ryan.baltenberger@uky.edu)
 
+[website](http://baltenberger.com "Ryan's Webpage")
+
 Bio
 ---
 
