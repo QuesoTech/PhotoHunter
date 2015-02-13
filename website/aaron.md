@@ -9,15 +9,19 @@ Contact
 Bio
 ---
 
-In 1993 I was born in Columbia, Kentucky. A little over 18 years
-later, I moved somewhere very close to home to study Computer Science
-and Computer Engineering at the University of Kentucky.
+I am a senior in computer engineering and computer science at the University of Kentucky. I am currently the president of the HKN Electrical and Computer Engineering Honors Society. 
 
 Role
 ----
+Web Backend Developer
+Web Frontend Developer
+Documentation  
 
-Stuff Coordinator
 
 Activity Log
 ------------
+**February 8th 2015 - February 14th 2015**
+
+- Wrote the project requirements document following IEEE Standards.
+- Developed my profile page for the project website.
 
