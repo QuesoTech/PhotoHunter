@@ -1,6 +1,8 @@
 \documentclass{article}
 
-\usepackage{hyperref, tablefootnote, lipsum}
+\usepackage{hyperref, tablefootnote, color}
+
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[#1]}}}
 
 \title{PhotoHunter Requirements Specification
 }
@@ -77,18 +79,19 @@ constraints, and risks of the project. These sections are:
 
 \end{enumerate}
 
-
 \section{Environment}
+
 \subsection{Web Browsers}
 The web interface for the PhotoHunter Project will be compatible with the
-latest version of all major web browsers including Google Chrome, Mozilla
-Firefox, Internet Explorer, and Safari. This interface will also employ a
+versions of Google Chrome and Mozilla Firefox that are available on
+April 1, 2015. This interface will also employ a
 responsive design to accommodate users visiting on a mobile device's browser.
 
 \subsection{Mobile Application}
 The two mobile applications for the PhotoHunter Project will be developed with
-cross-platform tool, allowing the applications to be deployed to the latest
-versions both iOS and Android devices. 
+cross-platform tool, allowing the applications to be deployed to both
+iOS version 8 and Android version 5.0 (Lollipop) \todo{verify target
+versions}.
 
 \section{Architecture}
 
