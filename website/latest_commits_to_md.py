@@ -1,8 +1,7 @@
 from github import Github
 from datetime import datetime, timedelta
 
-uname = 'connorgreenwell'
-password = 'nononononono'
+username = 'connorgreenwell'
 repo_name = 'PhotoHunter'
 
 commit_temp = '- {name}: {message}'
@@ -15,8 +14,8 @@ collaborators = {
         'atbradshaw': 'aaron'
         }
 if __name__ == '__main__':
-    github = Github(uname, password)
-    repo = github.get_user().get_repo(repo_name)
+    github = Github()
+    repo = github.get_user(username).get_repo(repo_name)
 
     now = datetime.now()
     week = timedelta(days=7)
