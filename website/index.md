@@ -36,6 +36,8 @@ Docs
 
 [Github](http://github.com/connorgreenwell/Photohunter "Photohunter Github")
 
+[Recent Commits](commits.html "Recent Commits")
+
 Members
 ---------
 [Connor Greenwell](connor.html "Connor's Page")
