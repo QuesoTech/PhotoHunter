@@ -19,7 +19,10 @@ Role
 ----
 
 Mobile Application Developer
+
 Web Frontend Developer
+
+Director of Moon-based Operations
 
 Activity Log
 ------------
