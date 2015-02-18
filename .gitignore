@@ -37,3 +37,6 @@ TAGS
 *.tdo
 
 *.bak
+
+# generated website files
+website/*.html
