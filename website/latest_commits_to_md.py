@@ -2,7 +2,7 @@ from github import Github
 from datetime import datetime, timedelta
 
 uname = 'connorgreenwell'
-password = '***REMOVED***'
+password = 'nononononono'
 repo_name = 'PhotoHunter'
 
 commit_temp = '- {name}: {message}'
