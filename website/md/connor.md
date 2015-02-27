@@ -34,6 +34,15 @@ Client Liaison, Chief Water Buffalo Wrestler
 Activity Log
 ------------
 
+### February 23, 2015 - February 30, 2015
+
+- Refined `create table` queries
+- Started some of the backend code
+
+### February 15, 2015 - February 22, 2015 (Snow-pacalypse)
+
+- Basic PSQL definitions for each table
+
 ### February 8, 2015 - February 14, 2015
 
 - Drafted project website
