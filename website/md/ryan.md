@@ -27,6 +27,11 @@ Director of Moon-based Operations
 Activity Log
 ------------
 
+**February 15th 2015 - February 21th 2015**
+
+-   Worked on initial project page
+-   Integrated git commit log page into project page
+
 **February 8th 2015 - February 14th 2015**
 
 -   Drafted initial logo for Photohunter
