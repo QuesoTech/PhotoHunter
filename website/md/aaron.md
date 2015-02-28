@@ -21,7 +21,7 @@ Documentation
 Activity Log
 ------------
 **February 23rd, 2015 - February 21st, 2015**
-- Worked on 'create table' queries for the database.
+- Worked on `create table` queries for the database.
 
 **February 15th, 2015 - February 22nd, 2015**
 
