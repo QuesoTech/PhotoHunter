@@ -3,6 +3,7 @@
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/res/xml/config.xml \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/res/drawable-port-hdpi/screen.png \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/res/drawable-hdpi/icon.png \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/res/drawable/willie.jpg \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/res/drawable/icon.png \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/res/drawable-port-ldpi/screen.png \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/res/drawable-xhdpi/icon.png \
@@ -31,12 +32,18 @@
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/img \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/index.html \
-/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/test.html \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/js \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/css \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/cordova.js \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/cordova_plugins.js \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/plugins \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/img/logo.png \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/js/index.js \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/css/index.css \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/plugins/org.apache.cordova.camera \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/plugins/org.apache.cordova.camera/www \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/Camera.js \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraConstants.js \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/ant-build/AndroidManifest.xml \

@@ -1,4 +1,7 @@
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/ant-build/classes.dex : \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/ant-build/classes/org/apache/cordova/camera/FileHelper.class \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/ant-build/classes/org/apache/cordova/camera/CameraLauncher.class \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/ant-build/classes/org/apache/cordova/camera/ExifHelper.class \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/ant-build/classes/com/photohunter/photohunter/R$attr.class \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/ant-build/classes/com/photohunter/photohunter/R$drawable.class \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/ant-build/classes/com/photohunter/photohunter/R$string.class \

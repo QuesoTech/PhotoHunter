@@ -16,36 +16,49 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+var pictureSource;   // picture source
+var destinationType; // sets the format of returned value
 
-        console.log('Received Event: ' + id);
-    }
-};
+document.addEventListener('deviceready', onDeviceReady, false);
 
-app.initialize();
+function onDeviceReady() {
+		pictureSource = navigator.camera.PictureSourceType;
+		destinationType=navigator.camera.DestinationType;
+}
+
+
+// Called when a photo is successfully retrieved
+//
+function onPhotoDataSuccess(imageData) {
+	// Uncomment to view the base64-encoded image data
+	// console.log(imageData);
+
+	// Get image handle
+	//
+	var smallImage = document.getElementById('smallImage');
+
+	// Unhide image elements
+	//
+	smallImage.style.display = 'block';
+
+	// Show the captured photo
+	// The in-line CSS rules are used to resize the image
+	//
+	smallImage.src = "data:image/jpeg;base64," + imageData;
+}
+
+
+function capturePhoto()
+{
+	navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, 
+		destinationType: destinationType.DATA_URL });
+}
+
+
+// Called if something bad happens.
+//
+function onFail(message) {
+	alert('Failed because: ' + message);
+}
+

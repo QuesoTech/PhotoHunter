@@ -1,13 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.photohunter.photohunter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
     <name>Photohunter</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Hunt for new photos to take in your area and earn points to become the best!
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="dev@quesotech.com" href="quesotech.com">
+        QuesoTech
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="SplashScreen" value="willie" />
 </widget>
