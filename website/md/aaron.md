@@ -20,6 +20,14 @@ Documentation
 
 Activity Log
 ------------
+**February 23rd, 2015 - February 21st, 2015**
+- Worked on `create table` queries for the database.
+
+**February 15th, 2015 - February 22nd, 2015**
+
+- Designed relational database for the project.
+- Studied Go programming language for use in the backend.
+
 **February 8th 2015 - February 14th 2015**
 
 - Wrote the project requirements document following IEEE Standards.

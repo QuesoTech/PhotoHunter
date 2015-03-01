@@ -20,7 +20,7 @@ commits:
 	python latest_commits_to_md.py > $(MARKDOWN_DIR)/commits.md
 
 deploy:
-	rsync -avz $(DEPLOY_DIR)/* root@104.131.64.39:/var/www/
+	rsync -avz $(DEPLOY_DIR)/* root@104.131.64.39:/var/www/progress/
 
 spell:
 	aspell -c index.md
