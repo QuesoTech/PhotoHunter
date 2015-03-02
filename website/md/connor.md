@@ -30,7 +30,8 @@ Role
 ----
 
 Client Liaison
-R & Brie Producer
+
+Head R & Brie Producer
 
 Activity Log
 ------------
