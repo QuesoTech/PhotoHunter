@@ -40,3 +40,6 @@ TAGS
 
 # generated website files
 website/*.html
+/website/mdvenv/
+/website/token.txt
+/website/md/commits.md

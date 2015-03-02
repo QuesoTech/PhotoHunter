@@ -1,7 +1,8 @@
+#!/usr/bin/env python3
 from github import Github
 from datetime import datetime, timedelta
 
-username = 'connorgreenwell'
+username = 'QuesoTech'
 repo_name = 'PhotoHunter'
 
 commit_temp = '- {name}: {message}'
@@ -14,14 +15,17 @@ collaborators = {
         'atbradshaw': 'aaron'
         }
 if __name__ == '__main__':
-    github = Github()
+    with open('token.txt') as tf:
+        token = tf.read().strip()
+        github = Github(token, 'x-oauth-basic')
+
     repo = github.get_user(username).get_repo(repo_name)
 
     now = datetime.now()
     week = timedelta(days=7)
-    
+
     print('# Recent Commits')
-    
+
     for commit in repo.get_commits(since=now-week):
         print(commit_temp.format(message=commit.commit.message,
             name=commit.commit.committer.name))

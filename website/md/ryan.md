@@ -19,7 +19,9 @@ Role
 ----
 
 Mobile Application Developer
+
 Web Frontend Developer
+
 The Gouda-father
 
 Activity Log
