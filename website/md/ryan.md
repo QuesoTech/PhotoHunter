@@ -27,6 +27,13 @@ Director of Moon-based Operations
 Activity Log
 ------------
 
+**February 22th 2015 - February 28th 2015**
+
+-   More updates to the project page
+-   Set up the over all main page (quesotech.com)
+-   Set up the Cordova environment for app development
+-   Created a proof of concept for the Photohunter app
+
 **February 15th 2015 - February 21th 2015**
 
 -   Worked on initial project page
