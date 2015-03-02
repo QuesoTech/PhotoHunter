@@ -28,6 +28,10 @@ Curd of Prey
 Activity Log
 ------------
 
+**February 22nd 2015 - February 28th 2015**
+
+- Finished first prototype. Showed to customer.
+
 **February 15th 2015 - February 21st 2015**
 
 - Began developing prototype mobile app with Apache Cordova.
