@@ -32,6 +32,7 @@
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/img \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/index.html \
+/home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/capture.html \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/js \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/css \
 /home/ryan/class/cs499/Photohunter/src/photohunter/platforms/android/assets/www/cordova.js \
