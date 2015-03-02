@@ -37,4 +37,6 @@ func main() {
 	DB, err := getDbHandle()
 	check(err)
 	defer DB.Close()
+
+  check(DB.Ping())
 }

@@ -7,6 +7,6 @@ type GeoPoint struct {
 
 type Location struct {
 	Id int
-	DatasetId
+	DatasetId int
 	Target GeoPoint
 }
