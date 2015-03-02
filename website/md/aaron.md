@@ -13,6 +13,8 @@ I am a senior in computer engineering and computer science at the University of 
 
 Role
 ----
+
+Cheese Whiz
 Web Backend Developer
 Web Frontend Developer
 Documentation  

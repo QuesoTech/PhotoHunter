@@ -19,10 +19,8 @@ Role
 ----
 
 Mobile Application Developer
-
 Web Frontend Developer
-
-Director of Moon-based Operations
+The Gouda-father
 
 Activity Log
 ------------

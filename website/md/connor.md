@@ -29,7 +29,8 @@ University's Engineering Annex.
 Role
 ----
 
-Client Liaison, Chief Water Buffalo Wrestler
+Client Liaison
+R & Brie Producer
 
 Activity Log
 ------------
