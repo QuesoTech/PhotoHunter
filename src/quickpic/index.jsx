@@ -7,7 +7,7 @@ var JudgeBot9000 = require('./lib/judgebot.jsx'),
 function onload() {
     React.render(
         <JudgeBot9000 src='http://o.aolcdn.com/hss/storage/adam/dde819906acab479c31e42b7bf468281/fear%20bot%20planet%201%20mac%20judging.jpg'
-                      time={1000}
+                      time={5000}
                       labels={['Robot','Judge','Cat', 'Tree']} />,
         document.querySelector('#react-container')
     );

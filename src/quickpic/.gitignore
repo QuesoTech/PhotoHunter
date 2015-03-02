@@ -1,2 +1,4 @@
 node_modules
-./cordova/www/js/dist
+cordova/www/js/dist
+cordova/platforms/android/assets/www
+.tern-*
