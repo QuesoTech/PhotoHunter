@@ -7,3 +7,15 @@ Meeting Notes
 -   Discussed plans for project progress web page
 -   Logo discussion and initial ideas
 -   Hosting for websites discussed
+
+#### February 23rd, 2015
+-   Connor and Aaron discussed and designed the initial relational database.
+-   Uploaded boilerplate code for the create table SQL in PostgreSQL
+
+#### February 24th, 2015
+-   Discussed logo designs for Quick Pic
+-   Discussed edits for the PhotoHunter logo
+-   Made plans to design mockups for web and mobile app interfaces
+-   Integrated git commit log into the project progress page
+-   Purchased domain name for the project
+-   Discussed the functionality of the project's API
