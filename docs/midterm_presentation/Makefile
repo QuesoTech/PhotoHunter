@@ -1,12 +1,16 @@
 TARGET=pres
+FIGS=figs
 
 all: spell pdf clean
 
-pdf:
+pdf: dot
 	pdflatex $(TARGET)
 #	bibtex $(TARGET)
 	pdflatex $(TARGET)
 #	pdflatex $(TARGET)
+
+dot:
+	dot $(FIGS)/er.dot -Tpng -o $(FIGS)/er.png
 
 spell:
 	aspell -ttex -c $(TARGET).tex
