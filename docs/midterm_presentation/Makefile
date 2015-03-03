@@ -5,7 +5,7 @@ all: spell pdf clean
 pdf:
 	pdflatex $(TARGET)
 #	bibtex $(TARGET)
-#	pdflatex $(TARGET)
+	pdflatex $(TARGET)
 #	pdflatex $(TARGET)
 
 spell:
