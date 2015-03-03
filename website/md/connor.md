@@ -1,12 +1,15 @@
 Connor Greenwell
 ================
 
+*If you do it the minute before its due, then you only spend a minute
+doing it*
+
 Contact
 -------
 
 [email](mailto:cgree3@gmail.com)
 
-[website](connorgreenwell.com)
+[website](http://connorgreenwell.com)
 
 Bio
 ---
