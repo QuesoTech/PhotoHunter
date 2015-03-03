@@ -1,6 +1,9 @@
 Connor Greenwell
 ================
 
+*If you do it the minute before its due, then you only spend a minute
+doing it*
+
 Contact
 -------
 
