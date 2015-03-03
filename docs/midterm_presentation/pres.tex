@@ -1,8 +1,8 @@
 \documentclass[aspectratio=169]{beamer}
 
 % beamer config
-\usetheme{Pittsburgh}
-\AtBeginSection{\frame{\sectionpage}}
+\usetheme{Berkeley}
+% \AtBeginSection{\frame{\sectionpage}}
 
 % package imports
 \usepackage{graphicx}
@@ -28,27 +28,23 @@
 
 \section{Computer Vision}
 
-\begin{frame}
-  As in other fields related to Artificial Intelligence or Machine
-  Learning, having data to train or test on is integral to the success
-  of Computer Vision projects. In Computer Vision, these datasets are 
-  collections of images or videos, each with
-  associated metadata. For example, in \cite{islam2014geofaces} they
-  propose a collection of front-facing facial images each with an
-  accompanying latitude-longitude pair. 
+\begin{frame}{Computer Vision}
+  \begin{itemize}
 
-  What \cite{islam2014geofaces} and many others have in common
-  is the difficulty they experienced when collecting these datasets.
-  In
-  this document, and the following sections we will propose a system
-  for
-  reducing these difficulties by proposing a system for crowd-sourcing
-  images and videos, along with an 
+    \item Artificial Intelligence - the goal of creating intelligence for machines/software
+
+    \item Computer Vision - teaching computers to understand the natural world through images
+
+    \item Data to train or test on is integral to success
+
+    \item Collecting and labeling data is time consuming
+
+  \end{itemize}
 \end{frame}
 
 \section{Citizen-Science}
 
-\begin{frame}
+\begin{frame}{Citizen-Science}
   Citizen-science is a form of crowdsourcing in which participants
   collect or analyze data. Typically, the tasks they perform are
   simple
@@ -68,7 +64,7 @@
 
 \section{Why a game?}
 
-\begin{frame}
+\begin{frame}{Why a Game?}
   One of the drawbacks of citizen-science style is the sharp fall-off
   in
   user contributions as the initial interest wears off. One way to
@@ -87,13 +83,13 @@
 
 \section{Overview}
 
-\begin{frame}
+\begin{frame}{Overview}
   \todo{Flowchart}
 \end{frame}
 
 \section{Backend}
 
-\begin{frame}
+\begin{frame}{Backend}
   Research groups may be created on request. 
 
   Research groups will have an interface where they may request
@@ -116,7 +112,7 @@
 
 \section{PhotoHunter}
 
-\begin{frame}
+\begin{frame}{Photohunter}
   From the mobile app, users will be presented with a list of
   datapoints
   to go collect in their area, and a time limit in which each must be
@@ -141,7 +137,7 @@
 
 \section{QuickPic}
 
-\begin{frame}
+\begin{frame}{QuickPic}
   For numerous reasons, users may unknowingly (or knowingly) submit
   incorrect data. For example, a dataset that is seeking pictures of
   fire hydrants may accidentally receive images of dogs, or trees. In
