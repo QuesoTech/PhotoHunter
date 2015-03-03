@@ -9,7 +9,7 @@ Contact
 
 [email](mailto:cgree3@gmail.com)
 
-[website](connorgreenwell.com)
+[website](http://connorgreenwell.com)
 
 Bio
 ---
