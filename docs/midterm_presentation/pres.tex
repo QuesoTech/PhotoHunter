@@ -11,13 +11,13 @@
 % Macros
 \newcommand{\todo}[1]{\textcolor{red}{\textbf{[#1]}}}
 
-\title[PhotoHunter]{PhotoHunter: A Citizen-Scientist Game with User-in-the-loop 
-  Data Confirmation for Collecting Computer Vision Datasets of 
-  Geo-tagged Imagery through Crowd-Sourcing Data Collection; 
-  Abstracting Research using an Interactive, Game-based Mobile 
+\title[PhotoHunter]{PhotoHunter: A Citizen-Scientist Game with User-in-the-loop
+  Data Confirmation for Collecting Computer Vision Datasets of
+  Geo-tagged Imagery through Crowd-Sourcing Data Collection;
+  Abstracting Research using an Interactive, Game-based Mobile
   Application for Large Dataset Creation}
 
-\author[]{Connor Greenwell \and Ryan Baltenberger 
+\author[]{Connor Greenwell \and Ryan Baltenberger
   \and J.\ David Smith \and Aaron Bradshaw}
 
 \institute{QuesoTech.com}
@@ -48,7 +48,7 @@
 
 \begin{frame}{Citizen-Science}
   \begin{itemize}
-    
+
     \item Citizen-Science - form of crowd-sourcing where participants
           collect/analyze data
 
@@ -58,7 +58,7 @@
     \item Humans can perform simple tasks easily and in large quantities,
           often with little time or effort
 
-    \item Collecting large amounts of data is intractable for a single 
+    \item Collecting large amounts of data is intractable for a single
           researcher
 
   \end{itemize}
@@ -68,12 +68,12 @@
 
 \begin{frame}{Why a Game?}
   \begin{itemize}
-    
+
     \item Contributions to citizen-science style datasets drop off after
           the initial interest wears off
-  
+
     \item Using ``gamification'' can mitigate this decline
-  
+
     \item Our goal - abstract out the data collection, tell users they
           are competing in a global scavenger hunt
 
@@ -97,11 +97,11 @@
 
 \begin{frame}{Backend}
   \begin{itemize}
-    \item Research groups may be created on request. 
+    \item Research groups may be created on request.
 
-    \item Researcher interface where they may request datasets. 
+    \item Researcher interface where they may request datasets.
 
-    \item define GPS bounding boxes, time frames, and other metadata they are 
+    \item define GPS bounding boxes, time frames, and other metadata they are
       interested in for a given dataset.
   \end{itemize}
 \end{frame}
@@ -120,7 +120,7 @@
 
 \begin{frame}{PhotoHunter}
   \begin{itemize}
-    
+
     \item Mobile application
 
     \item Users presented with list of categories
@@ -151,20 +151,6 @@
 \section{QuickPic}
 
 \begin{frame}{QuickPic}
-  For numerous reasons, users may unknowingly (or knowingly) submit
-  incorrect data. For example, a dataset that is seeking pictures of
-  fire hydrants may accidentally receive images of dogs, or trees. In
-  this case we will employ users to filter submissions. When an image
-  is
-  submitted, it will be posted for confirmation by other users. The
-  interface for this will display the image in question, the
-  requirements, and a simple ``thumbs-up'' and ``thumbs-down'' option.
-  Each image will be presented for confirmation to numerous users
-  until
-  we can be reasonably certain that the datapoint should be trusted.
-\end{frame}
-
-\begin{frame}{QuickPic}
   \begin{columns}[c]
     \begin{column}{0.5\columnwidth}
       \centering
@@ -175,6 +161,22 @@
       \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ss_quickpic_options}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{QuickPic}
+  \begin{itemize}
+    \item Accuracy determined on the basis of other user's label choices at time
+      of submission.
+
+    \item Gain points for labeling images, depending on how accurate their
+      choice is.
+
+    \item Each image shown to numerous users. By looking at the distribution of
+      choices, we can automatically determine the accuracy of the label.
+
+    \item This accuracy information will be passed along to researchers.
+
+  \end{itemize}
 \end{frame}
 
 \frame{\centering Thanks!}
