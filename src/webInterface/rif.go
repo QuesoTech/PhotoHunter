@@ -3,54 +3,94 @@
 package main
 
 import (
-	"html/template"
+	
 	"net/http"
+	"database/sql"
+	"fmt"
+	"log"
+	_"github.com/gorilla/sessions"
+	"golang.org/x/crypto/bcrypt"
+	
+	_ "github.com/lib/pq"
 )
 
+var DB *sql.DB
 
 
-
-type Page struct {
-	Title string
-	Body []byte
-	User string //Just using this to play around with pipelining
-}
-
-//Generates a template for the page and writes it. 
-
-func genTemplate(w http.ResponseWriter, tmpt string, p *Page ){
-	t, _ := template.ParseFiles(tmpt + ".html")
-	t.Execute(w, p)
+func check(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 
-//Handles the front page of the site.
-func indexHandler(w http.ResponseWriter, r *http.Request) {
-	p1 := &Page{Title: "index", Body: []byte(""), User: "Aaron"}		
-	genTemplate(w, "index", p1)
+
+func getDbHandle() (db *sql.DB, err error) {
+	user := "tester"
+	password := "test"
+	host:= "localhost"
+	dbname:= "mydb"
+
+	conn_string := fmt.Sprintf("postgres://%s:%s@%s/%s",user,password,host,dbname)
+	db,err = sql.Open("postgres", conn_string)
+	return
 }
 
-//Handles the account page of the site.
-func accountHandler(w http.ResponseWriter, r *http.Request) {
-	p1 := &Page{Title: "account", Body: []byte(""), User: "Aaron"}		
-	genTemplate(w, "account", p1)
+
+func signupHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+
+	fmt.Println(r.Form)
+
+	uname := r.FormValue("username")
+	fname := r.FormValue("fname")
+	lname := r.FormValue("lname")
+	email := r.FormValue("email")
+	
+	
+	if r.FormValue("pword") != r.FormValue("pword2") {
+		http.Redirect(w, r, "/", http.StatusFound)
+	}
+	fmt.Println(uname, fname, lname, email)
+	pword := r.FormValue("pword")
+
+
+	hword, err := bcrypt.GenerateFromPassword([]byte(pword),10)
+	check(err)
+
+
+
+	stmt, err := DB.Prepare("INSERT INTO researchers (fname, lname, email, pword, uname) VALUES ($1,$2,$3,$4,$5)")
+	check(err)
+	defer stmt.Close()
+
+	fmt.Println(hword)
+	_, err = stmt.Exec(fname, lname, email, hword, uname)
+	check(err)
+	
+	http.Redirect(w, r, "/", http.StatusFound)
+
 }
-
-
-//Handles a single file, such as robots, favicon, sitemap. 
-//Adapted from http://stackoverflow.com/a/14187941
-func singleHandler(path string, fname string) {
-	http.HandleFunc(path, func (w http.ResponseWriter, r *http.Request){
-		http.ServeFile(w, r, fname)
-	})
-}
-
 
 
 func main() {
+	
+	var err error
+	//Database handlers
+	DB,err = getDbHandle()
+	check(err)
+	defer DB.Close()
+	check(DB.Ping())
+	
+
+
+	//Templates and specific pages
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/account",accountHandler)
+	http.HandleFunc("/signup",signupHandler)
 
+
+	//Static file servers
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 
