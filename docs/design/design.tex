@@ -1,0 +1,172 @@
+\documentclass{article}
+
+\usepackage{hyperref, tablefootnote, color, graphicx, float}
+\graphicspath{{../midterm_presentation/figs/}}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[#1]}}}
+
+\title{PhotoHunter Requirements Specification
+}
+
+\author{Connor Greenwell \and Ryan Baltenberger 
+  \and J.\ David Smith \and Aaron Bradshaw
+  \and Scott Workman\footnote{Advisor}}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+The PhotoHunter project is a system intended to simplify the creation of
+datasets for computer vision research by the process of "gamification". The
+system is composed of two mobile applications and a web interface. The web
+interface allows researchers to specify a set of images based on their needs.
+Based on these specifications, the first mobile application generates a list of
+descriptions for photos. Users then capture photos matching these descriptions
+and submit them in a scavenger-hunt style game. The second mobile application
+uses the submitted photos to quiz users. The players are briefly shown the
+images and then asked to label them. Based on the most-commonly provided
+answer, the correct label for the image can be determined. The labelled images
+are then provided to the researchers that requested the dataset. The system
+provides entertainment for users and useful datasets for researchers.
+
+\section{Environment}
+The web interface and API for the PhotoHunter Project will be built with Go using PostgreSQL for the database. The backend will run on a DigitalOcean Droplet virtual server. The interface will be tested and fitted to the latest versions of the Mozilla Firefox and Google Chrome web browsers. The mobile applications for the PhotoHunter Project will be built using the Apache Cordova API set. This framework allows smartphone applications to be developed using HTML, CSS, and Javascript. The initial target device will be Android. 
+
+\section{Module Descriptions and Data Flow}
+The overall data flow between the four main components of the PhotoHunter application follows:
+\begin{figure}
+\centering
+\includegraphics[scale = 0.5]{ss_flowchart}
+\end{figure}
+
+\subsection{Researcher Interface}
+The researcher interface allows users to request datasets, view the status of any open dataset, and download their dataset. 
+
+\paragraph{Create Account}
+The create account form allows a new user to register their information in the database. The Go server generates an HTML form requesting the user's name, email address, requested user name, and password. When the user submits the form, the password is encrypted using bCrypt, a Go library, and all information is added to the user table in the database.
+
+\paragraph{Log in to Account}
+The login form allows a user to log in to their account. Once a user inputs their user name and password and submits, the Go server selects the user name from the user SQL table, checks the provided password against the correct one, and provides the user with an error message if the account can not be found. If the log in is successful, a new session is created associated with the logged in user.
+
+\paragraph{Update Account}
+The account page allows users to update their information. The user may complete an HTML form requesting a new password or providing a new email address. The user's information is then updated in the database.
+
+\paragraph{Request Dataset}
+The request dataset functionality allows a user to provide information about a dataset they desire. When a user requests a new dataset, an HTML form is provided allowing the user to specify their needs. The form requires the user to describe the following about the dataset:
+\begin{itemize}
+\item The subject material of the dataset
+\item The time of day that the photos should be taken
+\item The location that the photos should be taken
+\item The minimum number of photos needed for the dataset
+\end{itemize}
+If one of these properties is irrelevant to the user, then they may specify that on the form as well. After the dataset is described, the user may submit it to the database.
+
+\paragraph{View Dataset Status}
+The researcher interface also allows the user to view the status of their datasets. When this page is viewed, the Go server provides the total count of the photos that currently exist for the dataset.
+
+\paragraph{Download Dataset}
+When a dataset has reached the minimum number of photos requested by the user, they may download the dataset from the server. The server gets all images from the dataset and generates a single file containing the metadata for each one. Then each images is compressed and the download is sent to the user.
+
+\begin{figure}[H]
+\caption{Researcher Interface Mockup}
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{researchers}
+\end{figure}
+
+\subsection{PhotoHunter}
+The PhotoHunter application allows users to compete against one another to capture photos in a scavenger hunt. 
+
+\paragraph{Create Account/Logging In}
+The PhotoHunter application will use a Facebook API to allow users to create accounts and log in using their Facebook accounts. 
+
+\paragraph{Provide Lists}
+When a user is logged in, the application gets their location data. This data is sent to the PhotoHunter API, which then provides a list of subjects for user to photograph. 
+
+\paragraph{Select Topic and Photograph}
+The user may choose a topic from the list of available ones. Their smart phone's camera is then opened. After the user takes a photo and confirms it, the application uploads the photo the database. The user's points are then updated in the database.
+
+\paragraph{Leaderboards}
+The user may view their ranking against other PhotoHunter users based on their score. This view pulls down the point data from the database, and allows user to narrow their search by location.
+
+\begin{figure}[H]
+\caption{PhotoHunter Scavenger List Mockup}
+\centering
+\includegraphics[width =\textwidth, height=\textheight, keepaspectratio]{ss_photohunter_dataset}
+\end{figure}
+
+\begin{figure}[H]
+\caption{PhotoHunter Upload Mockup}
+\centering
+\includegraphics[width =\textwidth, height=\textheight, keepaspectratio]{ss_photohunter_upload}
+\end{figure}
+
+\subsection{Quick Pic}
+The Quick Pic application allows users to compete against one another by quickly identifying the subjects of images.
+
+\paragraph{Create Account/Logging In}
+The Quick Pic application will use a Facebook API to allow users to create accounts and log in using their Facebook accounts. 
+
+\paragraph{Quiz}
+When a user has logged in, they may begin a quiz. The quiz takes images from the database that were submitted by the PhotoHunter application, and generates four choices. One of these choices is the expected subject, based on the dataset that the image was submitted to in PhotoHunter. The application shows the user the image for a brief second, then asks the user to choose the correct label. The user's answer is then submitted to the database. The user then receives a number of points based on the answers given by other users.
+
+\paragraph{Leaderboards}
+The user may view their ranking against other Quick Pic users based on their score. This view pulls down the point data from the database, and allows user to narrow their search by location.
+
+\begin{figure}[H]
+\caption{Quick Pic Image Mockup}
+\centering
+\includegraphics[width =\textwidth, height=\textheight, keepaspectratio]{ss_quickpic_image}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Quick Pic Options Mockup}
+\centering
+\includegraphics[width =\textwidth, height=\textheight, keepaspectratio]{ss_quickpic_options}
+\end{figure}
+
+\subsection{API}
+
+\paragraph{Create Dataset from Request}
+
+\paragraph{Generate Scavenger Lists for PhotoHunter}
+
+\paragraph{Add Photo to Dataset}
+
+\paragraph{Get Photo and Labels for Quick Pic}
+
+\paragraph{Calculate Points for Both Applications}
+
+\paragraph{Analyse Quick Pic Answers}
+
+\paragraph{Compile Dataset}
+
+\section{Use Cases}
+\subsection{Researcher Interface}
+When visiting the researcher interface, a user may do one of the following:
+\begin{itemize}
+\item Log In: A user can log in to their account using their credentials. They will then be taken to their dashboard.
+\item Create Account: A new user may create an account by signing up.
+\end{itemize}
+
+After logging in, a user may visit one of the following pages on the dashboard:
+\begin{itemize}
+\item Datasets: This page is where the user may do any of the following:
+\begin{itemize}
+\item Request Dataset: A user may complete an HTML form specifying a dataset that meets their needs. The user may then submit the dataset definition to the database.
+\item View Datasets: A user may view the status of their datasets. As new images are submitted, verified, and added to the dataset, the updated number may be viewed by the researcher.
+\item Download Dataset: After a dataset is complete, a user may download their dataset.
+\end{itemize}
+\item Account: This page allows users to update account information, including their email address or password.
+
+\end{itemize}
+\subsection{PhotoHunter}
+
+\subsection{Quick Pic}
+
+\section{Design Considerations}
+
+\section{Sizing Estimate}
+
+\section{Other Documentation}
+
+\end{document}
