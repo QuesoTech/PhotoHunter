@@ -2,7 +2,7 @@ TARGET=req
 
 all:
 	pdflatex $(TARGET)
-	bibtex $(TARGET)
+	#bibtex $(TARGET)
 	pdflatex $(TARGET)
 	pdflatex $(TARGET)
 

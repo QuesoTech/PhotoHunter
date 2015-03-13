@@ -27,6 +27,17 @@ The Gouda-father
 Activity Log
 ------------
 
+**March 8th 2015 - March 14th 2015**
+
+-   Continued work on the Photohunter app
+-   Presented midterm presentation
+-   Deployed website to a new droplet, destroying old one
+
+**March 1st 2015 - March 7th 2015**
+
+-   Continued work on the Photohunter app
+-   Worked on and practiced midterm presentation
+
 **February 22th 2015 - February 28th 2015**
 
 -   More updates to the project page
