@@ -28,6 +28,15 @@ Curd of Prey
 Activity Log
 ------------
 
+**March 8th 2015 - March 14th 2014**
+
+- Experimenting with Node.js/Apache Cordova testing tools.
+
+**March 1st 2015 - March 7th 2015**
+
+- Tweaked QuickPic prototype.
+- Wrote QuickPic presentation slides.
+
 **February 22nd 2015 - February 28th 2015**
 
 - Finished first prototype. Showed to customer.
