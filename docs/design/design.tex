@@ -7,7 +7,7 @@
 \title{PhotoHunter Requirements Specification
 }
 
-\author{Connor Greenwell \and Ryan Baltenberger 
+\author{Connor Greenwell \and Ryan Baltenberger
   \and J.\ David Smith \and Aaron Bradshaw
   \and Scott Workman\footnote{Advisor}}
 
@@ -30,7 +30,7 @@ are then provided to the researchers that requested the dataset. The system
 provides entertainment for users and useful datasets for researchers.
 
 \section{Environment}
-The web interface and API for the PhotoHunter Project will be built with Go using PostgreSQL for the database. The backend will run on a DigitalOcean Droplet virtual server. The interface will be tested and fitted to the latest versions of the Mozilla Firefox and Google Chrome web browsers. The mobile applications for the PhotoHunter Project will be built using the Apache Cordova API set. This framework allows smartphone applications to be developed using HTML, CSS, and Javascript. The initial target device will be Android. 
+The web interface and API for the PhotoHunter Project will be built with Go using PostgreSQL for the database. The backend will run on a DigitalOcean Droplet virtual server. The interface will be tested and fitted to the latest versions of the Mozilla Firefox and Google Chrome web browsers. The mobile applications for the PhotoHunter Project will be built using the Apache Cordova API set. This framework allows smartphone applications to be developed using HTML, CSS, and Javascript. The initial target device will be Android.
 
 \section{Module Descriptions and Data Flow}
 The overall data flow between the four main components of the PhotoHunter application follows:
@@ -40,7 +40,7 @@ The overall data flow between the four main components of the PhotoHunter applic
 \end{figure}
 
 \subsection{Researcher Interface}
-The researcher interface allows users to request datasets, view the status of any open dataset, and download their dataset. 
+The researcher interface allows users to request datasets, view the status of any open dataset, and download their dataset.
 
 \paragraph{Create Account}
 The create account form allows a new user to register their information in the database. The Go server generates an HTML form requesting the user's name, email address, requested user name, and password. When the user submits the form, the password is encrypted using bCrypt, a Go library, and all information is added to the user table in the database.
@@ -74,13 +74,13 @@ When a dataset has reached the minimum number of photos requested by the user, t
 \end{figure}
 
 \subsection{PhotoHunter}
-The PhotoHunter application allows users to compete against one another to capture photos in a scavenger hunt. 
+The PhotoHunter application allows users to compete against one another to capture photos in a scavenger hunt.
 
 \paragraph{Create Account/Logging In}
-The PhotoHunter application will use a Facebook API to allow users to create accounts and log in using their Facebook accounts. 
+The PhotoHunter application will use a Facebook API to allow users to create accounts and log in using their Facebook accounts.
 
 \paragraph{Provide Lists}
-When a user is logged in, the application gets their location data. This data is sent to the PhotoHunter API, which then provides a list of subjects for user to photograph. 
+When a user is logged in, the application gets their location data. This data is sent to the PhotoHunter API, which then provides a list of subjects for user to photograph.
 
 \paragraph{Select Topic and Photograph}
 The user may choose a topic from the list of available ones. Their smart phone's camera is then opened. After the user takes a photo and confirms it, the application uploads the photo the database. The user's points are then updated in the database.
@@ -104,7 +104,7 @@ The user may view their ranking against other PhotoHunter users based on their s
 The Quick Pic application allows users to compete against one another by quickly identifying the subjects of images.
 
 \paragraph{Create Account/Logging In}
-The Quick Pic application will use a Facebook API to allow users to create accounts and log in using their Facebook accounts. 
+The Quick Pic application will use a Facebook API to allow users to create accounts and log in using their Facebook accounts.
 
 \paragraph{Quiz}
 When a user has logged in, they may begin a quiz. The quiz takes images from the database that were submitted by the PhotoHunter application, and generates four choices. One of these choices is the expected subject, based on the dataset that the image was submitted to in PhotoHunter. The application shows the user the image for a brief second, then asks the user to choose the correct label. The user's answer is then submitted to the database. The user then receives a number of points based on the answers given by other users.
@@ -128,17 +128,112 @@ The user may view their ranking against other Quick Pic users based on their sco
 
 \paragraph{Create Dataset from Request}
 
+Members of Research Teams (RTs) will provide Requests, which describe
+the kind of data the RTs are looking for.  The internals of the API will
+generate PhotoHunter and QuickPic jobs to collect data for the
+Requests.
+
 \paragraph{Generate Scavenger Lists for PhotoHunter}
+
+Scavenger Lists are the jobs generated for PhotoHunter.  For a given
+Request, one scavenger list entry for each requirement presented in
+the request. For example, if the RT requests the following dataset:
+
+\begin{itemize}
+  \item Cats or Dogs
+  \item Between 1pm and 8pm EST
+\end{itemize}
+
+Then the API will generate the following scavenger list entries:
+
+\begin{itemize}
+  \item Dogs Between 1pm and 8pm EST
+  \item Cats Between 1pm and 8pm EST
+\end{itemize}
+
+The Request is expected to already have the data laid out in such a
+manner that constructing this list is trivial (essentially the cartesian
+product of elements of lists).
+
+These Scavenger Lists will be made available to the PhotoHunter application
+with some constraints.  The constraints are to be designed to avoid presenting
+users with entries that are infeasible for them to complete.  The initial set
+of constraints is:
+
+\begin{itemize}
+\item Do not show users entries for which they are spatially ineligible (ie RT
+  requests images from New York City, but user is in New Hampshire)
+\item Do not show users entries for which the non-repeating time requirement
+  has already passed (example: RT requests images for the month of February,
+  2015, but it is now March, 2015)
+\end{itemize}
+
+More constraints may be added based on further brainstorming, development and
+testing with input from the customer.
 
 \paragraph{Add Photo to Dataset}
 
+When a Scavenger List entry is completed by a user of the PhotoHunter
+application, a Photo is submitted to the API.  The API will store the Photo in
+a database, along with both the dataset it was captured for and the entry that
+the user claimed it matched.  This information with be available to the
+requesting RT.
+
 \paragraph{Get Photo and Labels for Quick Pic}
+
+The QuickPic application will request Photo and Label data from the API at a
+rate of 1 Photo at a time.  Each response will include the Photo and 4 Labels.
+The set of Labels will include:
+
+\begin{itemize}
+  \item The Label claimed by the user who submitted the photo via PhotoHunter
+  \item The most popular Label according to QuickPic votes
+\end{itemize}
+
+The remaining Labels will be randomly chosen.  If the two required Labels are
+the same, then there may be 3 random Labels chosen.
 
 \paragraph{Calculate Points for Both Applications}
 
-\paragraph{Analyse Quick Pic Answers}
+Points will be calculated in the following manner:
+
+\begin{itemize}
+  \item A base amount (say, 10) is always given simply for completing a task.
+  \item Further points may be awarded based on confidence in the choice's
+    accuracy.  Accuracy will be determined by comparing to the histogram of
+    choices made by other users.  The number of additional points awarded will
+    be $90 \times \text{Confidence}$, where Confidence is on the range of
+    $[0, 1]$.
+
+  \item Points will be back-propagated to the PhotoHunter application at a rate
+    of 1 PhotoHunter point per 10 QuickPic points.  This lowered rate was
+    chosen because for each Photo, 1 PhotoHunter user may receive points but
+    arbitrarily many QuickPic users may receive points.
+\end{itemize}
+
+\textbf{Note: The values of points and rates are subject to change based on
+  testing and input from the customer.  These are not necessarily the final
+  values.}
+
+\paragraph{Analyse Quick Pic Label Choices}
+
+Label choices from QuickPic will be analyzed using as-of-yet undetermined
+statistical methods to determine what the probably True Label is and the
+confidence on the Claimed Label.  Information about the choices will be made
+available to the Research Teams receiving the images and labels.
+
+The output from this method is important for the \textit{Calculate Points for
+  Both Applications} stage.
 
 \paragraph{Compile Dataset}
+
+The Dataset will be compiled based on images received from PhotoHunter and
+Labels received from QuickPic.  Anonymized statistical information about images
+and labels will be made available to the research team(s) receiving the
+dataset(s).
+
+Datasets will be transmitted as compressed archive files (ex: zip, tar.gz) with
+labels being stored in csv files.
 
 \section{Use Cases}
 \subsection{Researcher Interface}
