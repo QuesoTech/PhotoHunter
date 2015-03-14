@@ -1,6 +1,17 @@
 Meeting Notes
 =============
 
+March 12th, 2015
+---------------
+
+-   Discussed the design document and basic use cases for the system.
+-   Updated the requirements document to include priorities of each system component.  
+
+March 3rd, 2015
+--------------
+-   Created and practiced the midterm presentation.
+-   Created overall system flowchart.
+-   Discussed and edited mockups for each component.
 
 February 24th, 2015
 -------------------
