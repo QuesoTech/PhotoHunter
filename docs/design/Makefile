@@ -2,6 +2,8 @@ TARGET=design
 
 all:
 	pdflatex $(TARGET)
+	pdflatex $(TARGET)
+	pdflatex $(TARGET)
 
 spell:
 	aspell -ttex -c $(TARGET).tex

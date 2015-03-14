@@ -202,7 +202,7 @@ Points will be calculated in the following manner:
   \item Further points may be awarded based on confidence in the choice's
     accuracy.  Accuracy will be determined by comparing to the histogram of
     choices made by other users.  The number of additional points awarded will
-    be $90 \times \text{Confidence}$, where Confidence is on the range of
+    be $90 \times$ Confidence, where Confidence is on the range of
     $[0, 1]$.
 
   \item Points will be back-propagated to the PhotoHunter application at a rate
@@ -234,6 +234,17 @@ dataset(s).
 
 Datasets will be transmitted as compressed archive files (ex: zip, tar.gz) with
 labels being stored in csv files.
+
+\subsection{ER Diagram}
+
+See Figure \ref{er}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{er}
+  \caption{ER Diagram}
+  \label{er}
+\end{figure}
 
 \section{Use Cases}
 \subsection{Researcher Interface}
