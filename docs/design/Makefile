@@ -5,6 +5,9 @@ all:
 	pdflatex $(TARGET)
 	pdflatex $(TARGET)
 
+dot:
+	dot ../midterm_presentation/figs/er.dot -Tpng -o ../midterm_presentation/figs/er.png
+
 spell:
 	aspell -ttex -c $(TARGET).tex
 
