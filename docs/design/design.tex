@@ -4,7 +4,7 @@
 \graphicspath{{../midterm_presentation/figs/}}
 \newcommand{\todo}[1]{\textcolor{red}{\textbf{[#1]}}}
 
-\title{PhotoHunter Requirements Specification
+\title{PhotoHunter Design Documentation
 }
 
 \author{Connor Greenwell \and Ryan Baltenberger
@@ -296,9 +296,20 @@ After logging in, a user may visit one of the following views:
 \item Account: A view allowing the user to update account information.
 \end{itemize}
 \section{Design Considerations}
+Initially, the mobile applications for the PhotoHunter Project were to be developed for both iOS and Android. However, due to the limited time available and scope of the project, the team decided to develop the applications just for Android. 
 
 \section{Sizing Estimate}
+The researcher interface will be handled by a server written in Go. The Go language has several packages to support server development. Hence, the estimated size of the server itself is less than 1000 lines of code. We will use the Bootstrap framework for the front end of the researcher interface, greatly reducing the number of lines of HTML and CSS we need to to write. The API for the application will also be written in Go. As the API does the majority of the work, we estimate it to be ~2000 lines of code. The API will also use SQL to interact with the database. Due to the size of the database and the number of entities, an estimated 1000 lines of SQL will be needed to communicate with the database.
 
-\section{Other Documentation}
+The mobile applications will each be built with Cordova. The Cordova framework generates boilerplate code automatically. This reduces the number of lines needed to complete a working application. However, we still estimate a total of 2000 lines each for the two mobile applications.
+
+\section{References}
+Following are a list of technologies we intend to use:
+\begin{itemize}
+\item \href{http://cordova.apache.org/}{Cordova}
+\item \href{https://golang.org/}{Google's Go Programming Language}
+\item \href{http://www.postgresql.org/}{PostgreSQL}
+\item \href{http://getbootstrap.com/}{Bootstrap Framework}
+\end{itemize}
 
 \end{document}

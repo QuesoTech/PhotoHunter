@@ -27,6 +27,7 @@ Activity Log
 **March 9th, 2015 - March 15th, 2015**
 
 - Added account system to researcher interface.
+- Wrote the design document for the project
 
 **March 2nd, 2015 - March 8th, 2015**
 
