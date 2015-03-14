@@ -34,6 +34,8 @@ Docs
 
 [Requirements](docs/requirements.pdf "Requirements")
 
+[Design](docs/design.pdf "Design")
+
 [Github](https://github.com/QuesoTech/PhotoHunter "Photohunter Github")
 
 [Recent Commits](commits.html "Recent Commits")
