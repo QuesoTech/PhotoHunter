@@ -27,6 +27,11 @@ The Gouda-father
 Activity Log
 ------------
 
+**March 15th 2015 - March 21th 2015**
+
+-		Worked on Photohunter app design and interface
+-		Continued work on securing server
+
 **March 8th 2015 - March 14th 2015**
 
 -   Continued work on the Photohunter app
