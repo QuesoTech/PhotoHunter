@@ -1,6 +1,13 @@
 Meeting Notes
 =============
 
+March 23rd, 2015
+---------------
+
+-		Discussed current status of Photohunter and QuickPic apps
+-		Discussed current status of Backend work and Researcher interface
+-		Worked on plans for testing apps and web front/back-ends
+
 March 12th, 2015
 ---------------
 
