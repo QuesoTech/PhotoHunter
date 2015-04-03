@@ -77,11 +77,13 @@ func signinHandler(w http.ResponseWriter, r*http.Request){
 	r.ParseForm()
 
 	uname := string(r.FormValue("username"))
+	fmt.Printf(uname)
+
 	pword := []byte(r.FormValue("pword"))
 	var hword []byte
 
 	//Something's going on with this query. 
-	err := DB.QueryRow("SELECT pword FROM researchers WHERE uname=?",uname).Scan(&hword)
+	err := DB.QueryRow("SELECT pword FROM researchers WHERE uname=$1",uname).Scan(&hword)
 	
 	switch {
 	case err == sql.ErrNoRows:
