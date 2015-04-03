@@ -72,6 +72,7 @@
 	</div>
       
       <div class ="row">
+	<div class ="col-lg-4">
   	    <form action = "/signup" method = "POST" class="form-horizontal">
 	      <fieldset>
 
@@ -143,8 +144,45 @@
 	      </fieldset>
 	      </form>    
       
-      </div>
+	   </div>
       
+            <div class="col-lg-4">
+  	    <form action = "/signin" method = "POST" class="form-horizontal">
+	      <fieldset>
+
+	      <!-- Form Name -->
+	      <legend>Sign in</legend>
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="username">User Name:</label>  
+		<div class="col-md-4">
+		<input id="username" name="username" type="text" placeholder="ex. imageDude93" class="form-control input-md" required="">
+		  
+		</div>
+	      </div>	      
+	      <!-- Password input-->
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="pword">Password:</label>
+		<div class="col-md-4">
+		  <input id="pword" name="pword" type="password" placeholder="ex. 123abc" class="form-control input-md" required=""> 
+		</div>
+
+	      </div>
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="submit"></label>
+		<div class="col-md-4">
+		  <button id="submit" name="submit" type = "submit" class="btn btn-primary">Submit</button>
+		</div>
+	      </div>	      
+
+
+	      </div>
+	    </fieldset>
+	    </form>
+
+      </div>
+       
       
       </div>
     

@@ -24,6 +24,10 @@ Cheese Whiz
 
 Activity Log
 ------------
+**March 27th, 2015 - April 5th, 2015**
+
+- Continued working on the account system
+
 **March 9th, 2015 - March 15th, 2015**
 
 - Added account system to researcher interface.
