@@ -36,6 +36,8 @@ Docs
 
 [Design](docs/design.pdf "Design")
 
+[Testing Plan](docs/testingplan.pdf "Testing Plan")
+
 [Github](https://github.com/QuesoTech/PhotoHunter "Photohunter Github")
 
 [Recent Commits](commits.html "Recent Commits")
