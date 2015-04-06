@@ -1,0 +1,48 @@
+\documentclass{article}
+
+\usepackage{hyperref, tablefootnote, color, graphicx, float}
+\graphicspath{{../midterm_presentation/figs/}}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[#1]}}}
+
+\title{PhotoHunter Testing Plan Documentation
+}
+
+\author{Connor Greenwell \and Ryan Baltenberger
+  \and J.\ David Smith \and Aaron Bradshaw
+\and Scott Workman\footnote{Advisor}}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+The PhotoHunter project is a system intended to simplify the creation of
+datasets for computer vision research by the process of "gamification". The
+system is composed of two mobile applications and a web interface. The web
+interface allows researchers to specify a set of images based on their needs.
+Based on these specifications, the first mobile application generates a list of
+descriptions for photos. Users then capture photos matching these descriptions
+and submit them in a scavenger-hunt style game. The second mobile application
+uses the submitted photos to quiz users. The players are briefly shown the
+images and then asked to label them. Based on the most-commonly provided
+answer, the correct label for the image can be determined. The labelled images
+are then provided to the researchers that requested the dataset. The system
+provides entertainment for users and useful datasets for researchers.
+
+\section{Unit Testing/Functional Testing}
+\subsection{PhotoHunter}
+\subsection{Quick Pic}
+\subsection{Researcher Interface}
+ 
+
+\section{System Testing}
+System testing will focus on the interaction between the PhotoHunter app, Quick Pic app, researcher interface, and the PhotoHunter API. 
+The expected flow of the project is as follows:
+\begin{itemize}
+\item The PhotoHunter application should successfully insert new images with relevant information into the database.
+\item The PhotoHunter API should serve images and relevant tags from the database to the Quick Pic application.
+\item The Quick Pic application should successfully provide 
+\end{itemize}
+\section{Customer Testing}
+
+\end{document}
