@@ -39,6 +39,28 @@ Head R & Brie Producer
 Activity Log
 ------------
 
+### April 1, 2015 - April 8, 2015
+
+- Testing plan for Research Interface
+- Updated Activity Log
+
+### March 24, 2015 - March 31, 2015
+
+- Reviewed Source Code
+
+### March 16, 2015 - March 23, 2015
+
+- Prepared Slides for presentation
+- Practiced Presentation
+
+### March 8, 2015 - March 15, 2015
+
+- Prepared Slides for presentation
+
+### March 1, 2015 - March 7, 2015
+
+- Reviewed Source Code
+
 ### February 23, 2015 - February 30, 2015
 
 - Refined `create table` queries
