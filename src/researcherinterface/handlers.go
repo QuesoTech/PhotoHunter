@@ -53,7 +53,7 @@ func signupHandler(w http.ResponseWriter, r *http.Request) {
 	if r.FormValue("pword") != r.FormValue("pword2") {
 		http.Redirect(w, r, "/", http.StatusFound)
 	}
-	fmt.Println(uname, fname, lname, email)
+	
 
 
 	pword := r.FormValue("pword")
@@ -82,7 +82,7 @@ func signinHandler(w http.ResponseWriter, r*http.Request){
 	pword := []byte(r.FormValue("pword"))
 	var hword []byte
 
-	//Something's going on with this query. 
+
 	err := DB.QueryRow("SELECT pword FROM researchers WHERE uname=$1",uname).Scan(&hword)
 	
 	switch {
@@ -93,7 +93,6 @@ func signinHandler(w http.ResponseWriter, r*http.Request){
 	default:
 		err = bcrypt.CompareHashAndPassword(hword,pword)
 		check(err)
-
 		fmt.Printf("User found")
 	}
 
