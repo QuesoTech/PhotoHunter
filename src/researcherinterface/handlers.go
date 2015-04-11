@@ -72,7 +72,7 @@ func signinHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	email := string(r.FormValue("email"))
-	fmt.Printf(uname)
+	
 
 	pword := []byte(r.FormValue("pword"))
 	var hword []byte
