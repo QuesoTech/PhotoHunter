@@ -22,8 +22,15 @@ func genTemplate(w http.ResponseWriter, tmpt string, p *Page) {
 //Handles the front page of the site.
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ :=store.Get(r,"session-name")
-	name := session.Values["user"].(string)
-	p1 := &Page{Title: "index", Body: []byte(""), User: name}
+	var email string;
+
+	if name,ok := session.Values["user"].(string); ok {
+		email = name
+	}else {
+		email = "Nobody"
+	}
+
+	p1 := &Page{Title: "index", Body: []byte(""), User: email}
 
 	genTemplate(w, "index", p1)
 }
@@ -78,7 +85,6 @@ func signinHandler(w http.ResponseWriter, r *http.Request) {
 
 	email := string(r.FormValue("email"))
 	
-
 	pword := []byte(r.FormValue("pword"))
 	var hword []byte
 
@@ -96,6 +102,18 @@ func signinHandler(w http.ResponseWriter, r *http.Request) {
 		session, _:= store.Get(r,"session-name")
 		session.Values["user"] = email
 		session.Save(r,w)
+		http.Redirect(w, r, "/", http.StatusFound)
 	}
+
+}
+
+
+func logoutHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := store.Get(r,"session-name")
+	delete(session.Values,"user")
+	session.Save(r,w)
+
+	http.Redirect(w,r,"/",http.StatusFound)
+
 
 }

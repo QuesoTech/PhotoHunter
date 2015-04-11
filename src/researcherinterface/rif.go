@@ -49,6 +49,7 @@ func main() {
 	http.HandleFunc("/account", accountHandler)
 	http.HandleFunc("/signup", signupHandler)
 	http.HandleFunc("/signin", signinHandler)
+	http.HandleFunc("/logout",logoutHandler)
 
 	//Static file servers
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
