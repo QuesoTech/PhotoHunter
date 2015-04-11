@@ -1,5 +1,5 @@
 CREATE TABLE feedback (
-  id integer PRIMARY KEY,
+  id serial PRIMARY KEY,
   user_id integer REFERENCES user (id),
   datapoint_id integer REFERENCES datapoint (id),
   subject_id integer REFERENCES subject (id),
