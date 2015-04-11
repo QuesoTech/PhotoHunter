@@ -42,7 +42,7 @@ func singleHandler(path string, fname string) {
 func signupHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
-	uname := r.FormValue("username")
+
 	fname := r.FormValue("fname")
 	lname := r.FormValue("lname")
 	email := r.FormValue("email")
@@ -55,13 +55,13 @@ func signupHandler(w http.ResponseWriter, r *http.Request) {
 	hword, err := bcrypt.GenerateFromPassword([]byte(pword), 10)
 	check(err)
 
-	stmt, err := DB.Prepare("INSERT INTO researchers (fname, lname, email, pword, uname) VALUES ($1,$2,$3,$4,$5)")
+	stmt, err := DB.Prepare("INSERT INTO researchers (fname, lname, email, pword) VALUES ($1,$2,$3,$4)")
 	check(err)
 
 	defer stmt.Close()
 
 	fmt.Println(hword)
-	_, err = stmt.Exec(fname, lname, email, hword, uname)
+	_, err = stmt.Exec(fname, lname, email, hword)
 	check(err)
 
 	http.Redirect(w, r, "/", http.StatusFound)
@@ -71,17 +71,17 @@ func signupHandler(w http.ResponseWriter, r *http.Request) {
 func signinHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
-	uname := string(r.FormValue("username"))
+	email := string(r.FormValue("email"))
 	fmt.Printf(uname)
 
 	pword := []byte(r.FormValue("pword"))
 	var hword []byte
 
-	err := DB.QueryRow("SELECT pword FROM researchers WHERE uname=$1", uname).Scan(&hword)
+	err := DB.QueryRow("SELECT pword FROM researchers WHERE email=$1", email).Scan(&hword)
 
 	switch {
 	case err == sql.ErrNoRows:
-		log.Printf("No user with that name")
+		log.Printf("No user with that email")
 	case err != nil:
 		log.Fatal(err)
 	default:
