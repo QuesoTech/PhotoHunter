@@ -42,7 +42,6 @@ func singleHandler(path string, fname string) {
 func signupHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
-
 	fname := r.FormValue("fname")
 	lname := r.FormValue("lname")
 	email := r.FormValue("email")
@@ -55,25 +54,16 @@ func signupHandler(w http.ResponseWriter, r *http.Request) {
 	hword, err := bcrypt.GenerateFromPassword([]byte(pword), 10)
 	check(err)
 
-	stmt, err := DB.Prepare("INSERT INTO researchers (fname, lname, email, pword) VALUES ($1,$2,$3,$4)")
-	check(err)
-
-	defer stmt.Close()
-
-	fmt.Println(hword)
-	_, err = stmt.Exec(fname, lname, email, hword)
+	_, err = NewResearcher(Name{fname, lname}, email, string(hword))
 	check(err)
 
 	http.Redirect(w, r, "/", http.StatusFound)
-
 }
 
 func signinHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	email := string(r.FormValue("email"))
-	
-
 	pword := []byte(r.FormValue("pword"))
 	var hword []byte
 
