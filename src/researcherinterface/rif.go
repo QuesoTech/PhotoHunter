@@ -8,12 +8,11 @@ import (
 	"log"
 	"net/http"
 	"os"
-
-	_ "github.com/gorilla/sessions"
 	_ "github.com/lib/pq"
 )
 
 var DB *sql.DB
+
 
 func check(err error) {
 	if err != nil {
@@ -34,6 +33,7 @@ func getDbHandle() (db *sql.DB, err error) {
 	db, err = sql.Open("postgres", conn_string)
 	return
 }
+
 
 func main() {
 

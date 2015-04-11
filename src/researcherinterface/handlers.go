@@ -2,15 +2,18 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
 	"golang.org/x/crypto/bcrypt"
 	"html/template"
 	"log"
 	"net/http"
+	"github.com/gorilla/sessions"
 )
 
-//Generates a template for the page and writes it.
 
+var store = sessions.NewCookieStore([]byte("aaron"))
+
+
+//Generates a template for the page and writes it.
 func genTemplate(w http.ResponseWriter, tmpt string, p *Page) {
 	t, _ := template.ParseFiles("templates/" + tmpt + ".html")
 	t.Execute(w, p)
@@ -18,7 +21,9 @@ func genTemplate(w http.ResponseWriter, tmpt string, p *Page) {
 
 //Handles the front page of the site.
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	p1 := &Page{Title: "index", Body: []byte(""), User: "Aaron"}
+	session, _ :=store.Get(r,"session-name")
+	name := session.Values["user"].(string)
+	p1 := &Page{Title: "index", Body: []byte(""), User: name}
 
 	genTemplate(w, "index", p1)
 }
@@ -87,7 +92,10 @@ func signinHandler(w http.ResponseWriter, r *http.Request) {
 	default:
 		err = bcrypt.CompareHashAndPassword(hword, pword)
 		check(err)
-		fmt.Printf("User found")
+		
+		session, _:= store.Get(r,"session-name")
+		session.Values["user"] = email
+		session.Save(r,w)
 	}
 
 }
