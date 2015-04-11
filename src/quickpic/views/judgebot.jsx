@@ -1,7 +1,9 @@
 "use strict";
 /** @jsx React.createElement */
 
-var React = require('react');
+var React = require('react'),
+    AppDispatcher = require('../lib/dispatcher'),
+    constants = require('./constants.json');
 
 /**
  * Flasher
@@ -52,7 +54,7 @@ var LabelList = React.createClass({
     },
     render: function() {
         var labels = this.props.labels.map(function(label, index) {
-            return <Label value={label} key={index} onClick={this.props.onChoice.bind(null, index)} />;
+            return <Label value={label} key={index} onClick={this.props.onChoice.bind(null, label)} />;
         }.bind(this));
 
         return (<ul className="list-unstyled">{labels}</ul>);
@@ -95,10 +97,11 @@ var JudgeBot9000 = React.createClass({
         }
     },
     onChooseLabel: function() {
-        var that = this;
-        return function(index) {
-            // submitLabel(...)
-            that.props.onComplete();
+        return function(label) {
+            AppDispatcher.dispatch({
+                actionType: constants.ACTIONS.JUDGE_COMPLETE,
+                label: label
+            });
         };
     },
     render: function() {
