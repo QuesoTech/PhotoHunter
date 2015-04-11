@@ -60,7 +60,7 @@ func signupHandler(w http.ResponseWriter, r *http.Request) {
 
 	defer stmt.Close()
 
-	fmt.Println(hword)
+
 	_, err = stmt.Exec(fname, lname, email, hword)
 	check(err)
 
