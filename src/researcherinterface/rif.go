@@ -25,10 +25,10 @@ func getDbHandle() (db *sql.DB, err error) {
 	// credentials and sensitive information are stred in the
 	// environment so that we dont have to keep a config file that might
 	// accidentally get committed...
-	user := os.Getenv("$DBUSER")
-	password := os.Getenv("$DBPASSWORD")
-	host := os.Getenv("$DBHOST")
-	dbname := os.Getenv("$DBNAME")
+	user := os.Getenv("DBUSER")
+	password := os.Getenv("DBPASS")
+	host := os.Getenv("DBHOST")
+	dbname := os.Getenv("DBNAME")
 
 	conn_string := fmt.Sprintf("postgres://%s:%s@%s/%s", user, password, host, dbname)
 	db, err = sql.Open("postgres", conn_string)
