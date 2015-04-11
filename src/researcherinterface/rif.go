@@ -8,12 +8,11 @@ import (
 	"log"
 	"net/http"
 	"os"
-
-	_ "github.com/gorilla/sessions"
 	_ "github.com/lib/pq"
 )
 
 var DB *sql.DB
+
 
 func check(err error) {
 	if err != nil {
@@ -35,6 +34,7 @@ func getDbHandle() (db *sql.DB, err error) {
 	return
 }
 
+
 func main() {
 
 	var err error
@@ -49,6 +49,7 @@ func main() {
 	http.HandleFunc("/account", accountHandler)
 	http.HandleFunc("/signup", signupHandler)
 	http.HandleFunc("/signin", signinHandler)
+	http.HandleFunc("/logout",logoutHandler)
 
 	//Static file servers
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))

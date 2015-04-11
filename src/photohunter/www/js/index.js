@@ -49,10 +49,8 @@ function onPhotoDataSuccess(imageData) {
 }
 
 var onGeoSuccess = function(position) {
-		$('#lat').html(position.coords.latitude)	
-		$('#lat').attr('class', 'label label-success')	
-		$('#lon').html(position.coords.longitude)	
-		$('#lon').attr('class', 'label label-success')	
+		$('#coords').html(String(position.coords.latitude) + ", " + String(position.coords.longitude))	
+		$('#coords').attr('class', 'label label-success')	
 };
 
 function capturePhoto()
