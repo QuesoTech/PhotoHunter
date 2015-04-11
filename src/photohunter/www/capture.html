@@ -31,8 +31,11 @@
     </head>
     <body>
         <div>
-       			<button class="btn btn-lg btn-default" onclick="capturePhoto();">Take a Picture</button></br>
-				    <img style="display:none;width:60%;height:60%;" id="smallImage" src="" />
+				    <img style="display:none;width:60%;height:60%;image-orientation:90deg;" id="smallImage" src="" />
+       			<button id="takepicture" class="btn btn-lg btn-default" onclick="capturePhoto();">Take a Picture</button></br>
+						<span id="lat" class="label label-default">Latitude</span>
+						<span id="lon" class="label label-default">Longitude</span></br></br>
+       			<button id="upload" class="btn btn-lg btn-success" style="display:none;">Upload</button></br>
 				</div>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
