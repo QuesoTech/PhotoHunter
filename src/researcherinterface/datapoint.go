@@ -13,15 +13,17 @@ func NewDatapoint(datasetId int64, imageURL string) (dp *Datapoint, err error) {
 	}
 	defer stmt.Close()
 
-	res, err := stmt.Exec(datasetId, imageURL)
+	var id int64
+	err := stmt.QueryRow(datasetId, imageURL).Scan(&id)
 	if err != nil {
 		return
 	}
 
-	id, err := res.LastInsertId()
-	dp.Id = id
-	dp.DatasetId = datasetId
-	dp.ImageURL = imageURL
+	dp = &Datapoint{
+		Id:        id,
+		DatasetID: datasetId,
+		ImageURL:  imageURL,
+	}
 
 	return
 }
@@ -46,9 +48,11 @@ func GetDatapointById(id int64) (dp *Datapoint, err error) {
 		return
 	}
 
-	dp.Id = id
-	dp.DatasetId = datasetID
-	dp.ImageURL = imageURL
+	dp = &Datapoint{
+		Id:        id,
+		DatasetId: datasetID,
+		ImageURL:  imageURL,
+	}
 
 	return
 }
