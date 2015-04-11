@@ -61,7 +61,7 @@ function capturePhoto()
 		destinationType: destinationType.DATA_URL });
 	getLocation();
 	$('#takepicture').attr('style', 'display:none;')
-	$('#upload').attr('style', '')
+	$('#upload').attr('style', 'display:block; margin:0 auto;')
 }
 
 function getLocation()
