@@ -24,9 +24,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 	if name, ok := session.Values["user"].(string); ok {
 		email = name
-	} else {
-		email = "Nobody"
-	}
+	} 
 
 	p1 := &Page{Title: "index", Body: []byte(""), User: email}
 
