@@ -1,43 +1,49 @@
 package main
 
+// Feedback is an instance of a user indicating whether a datapoint fulfills
+// a requirement. Feedback should be unique per user, datapoint, requirement
+// triple (i.e. no user should provide feedback on the same datapoint-requrement)
+// pair
 type Feedback struct {
-	Id            int64
-	UserId        int64
-	DatapointId   int64
-	RequirementId int64
+	ID            int64
+	UserID        int64
+	DatapointID   int64
+	RequirementID int64
 }
 
-func NewFeedback(u_id, dp_id, req_id int64) (fb *Feedback, err error) {
+// NewFeedback creates a new feedback struct and inserts it to the database
+func NewFeedback(uID, dpID, reqID int64) (fb *Feedback, err error) {
 	var id int64
-	err = DB.QueryRow("INSERT INTO feedback (user_id, datapoint_id, requirement_id) VALUES ($1, $2, $3) RETURNING id", u_id, dp_id, req_id).Scan(&id)
+	err = DB.QueryRow("INSERT INTO feedback (userID, datapointID, requirementID) VALUES ($1, $2, $3) RETURNING id", uID, dpID, reqID).Scan(&id)
 	if err != nil {
 		return
 	}
 
 	fb = &Feedback{
-		Id:            id,
-		UserId:        u_id,
-		DatapointId:   dp_id,
-		RequirementId: req_id,
+		ID:            id,
+		UserID:        uID,
+		DatapointID:   dpID,
+		RequirementID: reqID,
 	}
 
 	return
 }
 
-func GetFeedbackById(id int64) (fb *Feedback, err error) {
-	var u_id int64
-	var dp_id int64
-	var req_id int64
-	err = DB.QueryRow("SELECT user_id, datapoint_id, requirement_id FROM feedback WHERE id=$1", id).Scan(&u_id, &dp_id, &req_id)
+// GetFeedbackByID fetechs a feedback from the database
+func GetFeedbackByID(id int64) (fb *Feedback, err error) {
+	var uID int64
+	var dpID int64
+	var reqID int64
+	err = DB.QueryRow("SELECT userID, datapointID, requirementID FROM feedback WHERE id=$1", id).Scan(&uID, &dpID, &reqID)
 	if err != nil {
 		return
 	}
 
 	fb = &Feedback{
-		Id:            id,
-		UserId:        u_id,
-		DatapointId:   dp_id,
-		RequirementId: req_id,
+		ID:            id,
+		UserID:        uID,
+		DatapointID:   dpID,
+		RequirementID: reqID,
 	}
 
 	return

@@ -1,12 +1,14 @@
 package main
 
+// Dataset represents a dataset requested by a researcher
 type Dataset struct {
-	Id           int64
-	ResearcherId int64
+	ID           int64
+	ResearcherID int64
 	Name         string
 }
 
-func NewDataset(researcherId int64, name string) (ds *Dataset, err error) {
+// NewDataset creates a new dataset and inserts it into the database
+func NewDataset(researcherID int64, name string) (ds *Dataset, err error) {
 	stmt, err := DB.Prepare("INSERT INTO dataset (researcher_id, name) VALUES ($1, $2) RETURNING id")
 	if err != nil {
 		return
@@ -14,29 +16,30 @@ func NewDataset(researcherId int64, name string) (ds *Dataset, err error) {
 	defer stmt.Close()
 
 	var id int64
-	err = stmt.QueryRow(researcherId, name).Scan(&id)
+	err = stmt.QueryRow(researcherID, name).Scan(&id)
 	if err != nil {
 		return
 	}
 
 	ds = &Dataset{
-		Id:           id,
-		ResearcherId: researcherId,
+		ID:           id,
+		ResearcherID: researcherID,
 		Name:         name,
 	}
 
 	return
 }
 
-func GetDatasetById(id int64) (ds *Dataset, err error) {
-	var researcherId int64
+// GetDatasetByID fetches a dataset from the database by its id
+func GetDatasetByID(id int64) (ds *Dataset, err error) {
+	var researcherID int64
 	var name string
 
-	err = DB.QueryRow("SELECT researcher_id, name FROM dataset WHERE id=$1", id).Scan(&researcherId, &name)
+	err = DB.QueryRow("SELECT researcher_id, name FROM dataset WHERE id=$1", id).Scan(&researcherID, &name)
 
 	ds = &Dataset{
-		Id:           id,
-		ResearcherId: researcherId,
+		ID:           id,
+		ResearcherID: researcherID,
 		Name:         name,
 	}
 

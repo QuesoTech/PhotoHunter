@@ -11,6 +11,7 @@ import (
 	"os"
 )
 
+// global connection to the database. safe for concurrent connections
 var DB *sql.DB
 
 func check(err error) {
@@ -28,8 +29,8 @@ func getDbHandle() (db *sql.DB, err error) {
 	host := os.Getenv("DBHOST")
 	dbname := os.Getenv("DBNAME")
 
-	conn_string := fmt.Sprintf("postgres://%s:%s@%s/%s", user, password, host, dbname)
-	db, err = sql.Open("postgres", conn_string)
+	connString := fmt.Sprintf("postgres://%s:%s@%s/%s", user, password, host, dbname)
+	db, err = sql.Open("postgres", connString)
 	return
 }
 
@@ -41,13 +42,6 @@ func main() {
 	check(err)
 	defer DB.Close()
 	check(DB.Ping())
-
-	//ds, err := NewDataset(6, "foobar")
-	//check(err)
-	//fmt.Println(ds)
-	ds, err := GetResearcherById(3)
-	fmt.Println(ds)
-	check(err)
 
 	//Templates and specific pages
 	http.HandleFunc("/", indexHandler)

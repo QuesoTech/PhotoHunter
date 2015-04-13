@@ -1,16 +1,21 @@
 package main
 
+// Name is a struct holding a First, Last name pair for a given researcher
 type Name struct {
 	First string
 	Last  string
 }
 
+// Researcher represents a researcher managing projects with the PhotoHunter
+// researcher interface. All researchers have an ID, Name, and contact Email.
 type Researcher struct {
-	Id int64
+	ID int64
 	Name
 	Email string
 }
 
+// NewResearcher takes a name and email and inserts it into the database, provided
+// email is not already in use
 func NewResearcher(name Name, email, password string) (r *Researcher, err error) {
 	stmt, err := DB.Prepare("INSERT INTO researchers (fname, lname, email, pword) VALUES ($1, $2, $3, $4) RETURNING id")
 	if err != nil {
@@ -25,7 +30,7 @@ func NewResearcher(name Name, email, password string) (r *Researcher, err error)
 	}
 
 	r = &Researcher{
-		Id:    id,
+		ID:    id,
 		Name:  name,
 		Email: email,
 	}
@@ -33,7 +38,8 @@ func NewResearcher(name Name, email, password string) (r *Researcher, err error)
 	return
 }
 
-func GetResearcherById(id int64) (r *Researcher, err error) {
+// GetResearcherByID fetches a researcher from the database by its id
+func GetResearcherByID(id int64) (r *Researcher, err error) {
 	var fname string
 	var lname string
 	var email string
@@ -46,7 +52,7 @@ func GetResearcherById(id int64) (r *Researcher, err error) {
 	}
 
 	r = &Researcher{
-		Id:    id,
+		ID:    id,
 		Name:  name,
 		Email: email,
 	}

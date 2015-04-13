@@ -1,28 +1,32 @@
 package main
 
+// Datapoint represents one datapoint submitted to a dataset. It belongs to DatasetID
+// and the associated image is located at ImageURL
 type Datapoint struct {
-	Id        int64
-	DatasetId int64
+	ID        int64
+	DatasetID int64
 	ImageURL  string
 }
 
-func NewDatapoint(datasetId int64, imageURL string) (dp *Datapoint, err error) {
+// NewDatapoint creates a new Datapoint, inserts it to the database and returns it
+func NewDatapoint(datasetID int64, imageURL string) (dp *Datapoint, err error) {
 	var id int64
-	err = DB.QueryRow("INSERT INTO datapoint (dataset_id, image_url) VALUES ($1, $2) RETURNING id", datasetId, imageURL).Scan(&id)
+	err = DB.QueryRow("INSERT INTO datapoint (dataset_id, image_url) VALUES ($1, $2) RETURNING id", datasetID, imageURL).Scan(&id)
 	if err != nil {
 		return
 	}
 
 	dp = &Datapoint{
-		Id:        id,
-		DatasetId: datasetId,
+		ID:        id,
+		DatasetID: datasetID,
 		ImageURL:  imageURL,
 	}
 
 	return
 }
 
-func GetDatapointById(id int64) (dp *Datapoint, err error) {
+// GetDatapointByID fetches a datapoint from the database and returns it
+func GetDatapointByID(id int64) (dp *Datapoint, err error) {
 	var datasetID int64
 	var imageURL string
 
@@ -33,8 +37,8 @@ func GetDatapointById(id int64) (dp *Datapoint, err error) {
 	}
 
 	dp = &Datapoint{
-		Id:        id,
-		DatasetId: datasetID,
+		ID:        id,
+		DatasetID: datasetID,
 		ImageURL:  imageURL,
 	}
 
