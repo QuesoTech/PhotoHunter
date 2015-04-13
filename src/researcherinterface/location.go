@@ -6,7 +6,7 @@ type GeoPoint struct {
 }
 
 type Location struct {
-	Id        int
-	DatasetId int
+	Id        int64
+	DatasetId int64
 	Target    GeoPoint
 }
