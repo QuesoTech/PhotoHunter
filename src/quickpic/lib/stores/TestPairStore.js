@@ -10,13 +10,35 @@ var _current = {
     labels: ['Robot','Judge','Cat', 'Tree']
 };
 
+/**
+ * TestPairStore
+ *
+ * A datastore communicating with the PhotoHunter API which mediates retrieval
+ * of Image/Label test pairs and the submission of label choices.
+ */
 var TestPairStore = assign({}, EventEmitter.prototype, {
+    /**
+     * getNext
+     *
+     * Retrieve next image/label test pair.
+     */
     getNext: function() {
         return _current;
     },
+    /**
+     * submit
+     *
+     * Submit a label for the current test pair. Callable once per test pair
+     * only.
+     */
     submit: function(label) {
         // do nothing until we have an api
     },
+    /**
+     * getResults
+     *
+     * Retrieves results from the API for the current test pair.
+     */
     getResults: function() {
         return {
             votes: {

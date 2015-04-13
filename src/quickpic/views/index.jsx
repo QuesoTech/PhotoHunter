@@ -7,6 +7,12 @@ var React = require('react'),
     VIEWS = require('./constants').VIEWS,
     EXECUTIVE_ORDERS = require('./constants').EXECUTIVE_ORDERS;
 
+/**
+ * QuickPic
+ *
+ * Main component of the QuickPic application. Handles switching view
+ * segments. Control returns here when any sub-component ceases control.
+ */
 var QuickPic = React.createClass({
     _viewControl: function(action) {
         if(action.actionType == EXECUTIVE_ORDERS.CHANGE_VIEW) {
@@ -25,6 +31,7 @@ var QuickPic = React.createClass({
         AppDispatcher.unregister(this._id);
     },
     render: function() {
+        // null ⇒ not yet implemented
         switch(this.state.view) {
             case VIEWS.Authentication:
                 return null;

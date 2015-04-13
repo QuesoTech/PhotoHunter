@@ -7,6 +7,12 @@ var React = require('react'),
     AppDispatcher = require('../lib/dispatcher'),
     stores = require('../lib/stores');
 
+/**
+ * JusticeSystem
+ *
+ * Wrapper feeding image/label pairs to the Judgebot-9000. Handles submitting
+ * data to the TestPairStore.
+ */
 var JusticeSystem = React.createClass({
     getInitialState: function() {
         return {
@@ -30,12 +36,15 @@ var JusticeSystem = React.createClass({
     },
     _onComplete: function(action) {
         if(action.actionType == constants.ACTIONS.JUDGE_COMPLETE) {
+            // Finished judging this pair, submit user choice and show results.
             stores.TestPairStore.submit(action.label);
             this.setState({
                 testing: false,
                 results: stores.TestPairStore.getResults()
             });
         } else if(action.actionType == constants.ACTIONS.RESULTS_DONE) {
+            // finished showing results and not returning to menu, so show the
+            // next test pair.
             this.setState({
                 testing: true,
                 testPair: stores.TestPairStore.getNext(),

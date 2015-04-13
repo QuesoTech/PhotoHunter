@@ -5,6 +5,11 @@ var React = require('react'),
     AppDispatcher = require('../lib/dispatcher'),
     constants = require('./constants');
 
+/**
+ * MenuButton
+ *
+ * Simple component representing a button on the menu screen.
+ */
 var MenuButton = React.createClass({
     propTypes: {
         value: React.PropTypes.string.isRequired,
@@ -17,6 +22,12 @@ var MenuButton = React.createClass({
     }
 });
 
+/**
+ * MainMenu
+ *
+ * Component displaying the main menu. Dispatches requests to change view on
+ * button clicks, which are handled in the main QuickPic component.
+ */
 var MainMenu = React.createClass({
     _buttonClick: function(which) {
         return function() {
