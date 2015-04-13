@@ -34,19 +34,12 @@ func NewResearcher(name Name, email, password string) (r *Researcher, err error)
 }
 
 func GetResearcherById(id int64) (r *Researcher, err error) {
-	stmt, err := DB.Prepare("SELECT id, fname, lname, email FROM researchers WHERE id = $1")
-	if err != nil {
-		return
-	}
-	defer stmt.Close()
-
-	row := stmt.QueryRow(id)
+	row := DB.QueryRow("SELECT fname, lname, email FROM researchers WHERE id=$1", id)
 
 	var fname string
 	var lname string
 	var email string
 
-	err = row.Scan(&id)
 	err = row.Scan(&fname)
 	err = row.Scan(&lname)
 	err = row.Scan(&email)

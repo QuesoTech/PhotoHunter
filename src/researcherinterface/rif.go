@@ -5,14 +5,13 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	_ "github.com/lib/pq"
 	"log"
 	"net/http"
 	"os"
-	_ "github.com/lib/pq"
 )
 
 var DB *sql.DB
-
 
 func check(err error) {
 	if err != nil {
@@ -34,7 +33,6 @@ func getDbHandle() (db *sql.DB, err error) {
 	return
 }
 
-
 func main() {
 
 	var err error
@@ -44,12 +42,19 @@ func main() {
 	defer DB.Close()
 	check(DB.Ping())
 
+	//ds, err := NewDataset(6, "foobar")
+	//check(err)
+	//fmt.Println(ds)
+	ds, err := GetResearcherById(3)
+	fmt.Println(ds)
+	check(err)
+
 	//Templates and specific pages
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/account", accountHandler)
 	http.HandleFunc("/signup", signupHandler)
 	http.HandleFunc("/signin", signinHandler)
-	http.HandleFunc("/logout",logoutHandler)
+	http.HandleFunc("/logout", logoutHandler)
 
 	//Static file servers
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
