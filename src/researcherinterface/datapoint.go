@@ -14,20 +14,16 @@ type Datapoint struct {
 
 // NewDatapoint creates a new Datapoint, inserts it to the database and returns it
 func NewDatapoint(datasetID int64, imageURL string) (dp *Datapoint, err error) {
-	// initialize id since we dont know what it is yet
 	var id int64
 
-	// reach out to the database
 	err = DB.QueryRow("INSERT INTO datapoint (dataset_id, image_url) VALUES ($1, $2) RETURNING id", datasetID, imageURL).Scan(&id)
 
-	// did something go wrong?
 	if err != nil {
 		return // something went wrong! lets get out of here!
 	}
 
 	//blank space for readability
 
-	// create and populate datapoint
 	dp = &Datapoint{
 		ID:        id,
 		DatasetID: datasetID,
@@ -45,7 +41,7 @@ func GetDatapointByID(id int64) (dp *Datapoint, err error) {
 	err = DB.QueryRow("SELECT id, dataset_id, image_url FROM datapoint WHERE id=$1", id).Scan(&id, &datasetID, &imageURL)
 
 	if err != nil {
-		return
+		return // something went wrong! lets get out of here!
 	}
 
 	dp = &Datapoint{

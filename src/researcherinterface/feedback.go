@@ -5,9 +5,15 @@ package main
 // triple (i.e. no user should provide feedback on the same datapoint-requrement)
 // pair
 type Feedback struct {
-	ID            int64
-	UserID        int64
-	DatapointID   int64
+	ID int64
+
+	// id of providing user
+	UserID int64
+
+	// id of datapoint feedback is being provided for
+	DatapointID int64
+
+	// id of requirement being fed-back(?) on
 	RequirementID int64
 }
 
