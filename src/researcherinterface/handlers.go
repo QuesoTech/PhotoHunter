@@ -24,20 +24,47 @@ func genTemplate(w http.ResponseWriter, tmpt string, p *Page) {
 //Handles the front page of the site.
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "session-name")
-	var email string
 
-	if name, ok := session.Values["user"].(string); ok {
-		email = name
-	} 
+	var fname,lname,email string
+	var id int64
 
-	p1 := &Page{Title: "index", Body: []byte(""), User: email}
+	if _,ok :=session.Values["id"].(int64) ; ok{
+	fname = session.Values["fname"].(string)
+	lname = session.Values["lname"].(string)
+	email = session.Values["email"].(string)
+	id = session.Values["id"].(int64)
+	}else {
+		 fname = ""
+		 lname = ""
+		 email = ""
+		 id = 0
+	 }
+	p1 := &Page{Title: "index", Body: []byte(""), User: Researcher{ID:id, Email:email, Name: Name{First:fname,Last:lname}}}
 
 	genTemplate(w, "index", p1)
 }
 
 //Handles the account page of the site.
 func accountHandler(w http.ResponseWriter, r *http.Request) {
-	p1 := &Page{Title: "account", Body: []byte(""), User: "Aaron"}
+	session, _ := store.Get(r, "session-name")
+	
+	var fname,lname,email string
+	var id int64
+
+	if _,ok :=session.Values["id"].(int64) ; ok{
+	fname = session.Values["fname"].(string)
+	lname = session.Values["lname"].(string)
+	email = session.Values["email"].(string)
+	id = session.Values["id"].(int64)
+	}else {
+		 fname = ""
+		 lname = ""
+		 email = ""
+		 id = 0
+	 }
+
+
+	p1 := &Page{Title: "account", Body: []byte(""), User: Researcher{ID:id, Email:email, Name: Name{First:fname,Last:lname}}}
 	genTemplate(w, "account", p1)
 }
 
@@ -54,7 +81,6 @@ func createDatasetHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "session-name")
 	r.ParseForm()
 	
-
 	rid := session.Values["id"].(int64)
 
 	fmt.Printf("%i",rid)
@@ -133,7 +159,7 @@ func signinHandler(w http.ResponseWriter, r *http.Request) {
 		check(err)
 
 		session, _ := store.Get(r, "session-name")
-		session.Values["user"] = email
+		session.Values["email"] = email
 		session.Values["fname"] = fname
 		session.Values["lname"] = lname
 		session.Values["id"] = id

@@ -29,7 +29,7 @@
 	   </li>
 	   
 	   <li>
-	      {{if .User }} <a href = "#">{{.User}}'s Account </a>
+	      {{if .User }} <a href = "#">{{.User.Name.First}}'s Account </a>
 	      {{else}}
 	      <a href = "/account">Create Account</a>
 	      {{end}}
@@ -48,19 +48,18 @@
 	<div class = "row">
 	
 	  <div class = "col-lg-4">
+	    {{if .User }}
 	    <h1> User information </h1>
 	    <dl class = "dl-horizontal">
 	      <dt>Name: </dt>
-	      <dd>{{.User}}</dd>
+	      <dd>{{.User.Name.First}}{{.User.Name.Last}}</dd>
 	    
 	      <dt>Email: </dt>
-	      <dd>blah@blah.blah</dd>
+	      <dd>{{.User.Email}}</dd>
 	      
-	      <dt>Phone: </dt>
-	      <dd>xxxxxxxxxx</dt>
 	    </dl>
 	  </div>
-	  
+	   {{end }}
 	  <div class = "col-lg-8">
 	    <h1>Other Stuff</h1>
 	    <p>Will go here</p>
