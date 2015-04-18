@@ -27,7 +27,7 @@ function onDeviceReady() {
 		destinationType=navigator.camera.DestinationType;
 }
 
-
+//
 // Called when a photo is successfully retrieved
 //
 function onPhotoDataSuccess(imageData) {
@@ -35,16 +35,13 @@ function onPhotoDataSuccess(imageData) {
 	// console.log(imageData);
 
 	// Get image handle
-	//
 	var smallImage = document.getElementById('smallImage');
 
 	// Unhide image elements
-	//
 	smallImage.style.display = 'block';
 
 	// Show the captured photo
 	// The in-line CSS rules are used to resize the image
-	//
 	smallImage.src = "data:image/jpeg;base64," + imageData;
 }
 
@@ -52,6 +49,13 @@ var onGeoSuccess = function(position) {
 		$('#coords').html(String(position.coords.latitude) + ", " + String(position.coords.longitude))	
 		$('#coords').attr('class', 'label label-success')	
 };
+
+
+var fbLoginSuccess = function (userData) {
+		//alert("UserInfo: " + JSON.stringify(userData));
+		window.location.replace("datasets.html")
+};
+
 
 function capturePhoto()
 {
@@ -62,14 +66,26 @@ function capturePhoto()
 	$('#upload').attr('style', 'display:block; margin:0 auto;')
 }
 
+//
+// Login through Facebook
+//
+function loginFB()
+{
+
+	facebookConnectPlugin.login(["public_profile"],	fbLoginSuccess,	onFail);
+
+}
+
+
 function getLocation()
 {
 	navigator.geolocation.getCurrentPosition(onGeoSuccess, onFail);
 }
 
+//
 // Called if something bad happens.
 //
 function onFail(message) {
-	alert('Failed because: ' + message);
+	//alert('Failed because: ' + message);
 }
 
