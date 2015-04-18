@@ -27,10 +27,24 @@
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <title>Photohunter</title>
+        <style>
+					.h1, h1 {
+						font-size: 36px;
+						text-align: center;
+					}
+					.vertical-center {
+						min-height: 100%;
+						min-height: 100vh;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						flex-direction: column;
+					}
+				</style>
+				<title>Photohunter</title>
     </head>
     <body>
-        <div>
+        <div class="container vertical-center">
 					<table class="table">
 						<thead>
 							<tr>
@@ -47,8 +61,15 @@
 							<tr>
 								<td><a href="capture.html">Cats</a></td>
 							</tr>
+							<tr>
+								<td><a href="capture.html">Cats</a></td>
+							</tr>
+							<tr>
+								<td><a href="capture.html">Cats</a></td>
+							</tr>
 						</tbody>
 					</table>
+					<button class="btn btn-md-default" style="display:block; margin:auto; margin-bottom:5%">Test</button>
 				</div>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
