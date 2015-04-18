@@ -1,5 +1,9 @@
 package main
 
+import (
+	"strings"
+)
+
 // Subject represnts the subject being captured by a dataset. A dataset can have
 // many of these
 type Subject struct {
@@ -12,7 +16,9 @@ type Subject struct {
 func NewSubject(datasetID int64, target string, dummies []string) (s *Subject, err error) {
 	var id int64
 
-	err = DB.QueryRow("INSERT INTO subject (ds_id, target, dummies) VALUES ($1, $2, $3) RETURNING id", datasetID, target, dummies).Scan(&id)
+	d := "{" + strings.Join(dummies, ",") + "}"
+
+	err = DB.QueryRow("INSERT INTO subjects (ds_id, target, dummies) VALUES ($1, $2, $3) RETURNING id", datasetID, target, d).Scan(&id)
 	if err != nil {
 		return
 	}

@@ -19,12 +19,17 @@
 
 var pictureSource;   // picture source
 var destinationType; // sets the format of returned value
+var userID;
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
 		pictureSource = navigator.camera.PictureSourceType;
 		destinationType=navigator.camera.DestinationType;
+		if (document.getElementById('accountButton'))
+		{
+			getUserProfilePic();
+		}
 }
 
 //
@@ -52,8 +57,11 @@ var onGeoSuccess = function(position) {
 
 
 var fbLoginSuccess = function (userData) {
-		//alert("UserInfo: " + JSON.stringify(userData));
-		window.location.replace("datasets.html")
+    facebookConnectPlugin.getAccessToken(function(token) {
+				window.location.replace("datasets.html");
+    }, function(err) {
+        alert("Could not get access token: " + err);
+    });
 };
 
 
@@ -74,6 +82,31 @@ function loginFB()
 
 	facebookConnectPlugin.login(["public_profile"],	fbLoginSuccess,	onFail);
 
+}
+
+function setUID(response)
+{
+	userID = response.authResponse["userID"];
+}
+
+function getUserProfilePic()
+{
+	facebookConnectPlugin.getLoginStatus( 
+		function (response)
+		{
+			setUID(response);
+		},
+		function (error){alert("Failed: " + error)});
+	alert(userID);
+	var accountButton = document.getElementById('accountButton');
+	accountButton.src = "https://graph.facebook.com/"+ userID +"/picture?type=small"
+	//facebookConnectPlugin.api(userID + "/picture?type=small", ["public_profile"],
+	//	function (result)
+	//	{
+	//		var accountButton = document.getElementById('accountButton');
+	//		accountButton.src = "data:image/jpeg;base64," + result["data"];
+	//	},
+	//	function (error){alert("Failed: " + error)});
 }
 
 
