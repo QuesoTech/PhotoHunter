@@ -87,6 +87,8 @@ function loginFB()
 function setUID(response)
 {
 	userID = response.authResponse["userID"];
+	var accountButton = document.getElementById('accountButton');
+	accountButton.src = "https://graph.facebook.com/"+ userID +"/picture?type=small"
 }
 
 function getUserProfilePic()
@@ -97,16 +99,6 @@ function getUserProfilePic()
 			setUID(response);
 		},
 		function (error){alert("Failed: " + error)});
-	alert(userID);
-	var accountButton = document.getElementById('accountButton');
-	accountButton.src = "https://graph.facebook.com/"+ userID +"/picture?type=small"
-	//facebookConnectPlugin.api(userID + "/picture?type=small", ["public_profile"],
-	//	function (result)
-	//	{
-	//		var accountButton = document.getElementById('accountButton');
-	//		accountButton.src = "data:image/jpeg;base64," + result["data"];
-	//	},
-	//	function (error){alert("Failed: " + error)});
 }
 
 
