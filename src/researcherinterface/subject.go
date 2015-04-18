@@ -9,10 +9,10 @@ type Subject struct {
 	Dummies   []string
 }
 
-func NewSubject(databaseID int64, target string, dummies []string) (s *Subject, err error) {
+func NewSubject(datasetID int64, target string, dummies []string) (s *Subject, err error) {
 	var id int64
 
-	err := DB.QueryRow("INSERT INTO subject (ds_id, target, dummies) VALUES ($1, $2, $3) RETURNING id", databaseID, target, dummies).Scan(&id)
+	err := DB.QueryRow("INSERT INTO subject (ds_id, target, dummies) VALUES ($1, $2, $3) RETURNING id", datasetID, target, dummies).Scan(&id)
 	if err != nil {
 		return
 	}
