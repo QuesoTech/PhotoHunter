@@ -10,6 +10,7 @@ import (
 	"strings"
 	"strconv"
 	"time"
+	"fmt"
 )
 
 var store = sessions.NewCookieStore([]byte("aaron"))
@@ -52,13 +53,11 @@ func singleHandler(path string, fname string) {
 func createDatasetHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "session-name")
 	r.ParseForm()
-	var id int64
-
-
-	if rid, ok := session.Values["id"].(string); ok {
-		id,_ = strconv.ParseInt(rid,10,64)
-	}
 	
+
+	rid := session.Values["id"].(int64)
+
+	fmt.Printf("%i",rid)
 	//create dataset
 	
 	name := r.FormValue("name")
@@ -76,7 +75,7 @@ func createDatasetHandler(w http.ResponseWriter, r *http.Request) {
 	
 	//time of day. HH:MM:SS
 	
-	ds, err := NewDataset(id, name)
+	ds, err := NewDataset(rid, name)
 	_,err = NewSubject(ds.ID,target,dummies)
 	_,err = NewLocation(ds.ID,GeoPoint{Lat:lat,Lon:long})
 	_,err = NewTimeperiod(ds.ID,stime,etime)
@@ -134,13 +133,11 @@ func signinHandler(w http.ResponseWriter, r *http.Request) {
 		check(err)
 
 		session, _ := store.Get(r, "session-name")
-
-		
-
 		session.Values["user"] = email
 		session.Values["fname"] = fname
 		session.Values["lname"] = lname
 		session.Values["id"] = id
+
 		session.Save(r, w)
 		http.Redirect(w, r, "/", http.StatusFound)
 	}
