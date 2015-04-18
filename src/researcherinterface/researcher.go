@@ -19,7 +19,7 @@ type Researcher struct {
 func NewResearcher(name Name, email, password string) (r *Researcher, err error) {
 	var id int64
 
-	err = stmt.QueryRow("INSERT INTO researchers (fname, lname, email, pword) VALUES ($1, $2, $3, $4) RETURNING id", name.First, name.Last, email, password).Scan(&id)
+	err = DB.QueryRow("INSERT INTO researchers (fname, lname, email, pword) VALUES ($1, $2, $3, $4) RETURNING id", name.First, name.Last, email, password).Scan(&id)
 	if err != nil {
 		return
 	}

@@ -8,7 +8,24 @@ type GeoPoint struct {
 
 // Location represents a location restriction for a dataset
 type Location struct {
-	Id        int64
-	DatasetId int64
+	ID        int64
+	DatasetID int64
 	Target    GeoPoint
+}
+
+func NewLocation(datasetID int64, point GeoPoint) (l *Location, err error) {
+	var id int64
+
+	err = DB.QueryRow("INSERT INTO locations (ds_id, target) VALUES ($1, 'Point($2 $3)') RETURNING id", datasetID, point.Lat, point.Lon).Scan(&id)
+	if err != nil {
+		return
+	}
+
+	l = &Location{
+		ID:        id,
+		DatasetID: datasetID,
+		Target:    point,
+	}
+
+	return
 }
