@@ -26,6 +26,9 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
 		pictureSource = navigator.camera.PictureSourceType;
 		destinationType=navigator.camera.DestinationType;
+		
+		// Check if the account button is on the current page
+		// and sets the image to be the user's profile picture
 		if (document.getElementById('accountButton'))
 		{
 			getUserProfilePic();
@@ -50,21 +53,38 @@ function onPhotoDataSuccess(imageData) {
 	smallImage.src = "data:image/jpeg;base64," + imageData;
 }
 
+
+//
+// Called when the geolocation is successfully retrieved
+//
 var onGeoSuccess = function(position) {
+		// Display the coordinates and turn the labels green
 		$('#coords').html(String(position.coords.latitude) + ", " + String(position.coords.longitude))	
 		$('#coords').attr('class', 'label label-success')	
 };
 
 
+//
+// Called when a user successfully logs in to the app
+//
 var fbLoginSuccess = function (userData) {
-    facebookConnectPlugin.getAccessToken(function(token) {
+    facebookConnectPlugin.getAccessToken(function(token) 
+		{
+				// Code to grab datasets will go here
+
 				window.location.replace("datasets.html");
-    }, function(err) {
-        alert("Could not get access token: " + err);
+    }, 
+		function(err) 
+		{
+			alert("Could not get access token: " + err);
     });
 };
 
 
+//
+// Open the native camera app and take a picture, then display the
+// geolocation and upload button
+//
 function capturePhoto()
 {
 	navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, 
@@ -84,24 +104,28 @@ function loginFB()
 
 }
 
-function setUID(response)
-{
-	userID = response.authResponse["userID"];
-	var accountButton = document.getElementById('accountButton');
-	accountButton.src = "https://graph.facebook.com/"+ userID +"/picture?type=small"
-}
-
+//
+//	Get the profile picture of the signed in
+//  user and display it as the account page
+//  button
+//
 function getUserProfilePic()
 {
 	facebookConnectPlugin.getLoginStatus( 
 		function (response)
 		{
-			setUID(response);
+			// Get user id and change the account button image
+			userID = response.authResponse["userID"];
+			var accountButton = document.getElementById('accountButton');
+			accountButton.src = "https://graph.facebook.com/"+ userID +"/picture?type=small"
 		},
 		function (error){alert("Failed: " + error)});
 }
 
 
+//
+// Get the user's current location
+//
 function getLocation()
 {
 	navigator.geolocation.getCurrentPosition(onGeoSuccess, onFail);
@@ -111,6 +135,6 @@ function getLocation()
 // Called if something bad happens.
 //
 function onFail(message) {
-	//alert('Failed because: ' + message);
+	alert('Failed because: ' + message);
 }
 
