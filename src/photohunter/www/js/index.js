@@ -31,7 +31,12 @@ function onDeviceReady() {
 		// and sets the image to be the user's profile picture
 		if (document.getElementById('accountButton'))
 		{
-			getUserProfilePic();
+			getUserProfilePic("small", "accountButton");
+		}
+		if (document.getElementById('accountPic'))
+		{
+			getUserProfilePic("large", "accountPic");
+			fillAccountInfo();
 		}
 }
 
@@ -109,15 +114,36 @@ function loginFB()
 //  user and display it as the account page
 //  button
 //
-function getUserProfilePic()
+function getUserProfilePic(size, element)
 {
 	facebookConnectPlugin.getLoginStatus( 
 		function (response)
 		{
 			// Get user id and change the account button image
 			userID = response.authResponse["userID"];
-			var accountButton = document.getElementById('accountButton');
-			accountButton.src = "https://graph.facebook.com/"+ userID +"/picture?type=small"
+			var accountPic = document.getElementById(element);
+			accountPic.src = "https://graph.facebook.com/" + userID + "/picture?type=".concat(size)
+		},
+		function (error){alert("Failed: " + error)});
+}
+
+//
+// Fill out the info on the account page
+//
+function fillAccountInfo()
+{
+	facebookConnectPlugin.getLoginStatus( 
+		function (response)
+		{
+			// Get user id and change the account button image
+			userID = response.authResponse["userID"];
+			facebookConnectPlugin.api(userID, ["public_profile"],
+				function (response)
+				{
+					userName = response["name"];
+					accountName.innerText = userName;
+				},
+				function (error){alert("Failed: " + error)});
 		},
 		function (error){alert("Failed: " + error)});
 }
