@@ -1,0 +1,193 @@
+\documentclass[aspectratio=169]{beamer}
+
+% beamer config
+\usetheme{Berkeley}
+% \AtBeginSection{\frame{\sectionpage}}
+
+% package imports
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+
+% Macros
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[#1]}}}
+
+\title[PhotoHunter]{PhotoHunter: A Citizen-Scientist Game with User-in-the-loop
+  Data Confirmation for Collecting Computer Vision Datasets of
+  Geo-tagged Imagery through Crowd-Sourcing Data Collection;
+  Abstracting Research using an Interactive, Game-based Mobile
+  Application for Large Dataset Creation}
+
+\author[]{Connor Greenwell \and Ryan Baltenberger
+  \and J.\ David Smith \and Aaron Bradshaw}
+
+\institute{QuesoTech.com}
+
+\begin{document}
+
+\maketitle
+
+\section{Computer Vision}
+
+\begin{frame}{Computer Vision}
+	\todo{do we still need this slide?}
+  \todo{expand on more technical details?}
+	\begin{itemize}
+
+    \item Artificial Intelligence - the goal of creating intelligence for
+          machines/software
+
+    \item Computer Vision - teaching computers to understand the natural world
+          through images
+
+    \item Data to train or test on is integral to success
+
+    \item Collecting and labeling data is time consuming
+
+  \end{itemize}
+\end{frame}
+
+\section{Citizen-Science}
+
+\begin{frame}{Citizen-Science}
+  \begin{itemize}
+
+    \item Citizen-Science - form of crowd-sourcing where participants
+          collect/analyze data
+
+    \item Typically performed tasks are simple (\textit{e.g.} take a photo,
+          measure temperature, translate text, etc.)
+
+    \item Humans can perform simple tasks easily and in large quantities,
+          often with little time or effort
+
+    \item Collecting large amounts of data is intractable for a single
+          researcher
+
+  \end{itemize}
+\end{frame}
+
+\section{Why a game?}
+
+\begin{frame}{Why a Game?}
+	\todo{maybe set up what our project does before this slide?}
+  \begin{itemize}
+
+    \item Contributions to citizen-science style datasets drop off after
+          the initial interest wears off
+
+    \item Using ``gamification'' can mitigate this decline
+
+    \item Our goal - abstract out the data collection, tell users they
+          are competing in a global scavenger hunt
+
+    \item Users will stay engaged/contributing to earn more points
+
+    \item PhotoHunter will assign points for collecting and reviewing data
+
+    \item Leader-boards will encourage competition between users
+
+  \end{itemize}
+\end{frame}
+
+\section{Overview}
+
+\begin{frame}{Overview}
+  \centering
+	\todo{consider moving this to before the citizen science slide?}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ss_flowchart}
+\end{frame}
+
+\section{Backend}
+
+\begin{frame}{ER Diagram}
+  \centering
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{er}
+\end{frame}
+
+\begin{frame}{Backend}
+  \begin{itemize}
+    \item Research groups may be created on request.
+
+    \item Researcher interface where they may request datasets.
+
+    \item define GPS bounding boxes, time frames, and other metadata they are
+      interested in for a given dataset.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Researchers Interface}
+  \centering
+	\todo{update this picture}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{researchers}
+\end{frame}
+
+\section{PhotoHunter}
+
+\begin{frame}{PhotoHunter}
+  \begin{itemize}
+
+    \item Mobile application
+
+    \item Users presented with list of categories
+
+    \item Each category represents a dataset in their location
+
+    \item Gain points for completed tasks
+
+    \item Data collection only occurs within this mobile app so
+          we can take advantage of built in sensors
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{PhotoHunter}
+  \begin{columns}[c]
+    \begin{column}{0.5\columnwidth}
+      \centering
+			\todo{add in screenshots of actual app}
+      %\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ss_photohunter_dataset}
+    \end{column}
+    \begin{column}{0.5\columnwidth}
+      \centering
+			\todo{add in screenshots of actual app}
+      %\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ss_photohunter_upload}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{QuickPic}
+
+\begin{frame}{QuickPic}
+  \begin{columns}[c]
+    \begin{column}{0.5\columnwidth}
+      \centering
+			\todo{add in updated screenshots}
+      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ss_quickpic_image}
+    \end{column}
+    \begin{column}{0.5\columnwidth}
+      \centering
+			\todo{add in updated screenshots}
+      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ss_quickpic_options}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{QuickPic}
+  \begin{itemize}
+    \item Accuracy determined on the basis of other user's label choices at time
+      of submission.
+
+    \item Gain points for labeling images, depending on how accurate their
+      choice is.
+
+    \item Each image shown to numerous users. By looking at the distribution of
+      choices, we can automatically determine the accuracy of the label.
+
+    \item This accuracy information will be passed along to researchers.
+
+  \end{itemize}
+\end{frame}
+
+\frame{\centering Thanks!}
+
+\end{document}

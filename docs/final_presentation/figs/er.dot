@@ -1,0 +1,60 @@
+graph {
+  
+  {
+    node[shape=box];
+
+    subject [label="Subject"];
+    time [label="Time"];
+    location [label="Location"];
+    dataset [label="Dataset"];
+    datapoint [label="Datapoint"]; 
+    researcher [label="Researcher"];
+    user [label="User"];
+    feedback [label="Feedback"]
+  }
+
+  {
+    node[shape=diamond];
+
+    propose [label="Proposed"];
+    belong [label="BelongsTo"];
+    submit [label="Submitted"];
+    provide [label="Provided"];
+    has [label="Has"];
+  }
+
+  subgraph cluster_website {
+    label="Researcher Website";
+
+    subject; time; location; dataset; researcher;
+    propose;
+  }
+
+  subgraph cluster_photohunter {
+    label="PhotoHunter";
+
+    datapoint; 
+    belong; submit;
+  }
+
+  subgraph cluster_quickpic {
+    label="QuickPic";
+
+    feedback;
+    has; provide;
+  }
+
+  researcher -- propose -- dataset;
+
+  subject -- dataset;
+  location -- dataset;
+  time -- dataset;
+
+  dataset -- belong -- datapoint;
+
+  user -- submit -- datapoint;
+  user -- provide -- feedback;
+
+  feedback -- has -- datapoint;
+  has -- subject;
+}
