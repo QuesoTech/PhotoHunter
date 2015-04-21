@@ -1,9 +1,17 @@
 package main
 
+import (
+	"fmt"
+)
+
 // GeoPoint represent the PostGIS GEOGRAPHY(POINT, 4326) found in the location table
 type GeoPoint struct {
 	Lat float64
 	Lon float64
+}
+
+func (g GeoPoint) String() string {
+	return fmt.Sprintf("ST_GeographyFromText('Point(%f %f)')", g.Lat, g.Lon)
 }
 
 // Location represents a location restriction for a dataset
@@ -16,7 +24,7 @@ type Location struct {
 func NewLocation(datasetID int64, point GeoPoint) (l *Location, err error) {
 	var id int64
 
-	err = DB.QueryRow("INSERT INTO locations (ds_id, target) VALUES ($1, 'Point($2 $3)') RETURNING id", datasetID, point.Lat, point.Lon).Scan(&id)
+	err = DB.QueryRow("INSERT INTO locations (ds_id, target) VALUES ($1, $2) RETURNING id", datasetID, point).Scan(&id)
 	if err != nil {
 		return
 	}

@@ -2,15 +2,15 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"github.com/gorilla/sessions"
 	"golang.org/x/crypto/bcrypt"
 	"html/template"
 	"log"
 	"net/http"
-	"strings"
 	"strconv"
+	"strings"
 	"time"
-	"fmt"
 )
 
 var store = sessions.NewCookieStore([]byte("aaron"))
@@ -25,21 +25,21 @@ func genTemplate(w http.ResponseWriter, tmpt string, p *Page) {
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "session-name")
 
-	var fname,lname,email string
+	var fname, lname, email string
 	var id int64
 
-	if _,ok :=session.Values["id"].(int64) ; ok{
-	fname = session.Values["fname"].(string)
-	lname = session.Values["lname"].(string)
-	email = session.Values["email"].(string)
-	id = session.Values["id"].(int64)
-	}else {
-		 fname = ""
-		 lname = ""
-		 email = ""
-		 id = 0
-	 }
-	p1 := &Page{Title: "index", Body: []byte(""), User: Researcher{ID:id, Email:email, Name: Name{First:fname,Last:lname}}}
+	if _, ok := session.Values["id"].(int64); ok {
+		fname = session.Values["fname"].(string)
+		lname = session.Values["lname"].(string)
+		email = session.Values["email"].(string)
+		id = session.Values["id"].(int64)
+	} else {
+		fname = ""
+		lname = ""
+		email = ""
+		id = 0
+	}
+	p1 := &Page{Title: "index", Body: []byte(""), User: Researcher{ID: id, Email: email, Name: Name{First: fname, Last: lname}}}
 
 	genTemplate(w, "index", p1)
 }
@@ -47,24 +47,23 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 //Handles the account page of the site.
 func accountHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "session-name")
-	
-	var fname,lname,email string
+
+	var fname, lname, email string
 	var id int64
 
-	if _,ok :=session.Values["id"].(int64) ; ok{
-	fname = session.Values["fname"].(string)
-	lname = session.Values["lname"].(string)
-	email = session.Values["email"].(string)
-	id = session.Values["id"].(int64)
-	}else {
-		 fname = ""
-		 lname = ""
-		 email = ""
-		 id = 0
-	 }
+	if _, ok := session.Values["id"].(int64); ok {
+		fname = session.Values["fname"].(string)
+		lname = session.Values["lname"].(string)
+		email = session.Values["email"].(string)
+		id = session.Values["id"].(int64)
+	} else {
+		fname = ""
+		lname = ""
+		email = ""
+		id = 0
+	}
 
-
-	p1 := &Page{Title: "account", Body: []byte(""), User: Researcher{ID:id, Email:email, Name: Name{First:fname,Last:lname}}}
+	p1 := &Page{Title: "account", Body: []byte(""), User: Researcher{ID: id, Email: email, Name: Name{First: fname, Last: lname}}}
 	genTemplate(w, "account", p1)
 }
 
@@ -80,41 +79,48 @@ func singleHandler(path string, fname string) {
 func createDatasetHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "session-name")
 	r.ParseForm()
-	
+
 	rid := session.Values["id"].(int64)
 
-	fmt.Printf("%i",rid)
+	fmt.Printf("%i", rid)
 	//create dataset
-	
+
 	name := r.FormValue("name")
 
 	//create subjects
 	target := r.FormValue("target")
-	dummies := strings.Split(r.FormValue("dummies"),",")
+	dummies := strings.Split(r.FormValue("dummies"), ",")
 
 	//create locations
-	lat,err := strconv.ParseFloat(r.FormValue("lat"),64)
-	long,err := strconv.ParseFloat(r.FormValue("long"),64)
-	
-	stime,err := time.Parse("15:04:05",r.FormValue("stime"))
-	etime,err := time.Parse("15:04:05",r.FormValue("etime"))
-	
+	lat, err := strconv.ParseFloat(r.FormValue("lat"), 64)
+	log.Println(err)
+	long, err := strconv.ParseFloat(r.FormValue("long"), 64)
+	log.Println(err)
+
+	stime, err := time.Parse("15:04", r.FormValue("stime"))
+	log.Println(err)
+	etime, err := time.Parse("15:04", r.FormValue("etime"))
+	log.Println(err)
+
 	//time of day. HH:MM:SS
-	
+
 	ds, err := NewDataset(rid, name)
-	_,err = NewSubject(ds.ID,target,dummies)
-	_,err = NewLocation(ds.ID,GeoPoint{Lat:lat,Lon:long})
-	_,err = NewTimeperiod(ds.ID,stime,etime)
+	log.Println(err)
+	_, err = NewSubject(ds.ID, target, dummies)
+	log.Println(err)
+	_, err = NewLocation(ds.ID, GeoPoint{Lat: lat, Lon: long})
+	log.Println(err)
+	_, err = NewTimeperiod(ds.ID, stime, etime)
+	log.Println(err)
 
 	if err != nil {
-	http.Redirect(w,r,"/",http.StatusFound)
-	}else {
-		http.Redirect(w,r,"/",http.StatusNotFound)
+		http.Redirect(w, r, "/", http.StatusFound)
+	} else {
+		http.Redirect(w, r, "/", http.StatusNotFound)
 	}
-	
+
 	//POINT(lat,long)
 }
-
 
 //Gets the data submitted from sign up. Encrypts the password and
 //creates a new user account.
@@ -147,11 +153,11 @@ func signinHandler(w http.ResponseWriter, r *http.Request) {
 	var hword []byte
 	var id int64
 	var fname, lname string
-	err := DB.QueryRow("SELECT pword,id,fname,lname FROM researchers WHERE email=$1", email).Scan(&hword,&id,&fname,&lname)
+	err := DB.QueryRow("SELECT pword,id,fname,lname FROM researchers WHERE email=$1", email).Scan(&hword, &id, &fname, &lname)
 
 	switch {
 	case err == sql.ErrNoRows:
-		log.Printf("No user with that email")
+		log.Println("No user with that email")
 	case err != nil:
 		log.Fatal(err)
 	default:
