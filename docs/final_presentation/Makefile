@@ -1,7 +1,7 @@
 TARGET=pres
 FIGS=figs
 
-all: spell pdf clean
+all: pdf clean
 
 pdf: dot
 	pdflatex $(TARGET)
