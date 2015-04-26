@@ -1,6 +1,23 @@
 Meeting Notes
 =============
 
+April 18th, 2015
+---------------
+
+-		Discussed current status of Photohunter and QuickPic apps
+-		Discussed current status of Backend work and Researcher interface
+-		Worked on photohunter application and continued integrated with Facebook
+-   Worked on researcher interface
+-   Worked on quickpic application and integrated with facebook
+
+April 11th, 2015
+---------------
+
+-		Discussed current status of Photohunter and QuickPic apps
+-		Discussed current status of Backend work and Researcher interface
+-		Worked on photohunter application and integrated with Facebook
+-   Worked on researcher interface
+
 March 23rd, 2015
 ---------------
 
