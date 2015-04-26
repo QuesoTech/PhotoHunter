@@ -50,7 +50,7 @@
 	
 	  <div class = "col-lg-4">
 	    <h1> 1. Request Dataset </h1>
-	    {{ if .User }} 
+	    {{ if .User.Name.First }} 
 	    <form action="/create_dataset" method="POST">
 
 	      <fieldset>
@@ -61,74 +61,73 @@
 
 	      <!-- Text input-->
 	      <div class="form-group">
-		<label class="col-md-4 control-label" for="fname">Dataset Name:</label>  
-		<div class = "col-md-8">
+		<label for="fname">Dataset Name:</label>  
+		
 		<input id="name" name="name" type="text" placeholder="ex. Cats with Guns" class="form-control input-md" required>
-		  
-		</div>
-	      </div>
+	      </div>	  
+		
+	      
 
 	      <!-- Text input-->
 	      <div class="form-group">
-		<label class="col-md-4 control-label" for="target">Expected Target:</label>  
-		<div class = "col-md-8">
+		<label for="target">Expected Target:</label>  
+		
 		<input id="target" name="target" type="text" placeholder="ex. Cats" class="form-control input-md" required>
 		  
-		</div>
+	
 	      </div>
 
 	      <!-- Text input-->
 	      <div class="form-group">
-		<label class="col-md-4 control-label" for="dummies">Dummies:</label>  
-		<div class="col-md-8">
+		<label  for="dummies">Dummies:</label>  
+	
 		<input id="dummies" name="dummies" type="text" placeholder="ex. dogs,walruses,capybaras" class="form-control input-md" required>
 		  
-		</div>
+		
 	      </div>
 
 	      <!-- Text input-->
 	      <div class="form-group">
-		<label class="col-md-4 control-label" for="lat">Latitude:</label>  
-		<div class="col-md-8">
+		<label for="lat">Latitude:</label>  
+		
 		<input id="lat" name="lat" type="text" placeholder="ex. 38.0297" class="form-control input-md" required>
 		  
-		</div>
+		
 	      </div>
 
 	      <!-- Text input-->
 	      <div class="form-group">
-		<label class="col-md-4 control-label" for="long">Longitude:</label>  
-		<div class="col-md-8">
+		<label for="long">Longitude:</label>  
+		
 		<input id="long" name="long" type="text" placeholder="ex. -84.4947" class="form-control input-md" required>
 
-		</div>
+		
 	      </div>
 
 	      <!-- Text input-->
 	      <div class="form-group">
-		<label class="col-md-4 control-label" for="stime">Start Time:</label>  
-		<div class="col-md-8">
+		<label for="stime">Start Time:</label>  
 		<input id="stime" name="stime" type="time" placeholder="ex. HH:MM:SS" class="form-control input-md" required>
 		  
-		</div>
+		
 	      </div>
 
 	      <!-- Text input-->
 	      <div class="form-group">
-		<label class="col-md-4 control-label" for="etime">End Time:</label>  
-		<div class="col-md-8">
+		<label for="etime">End Time:</label>  
+		
 		<input id="etime" name="etime" type="time" placeholder="ex. HH:MM:SS" class="form-control input-md" required>
 		  
-		</div>
+		
 	      </div>
 
 
 	      <!-- Button -->
 	      <div class="form-group">
-		<label class="col-md-4 control-label" for="submit"></label>
-		<div class="col-md-8">
+		<label  for="submit"></label>
+		<div class="col-md-10">
 		  <button id="submit" name="submit" type = "submit" class="btn btn-primary">Submit</button>
-		</div>
+		
 	      </div>
 
 	      </fieldset>
@@ -163,7 +162,7 @@
       <div class ="row">
 	<div class ="col-lg-4">
 	  
-	  {{if .User }}
+	  {{if .User.Name.First }}
 	  {{ else }}
   	    <form action = "/signup" method = "POST" class="form-horizontal">
 	      <fieldset>
@@ -230,7 +229,7 @@
       
 	   </div>
       
-	{{end}}
+
 
             <div class="col-lg-4">
   	    <form action = "/signin" method = "POST" class="form-horizontal">
@@ -267,8 +266,8 @@
 	    </fieldset>
 	    </form>
 
-      </div>
-       
+          </div>
+         {{ end }}
       
       </div>
     
