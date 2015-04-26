@@ -35,18 +35,29 @@ var MainMenu = React.createClass({
                 actionType: constants.EXECUTIVE_ORDERS.CHANGE_VIEW,
                 view: which
             });
-        }
+        };
     },
     render: function() {
         return (
-            <ul className="list-unstyled">
-                <MenuButton value="Photo Quiz"
-                            onClick={this._buttonClick(constants.VIEWS.Judgement)} />
-                <MenuButton value="Statistics"
-                            onClick={this._buttonClick(constants.VIEWS.Statistics)} />
-                <MenuButton value="Leaderboard"
-                            onClick={this._buttonClick(constants.VIEWS.Leaderboard)} />
-            </ul>
+            <div>
+                <div className="row">
+                    <div className="col-xs-12">
+                        <h3 className="text-center">QuickPic</h3>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-xs-12">
+                        <ul className="list-unstyled">
+                            <MenuButton value="Photo Quiz"
+                                        onClick={this._buttonClick(constants.VIEWS.Judgement)} />
+                            <MenuButton value="Statistics"
+                                        onClick={this._buttonClick(constants.VIEWS.Statistics)} />
+                            <MenuButton value="Leaderboard"
+                                        onClick={this._buttonClick(constants.VIEWS.Leaderboard)} />
+                        </ul>
+                    </div>
+                </div>
+            </div>
         );
     }
 });

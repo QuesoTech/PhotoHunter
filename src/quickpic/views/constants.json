@@ -4,7 +4,8 @@
         "MainMenu": "main",
         "Judgement": "judgement",
         "Statistics": "stats",
-        "Leaderboard": "leader"
+        "Leaderboard": "leader",
+        "Splash": "splash"
     },
     "EXECUTIVE_ORDERS": {
         "CHANGE_VIEW": "EXOR_CV"

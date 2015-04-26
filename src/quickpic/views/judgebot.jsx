@@ -77,7 +77,7 @@ var JudgeBot9000 = React.createClass({
     },
     getDefaultProps: function() {
         return {
-            time: 5000,
+            time: 750,
             onComplete: function() { console.log("done"); }
         };
     },
@@ -113,12 +113,16 @@ var JudgeBot9000 = React.createClass({
         }
 
         return (
-            <div className="row">
-                <div className="col-xs-12">
-                    <h3 className="text-center">{"What kind of object is in this scene?"}</h3>
+            <div>
+                <div className="row">
+                    <div className="col-xs-12">
+                        <h3 className="text-center">{"What kind of object is in this scene?"}</h3>
+                    </div>
                 </div>
-                <div className="col-xs-12">
-                    {content}
+                <div className="row">
+                    <div className="col-xs-12">
+                        {content}
+                    </div>
                 </div>
             </div>
         );

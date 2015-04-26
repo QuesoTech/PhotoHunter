@@ -4,6 +4,8 @@ var React = require('react'),
     AppDispatcher = require('../lib/dispatcher'),
     MainMenu = require('./main_menu.jsx'),
     JusticeSystem = require('./justice_system.jsx'),
+    Splash = require('./splash.jsx'),
+    Authentication = require('./auth.jsx'),
     VIEWS = require('./constants').VIEWS,
     EXECUTIVE_ORDERS = require('./constants').EXECUTIVE_ORDERS;
 
@@ -21,7 +23,7 @@ var QuickPic = React.createClass({
     },
     getInitialState: function() {
         return {
-            view: VIEWS.MainMenu
+            view: VIEWS.Splash
         };
     },
     componentDidMount: function() {
@@ -33,8 +35,10 @@ var QuickPic = React.createClass({
     render: function() {
         // null ⇒ not yet implemented
         switch(this.state.view) {
+            case VIEWS.Splash:
+                return <Splash />;
             case VIEWS.Authentication:
-                return null;
+                return <Authentication />;
             case VIEWS.MainMenu:
                 return <MainMenu />;
             case VIEWS.Judgement:
