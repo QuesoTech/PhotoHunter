@@ -24,6 +24,17 @@ Cheese Whiz
 
 Activity Log
 ------------
+**April 20th, 2015 - April 26th, 2015**
+- Prepared for final presentation
+- Added sessions to the researcher interface
+
+**April 13th, 2015 - April 19th, 2015**
+- Set up the PSQL database to interact with the researcher interface
+- Developed queries and tools for defining datasets
+
+**April 6th, 2015 - April 12th, 2015**
+- Developed test plan for the project
+
 **March 27th, 2015 - April 5th, 2015**
 
 - Continued working on the account system
