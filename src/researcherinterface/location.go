@@ -32,7 +32,7 @@ func NewLocation(datasetID int64, point GeoPoint) (l *Location, err error) {
 	l = &Location{
 		ID:        id,
 		DatasetID: datasetID,
-		Target:    point,
+		Target:    GeoPoint{point.Lat, point.Lon},
 	}
 
 	return

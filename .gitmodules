@@ -1,0 +1,3 @@
+[submodule "src/quickpic/plugins/phonegap-facebook-plugin"]
+	path = src/quickpic/plugins/phonegap-facebook-plugin
+	url = https://github.com/Wizcorp/phonegap-facebook-plugin

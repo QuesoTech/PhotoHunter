@@ -9,13 +9,16 @@ type Dataset struct {
 
 	// name of dataset
 	Name string
+
+	// number of images requested
+	NumRequest int64
 }
 
 // NewDataset creates a new dataset and inserts it into the database
-func NewDataset(researcherID int64, name string) (ds *Dataset, err error) {
+func NewDataset(researcherID int64, name string, numRequest int64) (ds *Dataset, err error) {
 	var id int64
 
-	err = DB.QueryRow("INSERT INTO dataset (researcher_id, name) VALUES ($1, $2) RETURNING id", researcherID, name).Scan(&id)
+	err = DB.QueryRow("INSERT INTO dataset (researcher_id, name,numRequest) VALUES ($1, $2, $3) RETURNING id", researcherID, name,numRequest).Scan(&id)
 	if err != nil {
 		return
 	}
@@ -24,6 +27,7 @@ func NewDataset(researcherID int64, name string) (ds *Dataset, err error) {
 		ID:           id,
 		ResearcherID: researcherID,
 		Name:         name,
+		NumRequest: numRequest, 
 	}
 
 	return

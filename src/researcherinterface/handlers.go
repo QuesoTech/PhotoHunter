@@ -86,6 +86,8 @@ func createDatasetHandler(w http.ResponseWriter, r *http.Request) {
 	//create dataset
 
 	name := r.FormValue("name")
+	number,err := strconv.ParseInt(r.FormValue("nimages"),10,64)
+	log.Println(err)
 
 	//create subjects
 	target := r.FormValue("target")
@@ -104,7 +106,7 @@ func createDatasetHandler(w http.ResponseWriter, r *http.Request) {
 
 	//time of day. HH:MM:SS
 
-	ds, err := NewDataset(rid, name)
+	ds, err := NewDataset(rid, name,number)
 	log.Println(err)
 	_, err = NewSubject(ds.ID, target, dummies)
 	log.Println(err)

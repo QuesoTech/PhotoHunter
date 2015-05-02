@@ -1,0 +1,21 @@
+{
+    "VIEWS": {
+        "Authentication": "auth",
+        "MainMenu": "main",
+        "Judgement": "judgement",
+        "Statistics": "stats",
+        "Leaderboard": "leader",
+        "Splash": "splash"
+    },
+    "EXECUTIVE_ORDERS": {
+        "CHANGE_VIEW": "EXOR_CV"
+    },
+    "ACTIONS": {
+        "JUDGE_COMPLETE": "action_judge_complete",
+        "RESULTS_DONE": "action_results_done"
+    },
+    "CHART_COLORS": [
+        "#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9",
+        "#f15c80", "#e4d354", "#8085e8", "#8d4653", "#91e8e1"
+    ]
+}
