@@ -70,7 +70,7 @@ such damages.
 
 
 \section{Introduction}
-
+Intro goes here.
 
 \section{Product Specifications}
 
@@ -78,14 +78,14 @@ such damages.
 
 \subsubsection{Web Browsers}
 The web interface for the PhotoHunter Project will be compatible with the
-versions of Google Chrome and Mozilla Firefox that are available on
-April 1, 2015. This interface will also employ a
-responsive design to accommodate users visiting on a mobile device's browser.
+versions of Google Chrome and Mozilla Firefox that are available on April 1,
+2015. This interface will also employ a responsive design to accommodate users
+visiting on a mobile device's browser.
 
 \subsubsection{Mobile Application}
 The two mobile applications for the PhotoHunter Project will be developed with
 cross-platform tool, allowing the applications to be deployed to Android
-version 4.4.2 (Kit-Kat) and, if time permits, iOS version 8.
+version 4.4.2 (Kit-Kat).
 
 \subsection{Architecture}
 
@@ -138,11 +138,6 @@ specification, tracking, and retrieval.
   on the current size. This status will provide information regarding recent
   activity in the dataset and time since the dataset was initialized. 
   
-  \paragraph{Dataset Download}
-  The system will allow users to download their dataset after it is complete.
-  Additionally, the system will allow users to download incomplete datasets. 
-  
-  
 \subsubsection{PhotoHunter Application}
 The PhotoHunter mobile application provides a scavenger-hunt experience where
 users are given lists of photo descriptions. Users then capture and submit
@@ -151,11 +146,8 @@ submissions, users are ranked against one another, introducing a competitive
 element to the process.
 
   \paragraph{User Accounts}
-  The application will allow users to create profiles to login. An account will
+  The application will allow users to log in through Facebook. An account will
   be necessary for the user to submit photos.
-  
-  \paragraph{Statistics}
-  The application will allow users to track their statistics when logged in.
   
   \paragraph{Hunt Lists}
   The application will provide lists of topics to the user.
@@ -165,11 +157,6 @@ element to the process.
   These photos can then be submitted to one of the options on the user's current
   list of topics.
   
-  \paragraph{Leaderboards}
-  The application will allow users to view their current ranking against all
-  other users. This ranking will be determined by the number of submissions a
-  user has made.
-  
 \subsubsection{Quick Pic}
 The Quick Pic mobile application is quiz game where users quickly identify
 images based on a provided set of labels. Users are briefly shown an image.
@@ -178,7 +165,7 @@ their correctness and speed, users are given points and ranked against one
 another.
 
   \paragraph{User Accounts}
-  The application requires users to create profiles. 
+  The application requires users to log in through Facebook. 
   
   \paragraph{Statistics}
   The application will allow users to view quiz statistics, such as percentage
@@ -194,39 +181,34 @@ another.
   will be determined by the topic in which the photo was submitted as in the
   PhotoHunter application. 
   
-  \paragraph{Leaderboards}
-  The application will allow users to view their ranking against all other
-  users based on their cumulative points.
-  
 \subsubsection{Backend}
 The backend of the PhotoHunter Project will manage the data between the different
 applications. The backend will use the data to generate databases for researchers
 using the PhotoHunter system from the web.
 
-        \paragraph{Database Management}
-        The backend will take dataset requests from the web interface and update the
-        image database accordingly.
+  \paragraph{Database Management}
+  The backend will take dataset requests from the web interface and update the
+  image database accordingly.
 
-        \paragraph{Photo Retrieval}
-        The backend will receive images and metadata from the PhotoHunter application 
-        and store them in a database.
+  \paragraph{Photo Retrieval}
+  The backend will receive images and metadata from the PhotoHunter application 
+  and store them in a database.
 
-        \paragraph{Photo Posting}
-        The backend will provide images to the Quick Pic application from the database.
+  \paragraph{Photo Posting}
+  The backend will provide images to the Quick Pic application from the database.
 
-        \paragraph{Photo Selection}
-        The backend will choose photos to provide to Quick Pic based on the current 
-        information available for the photos, ensuring that sufficient data is collected
-        for each image.
+  \paragraph{Photo Selection}
+  The backend will choose photos to provide to Quick Pic based on the current 
+  information available for the photos, ensuring that sufficient data is collected
+  for each image.
 
-        \paragraph{Photo Processing}
-        Based on the answers provided in the Quick Pic application, the backend will 
-        predict the correct label of the images in the database.
+  \paragraph{Photo Processing}
+  Based on the answers provided in the Quick Pic application, the backend will 
+  predict the correct label of the images in the database.
 
-        \paragraph{Dataset Creation}
-        The backend will monitor the states of the dataset requests and the database 
-        and create the datasets once the requirements have been met. 
-
+  \paragraph{Dataset Creation}
+  The backend will monitor the states of the dataset requests and the database 
+  and create the datasets once the requirements have been met. 
 
 \subsection{Interfaces}
 The PhotoHunter Project will have three central interfaces: two mobile
@@ -244,9 +226,6 @@ options including:
   \item \textbf{Dataset Status:} An information panel for viewing statistics
         about any datasets in development.
   
-  \item \textbf{Dataset Download:} A tool allowing users the download any
-        complete or partially complete datasets.
-
 \end{enumerate}
   
 \subsubsection{PhotoHunter}
@@ -261,8 +240,6 @@ After logging in, three main menu options are available, including:
 
   \item \textbf{Statistics:} Allows the user to view personal statistics.
 
-  \item \textbf{Leaderboard:} Allows the user to view global leaderboards.
-
 \end{enumerate}
   
 \subsubsection{Quick Pic}
@@ -276,15 +253,13 @@ following main menu will have the following options:
 
   \item \textbf{Statistics:} Allows the user to view personal statistics.
 
-  \item \textbf{Leaderboard:} Allows the user to view global leaderboards.
-
 \end{enumerate}
    
 \subsection{Installation}
 The web interface component of the PhotoHunter Project will require no
 installation. The user will login to the site using any standard internet
 browser. The mobile applications will need to be downloaded from the Google
-Play App Store or the iTunes App Store, depending on the user's device.
+Play Store once accepted and deployed.
 
 
 \section{Product Planning}
