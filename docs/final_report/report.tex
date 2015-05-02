@@ -97,8 +97,8 @@ for different purposes.
 The web interface will allow researchers to specify an image dataset based on
 their needs. This specification is then used as a topic for the PhotoHunter
 mobile application. Researchers may also use the web interface retrieve their
-finalized dataset after the images have been labelled by the Quick Pic mobile
-application. 
+finalized dataset after the images have been labelled by the QuickPic mobile
+application.
 
 \subsubsection{PhotoHunter}
 This mobile application generates lists based on the topics provided by
@@ -106,15 +106,15 @@ researchers through the web interface. Users playing the PhotoHunter game
 capture photos matching the topics in the list. These photos are uploaded to
 the overall system's database for use in dataset generation.
 
-\subsubsection{Quick Pic}
+\subsubsection{QuickPic}
 This mobile application uses the photos and topics provided by the PhotoHunter
 application and web interface to quiz users. Users are briefly shown one of the
 photos. Afterwards, the users are asked to label the photo based on a set of
-choices. The answer provided by the user is sent to the central system. 
+choices. The answer provided by the user is sent to the central system.
 
 \subsubsection{Backend}
 The backend of the system will generate lists for the PhotoHunter application.
-The backend will also analyze the data provided by Quick Pic to predict the
+The backend will also analyze the data provided by QuickPic to predict the
 correctness of user-provided labels. Finally, the backend will compile and
 generate datasets for researchers to download.
 
@@ -122,22 +122,22 @@ generate datasets for researchers to download.
 
 \subsubsection{Web Interface}
 The web interface will provide researchers with tools for dataset
-specification, tracking, and retrieval. 
+specification, tracking, and retrieval.
 
   \paragraph{Researcher Accounts}
   The web interface will allow researchers to create accounts to login. An
   account will be necessary to use the other features of the web interface.
-  
+
   \paragraph{Dataset Requests}
   When logged in to the system, users can create a new request for a dataset.
   This request will be a description of the data needed and the desired size of
   the dataset.
-  
+
   \paragraph{Dataset Status}
   The system will allow users to view the current status of their dataset based
   on the current size. This status will provide information regarding recent
-  activity in the dataset and time since the dataset was initialized. 
-  
+  activity in the dataset and time since the dataset was initialized.
+
 \subsubsection{PhotoHunter Application}
 The PhotoHunter mobile application provides a scavenger-hunt experience where
 users are given lists of photo descriptions. Users then capture and submit
@@ -148,15 +148,15 @@ element to the process.
   \paragraph{User Accounts}
   The application will allow users to log in through Facebook. An account will
   be necessary for the user to submit photos.
-  
+
   \paragraph{Hunt Lists}
   The application will provide lists of topics to the user.
-  
+
   \paragraph{Photo Submission}
   The application will allow users to take photos with their on-device camera.
   These photos can then be submitted to one of the options on the user's current
   list of topics.
-  
+
 \subsubsection{Quick Pic}
 The Quick Pic mobile application is quiz game where users quickly identify
 images based on a provided set of labels. Users are briefly shown an image.
@@ -165,22 +165,22 @@ their correctness and speed, users are given points and ranked against one
 another.
 
   \paragraph{User Accounts}
-  The application requires users to log in through Facebook. 
-  
+  The application requires users to log in through Facebook.
+
   \paragraph{Statistics}
   The application will allow users to view quiz statistics, such as percentage
   correct, average response time, and total points.
-  
+
   \paragraph{Image Flash}
   The application will briefly show the user an image pulled from the
   PhotoHunter Project's database.
-  
+
   \paragraph{Labels}
   After showing a user an image, the application will provide the user with a
   list of labels. These labels will have varying degrees of relevancy. One label
   will be determined by the topic in which the photo was submitted as in the
-  PhotoHunter application. 
-  
+  PhotoHunter application.
+
 \subsubsection{Backend}
 The backend of the PhotoHunter Project will manage the data between the different
 applications. The backend will use the data to generate databases for researchers
@@ -191,24 +191,24 @@ using the PhotoHunter system from the web.
   image database accordingly.
 
   \paragraph{Photo Retrieval}
-  The backend will receive images and metadata from the PhotoHunter application 
+  The backend will receive images and metadata from the PhotoHunter application
   and store them in a database.
 
   \paragraph{Photo Posting}
   The backend will provide images to the Quick Pic application from the database.
 
   \paragraph{Photo Selection}
-  The backend will choose photos to provide to Quick Pic based on the current 
+  The backend will choose photos to provide to Quick Pic based on the current
   information available for the photos, ensuring that sufficient data is collected
   for each image.
 
   \paragraph{Photo Processing}
-  Based on the answers provided in the Quick Pic application, the backend will 
+  Based on the answers provided in the Quick Pic application, the backend will
   predict the correct label of the images in the database.
 
   \paragraph{Dataset Creation}
-  The backend will monitor the states of the dataset requests and the database 
-  and create the datasets once the requirements have been met. 
+  The backend will monitor the states of the dataset requests and the database
+  and create the datasets once the requirements have been met.
 
 \subsection{Interfaces}
 The PhotoHunter Project will have three central interfaces: two mobile
@@ -222,12 +222,12 @@ options including:
 \begin{enumerate}
 
   \item \textbf{Dataset Request:} A form for requesting a new dataset.
-  
+
   \item \textbf{Dataset Status:} An information panel for viewing statistics
         about any datasets in development.
-  
+
 \end{enumerate}
-  
+
 \subsubsection{PhotoHunter}
 The PhotoHunter mobile application will have a main login screen upon start.
 After logging in, three main menu options are available, including:
@@ -241,9 +241,9 @@ After logging in, three main menu options are available, including:
   \item \textbf{Statistics:} Allows the user to view personal statistics.
 
 \end{enumerate}
-  
-\subsubsection{Quick Pic}
-The Quick Pic mobile application will have a main login screen upon start. The
+
+\subsubsection{QuickPic}
+The QuickPic mobile application will have a main login screen upon start. The
 following main menu will have the following options:
 
 \begin{enumerate}
@@ -254,7 +254,7 @@ following main menu will have the following options:
   \item \textbf{Statistics:} Allows the user to view personal statistics.
 
 \end{enumerate}
-   
+
 \subsection{Installation}
 The web interface component of the PhotoHunter Project will require no
 installation. The user will login to the site using any standard internet
@@ -269,7 +269,63 @@ Planning on the project goes here.
 Some stuff about our schedule goes here.
 
 \section{Platforms, Tools, and Languages}
-Stuff about what we used goes here.
+
+We used a variety of languages and tools to develop and manage our project. The
+choices we made were motivated primarily by the tasks we expected to encounter
+in our project.
+
+\subsection{Backend}
+
+The backend is built in the Go language. This language was chosen because it
+has good support for concurrency, which is important for a Web API. It also has
+excellent libraries available for API development.
+
+The backend stores data in a PostgreSQL database that has the PostGIS extension
+installed. PostgreSQL was chosen because of the availability of the PostGIS
+extension, which enables accurately and easily storing GIS (Geographic
+Information System) data in the database.
+
+The standard Go tools included in the distribution are used to build and run
+the backend.
+
+\subsection{Web Interface}
+
+The web interface is built in the Go language using the Gorilla set of
+libraries. It is implemented in HTML and CSS and includes the
+Bootstrap CSS theme.
+
+The standard Go tools included in the distribution are used to build and run
+the web interface.
+
+\subsection{PhotoHunter}
+
+The PhotoHunter application is built using the Cordova framework,
+which allows deployment of a HTML/JS/CSS web application to multiple mobile
+platforms. The application was written primarily in JavaScript, with HTML and
+CSS tying it together. It uses the Bootstrap CSS theme. The Cordova build tool
+is used to generate application binaries.
+
+The application is only confirmed to work in Android 4.4.2 at present. Our use
+of the Cordova framework should make porting to later Android versions, iOS,
+and Windows Phone require little effort. However, we have not tested on
+anything aside from Android 4.4.2.
+
+\subsection{QuickPic}
+
+The QuickPic application is built using the Cordova framework,
+which allows deployment of a HTML/JS/CSS web application to multiple mobile
+platforms. The application was written primarily in JavaScript, with HTML and
+CSS tying it together. It uses the Bootstrap CSS theme. The Cordova build tool is used to generate application
+binaries.
+
+The application is written in Node.js-style (multiple .js files, nicely
+compartmentalized). The Gulp tool is used to compile the JavaScript
+for this application into a single file for deployment.
+
+The application is only confirmed to work in Android 4.4.2 at present. Our use
+of the Cordova framework should make porting to later Android versions, iOS,
+and Windows Phone require little effort. However, we have not tested on
+anything aside from Android 4.4.2.
 
 \section{Design}
 Port over some stuff about the design
