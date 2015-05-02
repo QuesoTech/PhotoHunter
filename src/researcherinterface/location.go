@@ -24,7 +24,7 @@ type Location struct {
 func NewLocation(datasetID int64, point GeoPoint) (l *Location, err error) {
 	var id int64
 
-	err = DB.QueryRow("INSERT INTO locations (ds_id, lat,lon) VALUES ($1, $2, $3) RETURNING id", datasetID, point.lat,point.lon).Scan(&id)
+	err = DB.QueryRow("INSERT INTO locations (ds_id, lat,lon) VALUES ($1, $2, $3) RETURNING id", datasetID, point.Lat, point.Lon).Scan(&id)
 	if err != nil {
 		return
 	}
@@ -32,8 +32,7 @@ func NewLocation(datasetID int64, point GeoPoint) (l *Location, err error) {
 	l = &Location{
 		ID:        id,
 		DatasetID: datasetID,
-		lat:   point.lat,
-		lon:  point.lon
+		Target:    point,
 	}
 
 	return
