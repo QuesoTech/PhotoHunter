@@ -278,12 +278,28 @@ Port over some stuff about the design
 Talk about how we implemented everything.
 
 \section{Future Enhancements/Maintenance}
-How to make it better.
+Currently, due to unforeseen issues with interfacing between Go and PostgreSQL, the coordinates for locations are stored as float values, instead of the GeoPoint type offered by PostGIS. This is due to the lack of support for array types in the Go PostgreSQL library. In the future, it would be preferable to switch these coordinates to the GeoPoint type, as it would allow greater functionality.\\
+
+The team would also like to implement leaderboards and a versatile point system for the two mobile applications. This functionality was pushed to the future due to time constraints. \\
+
+As the applications are further developed, the team would like to market them and deploy to other platforms, such as iOS. The applications were developed in Cordova to simplify the process of iOS development. To increase marketability, the applications would be further "gameified." As usage of the system increases, an more robust security system would need to be implemented as well. 
 
 \section{Conclusions}
 Wrap it up.
 
 \section{References}
 Cite everything we used.
+\begin{enumerate}
+
+\item \textbf{Apache Cordova:} https://cordova.apache.org/
+\item \textbf{Golang:} https://golang.org/
+\item \textbf{PostgreSQL:} http://www.postgresql.org/
+\item \textbf{PostGIS:} http://postgis.net/
+\item \textbf{Phonegap Facebook Plugin:} https://github.com/Wizcorp/phonegap-facebook-plugin
+\item \textbf{PQ Library for Go:} https://github.com/lib/pq
+\item \textbf{Gorilla Sessions for Go:} http://www.gorillatoolkit.org/pkg/sessions
+\item \textbf{Bootstrap:} http://getbootstrap.com/
+
+\end{enumerate}
 
 \end{document}
