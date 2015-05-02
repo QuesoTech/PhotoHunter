@@ -35,8 +35,15 @@ var Splash = React.createClass({
                 <div className="row">
                     <div className="col-xs-12">
                         <img className="img-responsive center-block"
-                             src="http://ecx.images-amazon.com/images/I/51Nf7DSjczL._SY300_.png"></img>
+                             style={{
+                                    width: "80%",
+                                    "margin-top": "20%"
+                                    }}
+                             src="./img/logo.png"></img>
                     </div>
+                </div>
+                <div className="row">
+                    <h3 className="text-center">QuickPic</h3>
                 </div>
                 <div className="row">
                     <div className="col-xs-6 col-xs-offset-3">
