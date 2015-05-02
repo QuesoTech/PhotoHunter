@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     cdv = require('cordova-lib').cordova.raw;
 
 var paths = {
-    scripts: ["index.jsx", "lib/**/*.jsx"]
+    scripts: ["index.jsx", "lib/**/*.jsx", "views/**/*.jsx"]
 };
 
 var bundler = browserify({
@@ -37,7 +37,14 @@ gulp.task('serve', ['browserify'], function(cb) {
     cdv.serve().then(function() { cb(); });
 });
 
+gulp.task('deploy-local', ['browserify'], function(cb) {
+    process.chdir('./cordova');
+    cdv.run().then(cb);
+});
+
 gulp.task('watch', function() {
     var tasks = process.argv.slice(3);
     return gulp.watch(paths.scripts, tasks);
 });
+
+gulp.task('default', ['browserify']);

@@ -49,7 +49,13 @@ func main() {
 	http.HandleFunc("/signup", signupHandler)
 	http.HandleFunc("/signin", signinHandler)
 	http.HandleFunc("/logout", logoutHandler)
-	http.HandleFunc("/create_dataset",createDatasetHandler)
+	http.HandleFunc("/create_dataset", createDatasetHandler)
+
+	// Handle API Calls
+	http.HandleFunc("/api/get_datasets", getDatasetsHandler)
+	http.HandleFunc("/api/submit_datapoint", submitDataHandler)
+	http.HandleFunc("/api/get_datapoint", getDatapointHandler)
+	http.HandleFunc("/api/eval_datapoint", evalDatapointHandler)
 
 	//Static file servers
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))

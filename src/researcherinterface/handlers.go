@@ -180,10 +180,10 @@ func logoutHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "session-name")
 	//delete(session.Values, "user")
 
-	delete(session.Values,"email")
-	delete(session.Values,"fname")
-	delete(session.Values,"lname")
-	delete(session.Values,"id")
+	delete(session.Values, "email")
+	delete(session.Values, "fname")
+	delete(session.Values, "lname")
+	delete(session.Values, "id")
 	session.Save(r, w)
 
 	http.Redirect(w, r, "/", http.StatusFound)

@@ -47,3 +47,32 @@ func GetDatasetByID(id int64) (ds *Dataset, err error) {
 
 	return
 }
+
+// GetAllDatasets fetches a list of datasets from the database
+func GetAllDatasets() (sets []*Dataset, err error) {
+	rows, err := DB.Query("SELECT id, researcher_id, name FROM dataset")
+	if err != nil {
+		return
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var id int64
+		var researcherID int64
+		var name string
+
+		err = rows.Scan(&id, &researcherID, &name)
+		if err != nil {
+			return
+		}
+
+		ds := &Dataset{
+			ID:           id,
+			ResearcherID: researcherID,
+			Name:         name,
+		}
+		sets = append(sets, ds)
+	}
+
+	return
+}

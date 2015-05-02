@@ -4,6 +4,16 @@
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
+    <feature name="FacebookConnectPlugin">
+        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
+    </feature>
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
+    <splash height="1920" src="res/drawable/logo.png" width="1080" />
+    <icon height="57" src="res/drawable/logo.png" width="57" />
     <name>Photohunter</name>
     <description>
         Hunt for new photos to take in your area and earn points to become the best!
@@ -13,13 +23,4 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <preference name="SplashScreen" value="willie" />
-    <feature name="FacebookConnectPlugin">
-        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
-    </feature>
-    <access origin="https://m.facebook.com" />
-    <access origin="https://graph.facebook.com" />
-    <access origin="https://api.facebook.com" />
-    <access origin="https://*.fbcdn.net" />
-    <access origin="https://*.akamaihd.net" />
 </widget>

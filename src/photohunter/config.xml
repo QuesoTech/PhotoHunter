@@ -9,5 +9,13 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-		<preference name="SplashScreen" value="willie"/>
+		<platform name="android">
+				<!-- you can use any density that exists in the Android project -->
+				<splash src="res/drawable/logo.png" width="1080" height="1920" />
+		</platform>
+
+		<platform name="android">
+		 		<icon src="res/drawable/logo.png" width="57" height="57" />
+		</platform>
+
 </widget>
