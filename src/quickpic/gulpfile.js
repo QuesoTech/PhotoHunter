@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     buffer = require('vinyl-buffer'),
     source = require('vinyl-source-stream'),
     sourcemaps = require('gulp-sourcemaps'),
-    cdv = require('cordova-lib').cordova.raw;
+    cdv = require('cordova-lib').cordova.raw,
+    exec = require('child_process').exec;
 
 var paths = {
     scripts: ["index.jsx", "lib/**/*.jsx", "views/**/*.jsx"]
@@ -16,6 +17,16 @@ var bundler = browserify({
     entries: ['./index.jsx'],
     transform: [reactify],
     debug: true
+});
+
+gulp.task('cordova:setup', function(done) {
+    process.chdir('./cordova');
+    exec('cordova -d plugins add ../plugins/phonegap-facebook-plugin --variable APP_ID=1662797127286769 --variable APP_NAME=QuickPic', done);
+});
+
+gulp.task('cordova:teardown', function(done) {
+    process.chdir('./cordova');
+    exec('cordova plugins rm com.phonegap.plugins.facebookconnect', done);
 });
 
 gulp.task('browserify', function() {
