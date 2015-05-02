@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+  <head>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <link rel = "stylesheet" type = "text/css" href = "/css/bootstrap.min.css">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+
+    <title>PhotoHunter - {{ .Title }} </title>
+  </head>
+
+<body>
+
+  <div id = "wrapper">  
+    
+  
+	<!--- Sidebar -->
+	<div id = "sidebar-wrapper">
+	  <ul class = "sidebar-nav">
+	    <li class = "sidebar-brand">
+	      <a href = "#">PhotoHunter</a>
+	   </li>
+	   
+	   <li>
+	      <a href = "#">Home</a>
+	   </li>
+	   
+	   <li>
+	      {{if .User.Name.First }} <a href = "/account">{{.User.Name.First}}'s Account </a>
+	      {{else}}
+	      <a href = "#">Create Account</a>
+	      {{end}}
+	   <li>
+	      <a href = "#">About</a>
+	   </li>
+	   
+	   <li>
+	      {{if .User.Name.First }} <a href = "/logout">Logout</a>{{end}}
+	     </li>
+	   
+	 </ul>
+	</div>
+	
+	
+	
+	<!--- Everything else -->
+    <div id = "page-content-wrapper">
+      <div class = "container-fluid">
+	<div class = "row">
+	
+	  <div class = "col-lg-4">
+	    <h1> 1. Request Dataset </h1>
+	    {{ if .User.Name.First }} 
+	    <form action="/create_dataset" method="POST">
+
+	      <fieldset>
+
+	      <!-- Form Name -->
+	      <legend>Define Dataset</legend>
+
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label for="fname">Dataset Name:</label>  
+		
+		<input id="name" name="name" type="text" placeholder="ex. Cats" class="form-control input-md" required>
+	      </div>	  
+		
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label for="nimages">Requested Number of Images:</label>  
+		
+		<input id="name" name="name" type="text" placeholder="ex. 2000" class="form-control input-md" required>
+	      </div>
+	      
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label for="target">Expected Target:</label>  
+		
+		<input id="target" name="target" type="text" placeholder="ex. Cats" class="form-control input-md" required>
+		  
+	
+	      </div>
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label  for="dummies">Dummies:</label>  
+	
+		<input id="dummies" name="dummies" type="text" placeholder="ex. dogs,walruses,capybaras" class="form-control input-md" required>
+		  
+		
+	      </div>
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label for="lat">Latitude:</label>  
+		
+		<input id="lat" name="lat" type="text" placeholder="ex. 38.0297" class="form-control input-md" required>
+		  
+		
+	      </div>
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label for="long">Longitude:</label>  
+		
+		<input id="long" name="long" type="text" placeholder="ex. -84.4947" class="form-control input-md" required>
+
+		
+	      </div>
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label for="stime">Start Time:</label>  
+		<input id="stime" name="stime" type="time" placeholder="ex. HH:MM:SS" class="form-control input-md" required>
+		  
+		
+	      </div>
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label for="etime">End Time:</label>  
+		
+		<input id="etime" name="etime" type="time" placeholder="ex. HH:MM:SS" class="form-control input-md" required>
+		  
+		
+	      </div>
+
+
+	      <!-- Button -->
+	      <div class="form-group">
+		<label  for="submit"></label>
+		<div class="col-md-10">
+		  <button id="submit" name="submit" type = "submit" class="btn btn-primary">Submit</button>
+		
+	      </div>
+
+	      </fieldset>
+</form>
+
+
+	    {{else}}<p> Describe a dataset that suits your needs.</p>{{end}}
+	    
+	  
+	  </div>
+	  
+	  <div class = "col-lg-4">
+	    <h1> 2. See Statistics </h1>
+	    <p> View updates on your dataset as users contribute to it.</p>  
+	    
+	    <h2> Progress on Cats Dataset</h2>
+	    <div class = "progress">
+	      <div class = "progress-bar" role = "progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style = "width: 75%;">
+	      75%
+	      </div>
+	    </div>
+	  
+	  </div>
+	  
+	  <div class = "col-lg-4">
+	    <h1> 3. Download Data </h1>
+	    <p> Download the dataset and use it in your research.</p>
+	  </div>
+	
+	</div>
+      
+      <div class ="row">
+	<div class ="col-lg-4">
+	  
+	  {{if .User.Name.First }}
+	  {{ else }}
+  	    <form action = "/signup" method = "POST" class="form-horizontal">
+	      <fieldset>
+
+	      <!-- Form Name -->
+	      <legend>Create Account</legend>
+
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="fname">First Name:</label>  
+		<div class = "col-md-8">
+		<input id="fname" name="fname" type="text" placeholder="ex. John" class="form-control input-md" required="">
+		  
+		</div>
+	      </div>
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="lname">Last Name:</label>  
+		<div class = "col-md-8">
+		<input id="lname" name="lname" type="text" placeholder="ex. Smith" class="form-control input-md" required="">
+		  
+		</div>
+	      </div>
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="email">Email:</label>  
+		<div class="col-md-8">
+		<input id="email" name="email" type="text" placeholder="ex. abc@quesotech.com" class="form-control input-md" required="">
+		  
+		</div>
+	      </div>
+
+	      <!-- Password input-->
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="pword">Password:</label>
+		<div class="col-md-8">
+		  <input id="pword" name="pword" type="password" placeholder="ex. 123abc" class="form-control input-md" required="">
+		  
+		</div>
+	      </div>
+
+	      <!-- Password input-->
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="pword2">Reenter Password:</label>
+		<div class="col-md-8">
+		  <input id="pword2" name="pword2" type="password" placeholder="ex. 123abc" class="form-control input-md" required="">
+		  
+		</div>
+	      </div>
+
+	      <!-- Button -->
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="submit"></label>
+		<div class="col-md-8">
+		  <button id="submit" name="submit" type = "submit" class="btn btn-primary">Submit</button>
+		</div>
+	      </div>
+
+	      </fieldset>
+	      </form>    
+      
+	   </div>
+      
+
+
+            <div class="col-lg-4">
+  	    <form action = "/signin" method = "POST" class="form-horizontal">
+	      <fieldset>
+
+	      <!-- Form Name -->
+	      <legend>Sign in</legend>
+
+	      <!-- Text input-->
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="email">email:</label>  
+		<div class="col-md-8">
+		<input id="email" name="email" type="text" placeholder="ex. aaron@quesotech.com" class="form-control input-md" required="">
+		  
+		</div>
+	      </div>	      
+	      <!-- Password input-->
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="pword">Password:</label>
+		<div class="col-md-8">
+		  <input id="pword" name="pword" type="password" placeholder="ex. 123abc" class="form-control input-md" required=""> 
+		</div>
+
+	      </div>
+	      <div class="form-group">
+		<label class="col-md-4 control-label" for="submit"></label>
+		<div class="col-md-4">
+		  <button id="submit" name="submit" type = "submit" class="btn btn-primary">Submit</button>
+		</div>
+	      </div>	      
+
+
+	      </div>
+	    </fieldset>
+	    </form>
+
+          </div>
+         {{ end }}
+      
+      </div>
+    
+    </div>
+	
+
+
+   
+   </div>
+       <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+   
+   
+</body>
+
+
+</html>

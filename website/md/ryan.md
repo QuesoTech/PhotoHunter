@@ -27,6 +27,28 @@ The Gouda-father
 Activity Log
 ------------
 
+**April 26th 2015 - May 2nd 2015**
+
+-   Worked on slides for final presentation
+-   Final presentation
+-   Worked on final report and assignments
+
+**April 19th 2015 - April 25th 2015**
+
+-		Worked on integrating Photohunter app with Facebook
+-   Practice final presentation talk
+-   Worked on slides for final presentation
+
+**April 12th 2015 - April 18th 2015**
+
+-		Worked on Photohunter app design and interface
+-		Worked on integrating Photohunter app with Facebook
+
+**April 5th 2015 - April 11th 2015**
+
+-		Worked on Photohunter app design and interface
+-		Worked on integrating Photohunter app with Facebook
+
 **March 29th 2015 - April 4th 2015**
 
 -		Worked on Photohunter app design and interface

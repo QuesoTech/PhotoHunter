@@ -28,15 +28,29 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+				<style>
+					.h1, h1 {
+						font-size: 36px;
+						text-align: center;
+					}
+					.vertical-center {
+						min-height: 100%;
+						min-height: 100vh;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						flex-direction: column;
+					}
+				</style>
         <title>Photohunter</title>
     </head>
     <body>
-        <div class="app">
-				<div class="container">
-						<h1>Photohunter</h1>
-						<form action="capture.html">
-							<input type="submit" class="btn btn-lg btn-default" value="Log In"></br>
-						</form>
+        <div class="container vertical-center">
+					<div class="row">
+							<img id="logo" src="img/logo.png" style="display:block; margin:auto; width:80%;" />
+							<h1>Photohunter</h1>
+							<button class="btn btn-lg btn-default" style="display:block; margin: auto;" onclick="loginFB()">Log In</button></br>
+					</div>
 				</div>
     		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

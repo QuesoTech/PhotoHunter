@@ -27,12 +27,24 @@
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+				<style>
+					.vertical-center {
+						min-height: 100%;
+						min-height: 100vh;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						flex-direction: column;
+					}
+				</style>
         <title>Photohunter</title>
     </head>
     <body>
-        <div>
-       			<button class="btn btn-lg btn-default" onclick="capturePhoto();">Take a Picture</button></br>
-				    <img style="display:none;width:60%;height:60%;" id="smallImage" src="" />
+        <div class="vertical-center">
+				    <img style="display:none;width:90%;" id="smallImage" src="" />
+       			<button id="takepicture" class="btn btn-lg btn-default" onclick="capturePhoto();">Take a Picture</button></br>
+						<span id="coords" class="label label-default">Location</span></br>
+       			<button id="upload" style="display:none" class="btn btn-lg btn-success" >Upload</button></br>
 				</div>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

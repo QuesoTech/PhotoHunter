@@ -48,13 +48,24 @@ function onPhotoDataSuccess(imageData) {
 	smallImage.src = "data:image/jpeg;base64," + imageData;
 }
 
+var onGeoSuccess = function(position) {
+		$('#coords').html(String(position.coords.latitude) + ", " + String(position.coords.longitude))	
+		$('#coords').attr('class', 'label label-success')	
+};
 
 function capturePhoto()
 {
 	navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, 
 		destinationType: destinationType.DATA_URL });
+	getLocation();
+	$('#takepicture').attr('style', 'display:none;')
+	$('#upload').attr('style', 'display:block; margin:0 auto;')
 }
 
+function getLocation()
+{
+	navigator.geolocation.getCurrentPosition(onGeoSuccess, onFail);
+}
 
 // Called if something bad happens.
 //
