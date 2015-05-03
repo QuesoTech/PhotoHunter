@@ -90,9 +90,9 @@ perform them quickly and thoughtlessly using AMT comes at a hefty financial and
 accuracy cost.
 
 Many researchers have experimented with this and other forms of ``citizen science''
-for data collection and verifivation. Outsoucing data collection tasks is especially
+for data collection and verification. Outsoucing data collection tasks is especially
 valuable for when it is impossible, financially or practically, for researchers to
-collect their data themselves (ornothologists figured this out many years ago).
+collect their data themselves (ornithologists figured this out many years ago).
 
 We propose a ``citizen science'' system for collecting large, verified sets of images
 for computer vision research by ``game-ifying'' the interface. Rather than instruct
@@ -140,7 +140,7 @@ for different purposes.
 The web interface will allow researchers to specify an image dataset based on
 their needs. This specification is then used as a topic for the PhotoHunter
 mobile application. Researchers may also use the web interface retrieve their
-finalized dataset after the images have been labelled by the QuickPic mobile
+finalized dataset after the images have been labeled by the QuickPic mobile
 application.
 
 \subsubsection{PhotoHunter}
@@ -300,14 +300,16 @@ following main menu will have the following options:
 
 \subsection{Installation}
 The web interface component of the PhotoHunter Project will require no
-installation. The user will login to the site using any standard internet
-browser. The mobile applications will need to be downloaded from the Google
-Play Store once accepted and deployed.
+installation. The user will login to the site using a web browser. The mobile
+applications will need to be downloaded from the Google Play Store once
+accepted and deployed.
 
 
 
 \section{Product Planning}
-In our design, we estimated\footnote{The initial estimate may not have been stored in the design document correctly}the following LOC values for our project:
+In our design, we estimated\footnote{The initial estimate for SQL code may not
+  have been stored in the design document correctly} the following LOC values
+for our project:
 
 \begin{center}
 \begin{tabular}{l|r}
@@ -408,11 +410,11 @@ anything aside from Android 4.4.2.
 
 \subsection{QuickPic}
 
-The QuickPic application is built using the Cordova framework,
-which allows deployment of a HTML/JS/CSS web application to multiple mobile
-platforms. The application was written primarily in JavaScript, with HTML and
-CSS tying it together. It uses the Bootstrap CSS theme. The Cordova build tool is used to generate application
-binaries.
+The QuickPic application is built using the Cordova framework, which allows
+deployment of a HTML/JS/CSS web application to multiple mobile platforms. The
+application was written primarily in JavaScript, with HTML and CSS tying it
+together. It uses the Bootstrap CSS theme. The Cordova build tool is used to
+generate application binaries.
 
 The application is written in Node.js-style (multiple .js files, nicely
 compartmentalized). The Gulp tool is used to compile the JavaScript
@@ -431,10 +433,11 @@ anything aside from Android 4.4.2.
 The web interface and API for the PhotoHunter Project will be built with Go
 using PostgreSQL for the database. The backend will run on a DigitalOcean
 Droplet virtual server. The interface will be tested and fitted to the latest
-versions of the Mozilla Firefox and Google Chrome web browsers. The mobile
-applications for the PhotoHunter Project will be built using the Apache Cordova
-API set. This framework allows smartphone applications to be developed using
-HTML, CSS, and Javascript. The initial target device will be Android.
+versions of Mozilla Firefox and Google Chrome available as of April 1st,
+2015. The mobile applications for the PhotoHunter Project will be built using
+the Apache Cordova API set. This framework allows smartphone applications to be
+developed using HTML, CSS, and Javascript. The initial target device will be
+Android.
 
 \subsection{Module Descriptions and Data Flow}
 The overall data flow between the four main components of the PhotoHunter
@@ -645,7 +648,7 @@ Points will be calculated in the following manner:
   testing and input from the customer.  These are not necessarily the final
 values.}
 
-\paragraph{Analyse QuickPic Label Choices}
+\paragraph{Analyze QuickPic Label Choices}
 
 Label choices from QuickPic will be analyzed using as-of-yet undetermined
 statistical methods to determine what the probably True Label is and the
@@ -760,7 +763,11 @@ choices. We would not change any of those at this time. Given the opportunity
 to begin the semester again, we would like to have laid out a clear schedule
 with milestones sooner in the project lifetime. Confusion about what needed to
 be done when impacted our progress early in the semester, although we
-ultimately got that sorted out.
+ultimately got that sorted out. One thing that we would also change is the
+order in which features were completed. We completed the database, QuickPic,
+PhotoHunter and the Research Interface --- but not the API tying them
+together. It would have been better to have a fully working API than a second
+application that could only partially interact with the backend.
 
 Both our customer and our team consider our project reasonably successful. We
 did not complete all objectives. However, we made good progress and laid the
