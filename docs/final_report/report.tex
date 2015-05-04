@@ -1,5 +1,6 @@
 \documentclass{article}
 
+\usepackage{listings}
 \usepackage[scale=0.7]{geometry}
 \usepackage{hyperref, tablefootnote, color, graphicx, float, caption, subcaption}
 \usepackage{titlesec}
@@ -823,5 +824,36 @@ Continue. Menu returns to the main menu, and Continue presents the user with
 another image.
 
 \subsection{Researcher's Interface}
+
+The Researcher's Interface requires the following package be already installed:
+\begin{itemize}
+	\item Golang, version 1.2 or greater
+	\item PostgresSQL, 9.4.1
+	\item PostGIS, 2.0.7
+\end{itemize}
+These package are available as source code on their respective project pages,
+and as binaries that can be installed from all major Linux package managers.
+Their installation is outside the purview of this document.
+
+\subsubsection{Installation}
+
+The Researcher's Interface can be installed by downloading the source code
+from \href{http://www.github.com/QuesoTech/PhotoHunter}{github.com}.
+Then performing the following commands in a Bash shell:
+\begin{lstlisting}[language=bash]
+> cd src/researcherinterface
+> go build
+> ./researcherinterface
+\end{lstlisting}
+
+The server will now be running, listening to port 8080. There are a number of common
+methods for routing http requests to this port.
+
+\subsubsection{Use}
+
+Upon arrival to the sites landing page, a user may either create a new account or 
+log in to an existing one. On signed in, a dashboard will appear. From here
+a reasercher may fill out a form requesting a new dataset, manage existing datasets,
+download completed datasets, or sign out.
 
 \end{document}
