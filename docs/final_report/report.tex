@@ -1,5 +1,6 @@
 \documentclass{article}
 
+\usepackage{listings}
 \usepackage[scale=0.7]{geometry}
 \usepackage{hyperref, tablefootnote, color, graphicx, float, caption, subcaption}
 \usepackage{titlesec}
@@ -78,13 +79,14 @@ such damages.
 
 \section{Introduction}
 
-One of the largest roadblocks to successful computer vision is the difficulty of
-acquiring large quantities of accurate ground truth data for a given problem
-statement. Traditionally, this task has been relegated to under-paid and over-worked
-underclassmen or new graduate students. This technique has produced some of the
-most famous datasets in the field (Caltech-101, Caltech-256). However, the size of
-these datasets no longer supports current machine learning research. Recently,
-many researchers have opted to use Amazon Mechanical Turk to create and verify their
+One of the largest roadblocks to successful computer vision is the difficulty
+of acquiring large quantities of accurate ground truth data for a given problem
+statement. Traditionally, this task has been relegated to under-paid and
+over-worked underclassmen or new graduate students. This technique has produced
+some of the most famous datasets in the field (Caltech-101, Caltech-256).
+However, the size of these datasets no longer supports current machine learning
+research. Recently, many researchers have opted to use Amazon Mechanical
+Turk~\footnote{\url{https://www.mturk.com/}} to create and verify their
 datasets. However, due to the nature of outsourcing tasks to those motivated to
 perform them quickly and thoughtlessly using AMT comes at a hefty financial and
 accuracy cost.
@@ -341,7 +343,8 @@ Our actual values, as computed by the \texttt{cloc} program:
   \end{tabular}
 \end{center}
 
-We did not complete all of our project goals. Given completion of all of them, we estimate that we would have about 30\% more code (2127 LOC).
+We did not complete all of our project goals. Given completion of all of them,
+we estimate that we would have about 30\% more code (2127 LOC).
 
 \section{Schedule and Milestones}
 
@@ -734,14 +737,128 @@ Android.
 
 
 \section{Implementation}
-Talk about how we implemented everything.
+\subsection{Issues}
+We encountered small issues throughout the semester.  Integrating the mobile
+applications with the Facebook API proved to be challenging.  We used a
+Facebook plugin for Cordova to allow logging in through Facebook accounts, but
+it took many different sets of documentation and trial and error to figure out
+how to work with the Facebook API.  Integration with PostGIS on the web backend
+caused problems as well.  Issues with the PostGreSQL driver and Go caused us to
+have to search for work arounds for inserting geo data.
+
+\subsection{Changes to Design}
+A few changes occurred to the originally submitted design by the end of the
+semester.  Due to time constraints, leaderboards and deploying to multiple
+platforms were moved from planned features to stretch goals.  These were seen
+as less essential features for the project, thus they were cut from the end of
+the semester goals.  The researcher interface and the API were originally two
+separate entities, but as the semester progressed, the two slowly merged into
+one.  The development process for both pieces were similar enough that merging
+the two pieces seemed natural.
+
+\subsection{Restrictions, Limitations}
+The main limitation encountered during the semester was time.  Missed time due 
+to weather and work for other classes/jobs led to a loss in time to work on 
+the project.  Testing the applications and interface with large amounts of 
+data was another limitation.  Four people can submit and label only so many
+images, and having a mass of users flood the servers was something we couldn't
+simulate.
+
+\subsection{Testing Plan}
+\subsubsection{Unit Testing/Functional Testing}
+\paragraph{PhotoHunter}
+For the Photohunter app, we will test each function on the Android (4.4.2)
+mobile platform.  The tests we will perform are:
+\begin{itemize}
+
+  \item Logging into the app through Facebook and create an account
+
+  \item Logging into the app with an already existing account
+
+  \item Retrieving the correct device location
+
+  \item Sending the current location to the Photohunter API and receiving
+        a list of datasets
+
+  \item Selecting a dataset from the generated list
+
+  \item Taking a picture with the built in camera and uploading to the
+        database through the Photohunter API
+
+  \item Correctly populating the leaderboard with point data
+
+\end{itemize}
+
+\paragraph{Quick Pic}
+For the \textit{Quick Pic} app, we will test each function on the Android
+(4.4.2) mobile platform.  The tests we will perform are:
+\begin{itemize}
+
+  \item Logging into the app through Facebook and create an account
+
+  \item Logging into the app with an already existing account
+
+  \item Successfully retrieving Picture/Label test pairs from the QuickPic API.
+
+  \item Sending the Label choice back to the QuickPic API.
+
+  \item Displaying Label statistics for a Picture.
+
+  \item Correctly progressing from Picture/Label pair to Picture/Label pair.
+
+  \item Correctly populating the leaderboard with point data
+
+\end{itemize}
+
+\subsubsection{Researcher Interface}
+For the Researcher Interface, we will test each page on Chrome (Stable 41.0), and Firefox (37.0.1). The tests we will perform are as follows:
+
+\begin{itemize}
+\item Account creation
+\item Logging in as an existing user
+\item Creating new data sets
+\item Managing datasets (editing, deletion, finalizing)
+\item Dataset publication
+\item Datapoint scoring
+\end{itemize}
+
+\subsubsection{System Testing}
+System testing will focus on the interaction between the PhotoHunter app, Quick Pic app, researcher interface, and the PhotoHunter API.
+The expected flow of the project is as follows:
+\begin{itemize}
+\item The researcher interface should allow users to define and describe new datasets.
+\item The PhotoHunter application should successfully insert new images with relevant information into the database.
+\item The PhotoHunter API should serve images and relevant tags from the database to the Quick Pic application.
+\item The Quick Pic application should successfully provide user feedback to the images provided by the API.
+\item The PhotoHunter API should analyze and package the data provided by the PhotoHunter and Quick Pic apps, and provide a download to the researcher interface.
+\item The researcher interface should allow users to download the package generated by the PhotoHunter API.
+\end{itemize}
+
+The system will be tested on the latest stable versions of Google Chrome and Android available as of April, 2015.
+
+\subsubsection{Customer Testing}
+The customer will be given access to the researcher interface and the packages
+for the Android applications. The intention is to provide the user with these
+builds early enough to correct any serious issue before the project deadline.
+
 
 \section{Future Enhancements/Maintenance}
-Currently, due to unforeseen issues with interfacing between Go and PostgreSQL, the coordinates for locations are stored as float values, instead of the GeoPoint type offered by PostGIS. This is due to the lack of support for array types in the Go PostgreSQL library. In the future, it would be preferable to switch these coordinates to the GeoPoint type, as it would allow greater functionality.\\
+Currently, due to unforeseen issues with interfacing between Go and PostgreSQL,
+the coordinates for locations are stored as float values, instead of the
+GeoPoint type offered by PostGIS. This is due to the lack of support for array
+types in the Go PostgreSQL library. In the future, it would be preferable to
+switch these coordinates to the GeoPoint type, as it would allow greater
+functionality.
 
-The team would also like to implement leaderboards and a versatile point system for the two mobile applications. This functionality was pushed to the future due to time constraints. \\
+The team would also like to implement leaderboards and a versatile point system
+for the two mobile applications. This functionality was pushed to the future
+due to time constraints. 
 
-As the applications are further developed, the team would like to market them and deploy to other platforms, such as iOS. The applications were developed in Cordova to simplify the process of iOS development. To increase marketability, the applications would be further "gameified." As usage of the system increases, an more robust security system would need to be implemented as well.
+As the applications are further developed, the team would like to market them
+and deploy to other platforms, such as iOS. The applications were developed in
+Cordova to simplify the process of iOS development. To increase marketability,
+the applications would be further "gameified." As usage of the system
+increases, an more robust security system would need to be implemented as well.
 
 \section{Conclusions}
 
@@ -823,5 +940,36 @@ Continue. Menu returns to the main menu, and Continue presents the user with
 another image.
 
 \subsection{Researcher's Interface}
+
+The Researcher's Interface requires the following package be already installed:
+\begin{itemize}
+	\item Golang, version 1.2 or greater
+	\item PostgresSQL, 9.4.1
+	\item PostGIS, 2.0.7
+\end{itemize}
+These package are available as source code on their respective project pages,
+and as binaries that can be installed from all major Linux package managers.
+Their installation is outside the purview of this document.
+
+\subsubsection{Installation}
+
+The Researcher's Interface can be installed by downloading the source code
+from \href{http://www.github.com/QuesoTech/PhotoHunter}{github.com}.
+Then performing the following commands in a Bash shell:
+\begin{lstlisting}[language=bash]
+> cd src/researcherinterface
+> go build
+> ./researcherinterface
+\end{lstlisting}
+
+The server will now be running, listening to port 8080. There are a number of common
+methods for routing http requests to this port.
+
+\subsubsection{Use}
+
+Upon arrival to the sites landing page, a user may either create a new account or 
+log in to an existing one. On signed in, a dashboard will appear. From here
+a reasercher may fill out a form requesting a new dataset, manage existing datasets,
+download completed datasets, or sign out.
 
 \end{document}
