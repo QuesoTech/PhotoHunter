@@ -737,6 +737,13 @@ Android.
 
 \section{Implementation}
 \subsection{Issues}
+We encountered small issues throughout the semester.  Integrating the mobile
+applications with the Facebook API proved to be challenging.  We used a
+Facebook plugin for Cordova to allow logging in through Facebook accounts, but
+it took many different sets of documentation and trial and error to figure out
+how to work with the Facebook API.  Integration with PostGIS on the web backend
+caused problems as well.  Issues with the PostGreSQL driver and Go caused us to
+have to search for work arounds for inserting geo data.
 
 \subsection{Changes to Design}
 A few changes occurred to the originally submitted design by the end of the
@@ -749,6 +756,12 @@ one.  The development process for both pieces were similar enough that merging
 the two pieces seemed natural.
 
 \subsection{Restrictions, Limitations}
+The main limitation encountered during the semester was time.  Missed time due 
+to weather and work for other classes/jobs led to a loss in time to work on 
+the project.  Testing the applications and interface with large amounts of 
+data was another limitation.  Four people can submit and label only so many
+images, and having a mass of users flood the servers was something we couldn't
+simulate.
 
 \subsection{Testing Plan}
 \subsubsection{Unit Testing/Functional Testing}
