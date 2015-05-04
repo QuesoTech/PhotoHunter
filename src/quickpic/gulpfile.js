@@ -21,12 +21,18 @@ var bundler = browserify({
 
 gulp.task('cordova:setup', function(done) {
     process.chdir('./cordova');
-    exec('cordova -d plugins add ../plugins/phonegap-facebook-plugin --variable APP_ID=1662797127286769 --variable APP_NAME=QuickPic', done);
+    exec('cordova platform add android@3.6.4', function(err) {
+        exec('cordova -d plugins add ../plugins/phonegap-facebook-plugin --variable APP_ID=1662797127286769 --variable APP_NAME=QuickPic', done);
+    });
 });
 
 gulp.task('cordova:teardown', function(done) {
     process.chdir('./cordova');
-    exec('cordova plugins rm com.phonegap.plugins.facebookconnect', done);
+    exec('cordova platform rm android', function(err) {
+        if(err) { done(err); } else {
+            exec('cordova plugins rm com.phonegap.plugins.facebookconnect', done);
+        }
+    });
 });
 
 gulp.task('browserify', function() {
@@ -38,17 +44,17 @@ gulp.task('browserify', function() {
         .pipe(gulp.dest('./cordova/www/js/dist'));
 });
 
-gulp.task('emulate', ['browserify'], function(cb) {
+gulp.task('emulate', ['cordova:setup', 'browserify'], function(cb) {
     process.chdir('./cordova');
     cdv.emulate().then(cb);
 });
 
-gulp.task('serve', ['browserify'], function(cb) {
+gulp.task('serve', ['cordova:setup', 'browserify'], function(cb) {
     process.chdir('./cordova');
     cdv.serve().then(function() { cb(); });
 });
 
-gulp.task('deploy-local', ['browserify'], function(cb) {
+gulp.task('deploy-local', ['cordova:setup', 'browserify'], function(cb) {
     process.chdir('./cordova');
     cdv.run().then(cb);
 });
@@ -58,4 +64,4 @@ gulp.task('watch', function() {
     return gulp.watch(paths.scripts, tasks);
 });
 
-gulp.task('default', ['browserify']);
+gulp.task('default', ['deploy-local']);
